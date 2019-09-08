@@ -30,5 +30,17 @@ namespace Wellness.WebAPI.Controllers
 
             return _mapper.Map<List<Model.Paket>>(list);
         }
+
+        [HttpPost]
+        public Model.Paket Insert(Model.Requests.PaketInsertRequest request)
+        {
+            var paket = _mapper.Map<Database.Paket>(request);
+
+
+            _context.Paket.Add(paket);
+            _context.SaveChanges();
+            return _mapper.Map<Model.Paket>(paket);
+        }
+
     }
 }

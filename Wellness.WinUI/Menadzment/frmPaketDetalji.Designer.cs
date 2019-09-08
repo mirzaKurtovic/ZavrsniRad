@@ -162,14 +162,14 @@
             // clbPristupniDani
             // 
             this.clbPristupniDani.FormattingEnabled = true;
-            this.clbPristupniDani.Location = new System.Drawing.Point(354, 59);
+            this.clbPristupniDani.Location = new System.Drawing.Point(70, 310);
             this.clbPristupniDani.Name = "clbPristupniDani";
-            this.clbPristupniDani.Size = new System.Drawing.Size(170, 124);
+            this.clbPristupniDani.Size = new System.Drawing.Size(255, 124);
             this.clbPristupniDani.TabIndex = 12;
             // 
             // btnDodajPaket
             // 
-            this.btnDodajPaket.Location = new System.Drawing.Point(70, 296);
+            this.btnDodajPaket.Location = new System.Drawing.Point(70, 458);
             this.btnDodajPaket.Name = "btnDodajPaket";
             this.btnDodajPaket.Size = new System.Drawing.Size(255, 23);
             this.btnDodajPaket.TabIndex = 14;
@@ -180,24 +180,26 @@
             // pbSlika
             // 
             this.pbSlika.Image = ((System.Drawing.Image)(resources.GetObject("pbSlika.Image")));
-            this.pbSlika.Location = new System.Drawing.Point(573, 26);
+            this.pbSlika.Location = new System.Drawing.Point(369, 23);
             this.pbSlika.Name = "pbSlika";
-            this.pbSlika.Size = new System.Drawing.Size(212, 164);
+            this.pbSlika.Size = new System.Drawing.Size(320, 180);
+            this.pbSlika.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbSlika.TabIndex = 15;
             this.pbSlika.TabStop = false;
             // 
             // txtSlika
             // 
-            this.txtSlika.Location = new System.Drawing.Point(573, 213);
+            this.txtSlika.Location = new System.Drawing.Point(369, 220);
             this.txtSlika.Name = "txtSlika";
-            this.txtSlika.Size = new System.Drawing.Size(212, 20);
+            this.txtSlika.Size = new System.Drawing.Size(239, 20);
             this.txtSlika.TabIndex = 16;
+            this.txtSlika.TextChanged += new System.EventHandler(this.TxtSlika_TextChanged);
             // 
             // btnDodajSliku
             // 
-            this.btnDodajSliku.Location = new System.Drawing.Point(573, 251);
+            this.btnDodajSliku.Location = new System.Drawing.Point(614, 220);
             this.btnDodajSliku.Name = "btnDodajSliku";
-            this.btnDodajSliku.Size = new System.Drawing.Size(75, 23);
+            this.btnDodajSliku.Size = new System.Drawing.Size(75, 21);
             this.btnDodajSliku.TabIndex = 17;
             this.btnDodajSliku.Text = "Dodaj sliku";
             this.btnDodajSliku.UseVisualStyleBackColor = true;
@@ -206,11 +208,12 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(351, 26);
+            this.label6.Location = new System.Drawing.Point(67, 294);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(148, 13);
             this.label6.TabIndex = 18;
             this.label6.Text = "Dani kada korisnik ima pristup";
+            this.label6.Click += new System.EventHandler(this.Label6_Click);
             // 
             // openFileDialog1
             // 
@@ -220,7 +223,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(797, 330);
+            this.ClientSize = new System.Drawing.Size(717, 494);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnDodajSliku);
             this.Controls.Add(this.txtSlika);

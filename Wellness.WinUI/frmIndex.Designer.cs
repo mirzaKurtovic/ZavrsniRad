@@ -45,6 +45,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.dodajNoviPaketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -96,14 +97,14 @@
             // pregledToolStripMenuItem1
             // 
             this.pregledToolStripMenuItem1.Name = "pregledToolStripMenuItem1";
-            this.pregledToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.pregledToolStripMenuItem1.Size = new System.Drawing.Size(172, 22);
             this.pregledToolStripMenuItem1.Text = "Pregled treninga";
             this.pregledToolStripMenuItem1.Click += new System.EventHandler(this.PregledToolStripMenuItem1_Click);
             // 
             // noviTreningToolStripMenuItem
             // 
             this.noviTreningToolStripMenuItem.Name = "noviTreningToolStripMenuItem";
-            this.noviTreningToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.noviTreningToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.noviTreningToolStripMenuItem.Text = "Dodaj novi trening";
             this.noviTreningToolStripMenuItem.Click += new System.EventHandler(this.NoviTreningToolStripMenuItem_Click);
             // 
@@ -114,7 +115,8 @@
             this.noviRadnikToolStripMenuItem,
             this.isplataRadnikaToolStripMenuItem,
             this.izvjestavanjeToolStripMenuItem,
-            this.tipTreningaToolStripMenuItem});
+            this.tipTreningaToolStripMenuItem,
+            this.dodajNoviPaketToolStripMenuItem});
             this.menadzmentToolStripMenuItem.Name = "menadzmentToolStripMenuItem";
             this.menadzmentToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
             this.menadzmentToolStripMenuItem.Text = "Menadzment";
@@ -170,6 +172,13 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
+            // dodajNoviPaketToolStripMenuItem
+            // 
+            this.dodajNoviPaketToolStripMenuItem.Name = "dodajNoviPaketToolStripMenuItem";
+            this.dodajNoviPaketToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.dodajNoviPaketToolStripMenuItem.Text = "Dodaj novi paket";
+            this.dodajNoviPaketToolStripMenuItem.Click += new System.EventHandler(this.DodajNoviPaketToolStripMenuItem_Click);
+            // 
             // frmIndex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -210,6 +219,7 @@
         private System.Windows.Forms.ToolStripMenuItem isplataRadnikaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem izvjestavanjeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tipTreningaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dodajNoviPaketToolStripMenuItem;
     }
 }
 

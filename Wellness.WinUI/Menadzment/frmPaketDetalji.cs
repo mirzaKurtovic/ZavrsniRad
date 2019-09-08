@@ -15,6 +15,8 @@ namespace Wellness.WinUI.Menadzment
     {
 
         APIService _apiService_PristupDanima = new APIService("PristupDanima");
+        APIService _apiService_Paket = new APIService("Paket");
+        APIService _apiService_PaketPristupniDani = new APIService("PaketPristupniDani");
         byte[] Img = null;
         public frmPaketDetalji()
         {
@@ -27,6 +29,7 @@ namespace Wellness.WinUI.Menadzment
         {
 
             txtSlika.ReadOnly = true;
+            pbSlika.SizeMode = PictureBoxSizeMode.StretchImage;
 
             List<Model.PristupDanima> PristupDanimaList = await _apiService_PristupDanima.Get<List<Model.PristupDanima>>(null);
             for (int i = 0; i < PristupDanimaList.Count; i++)
@@ -55,7 +58,7 @@ namespace Wellness.WinUI.Menadzment
             }
         }
 
-        private void BtnDodajPaket_Click(object sender, EventArgs e)
+        private async void BtnDodajPaket_Click(object sender, EventArgs e)
         {
             var PaketInsertRequest = new Wellness.Model.Requests.PaketInsertRequest
             {
@@ -78,11 +81,23 @@ namespace Wellness.WinUI.Menadzment
             }
 
 
+            var paketDB = await _apiService_Paket.Insert<Model.Paket>(PaketInsertRequest);
+
 
             foreach(Wellness.Model.PristupDanima x in clbPristupniDani.CheckedItems)
             {
-                //dodati u bp...
+                var paketPristupniDaniInsertRequest = new Model.Requests.PaketPristupniDaniInsertRequest()
+                {
+                    PaketId = paketDB.Id,
+                    PristupniDaniId = x.Id
+                };
+                
+                await _apiService_PaketPristupniDani.Insert<Model.PaketPristupniDani>(paketPristupniDaniInsertRequest);
             }
+
+            //doradit
+            MessageBox.Show("Uspjesno ste dodali novi paket");
+
         }
 
         private void BtnDodajSliku_Click(object sender, EventArgs e)
@@ -103,6 +118,16 @@ namespace Wellness.WinUI.Menadzment
                 Image image = Image.FromFile(fileName);
                 pbSlika.Image = image;
             }
+        }
+
+        private void Label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TxtSlika_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

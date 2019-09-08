@@ -190,5 +190,11 @@ namespace Wellness.WinUI
             var frm = new Menadzment.TipTreninga();
             frm.Show();
         }
+
+        private void DodajNoviPaketToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new Menadzment.frmPaketDetalji();
+            frm.Show();
+        }
     }
 }

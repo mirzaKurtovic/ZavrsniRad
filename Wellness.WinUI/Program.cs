@@ -18,7 +18,7 @@ namespace Wellness.WinUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmPaketDetalji());
+            Application.Run(new frmLogin());
         }
     }
 }
