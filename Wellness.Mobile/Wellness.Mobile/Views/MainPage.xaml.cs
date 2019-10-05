@@ -44,6 +44,9 @@ namespace Wellness.Mobile.Views
                     case (int)MenuItemType.MojProfil:
                         MenuPages.Add(id, new NavigationPage(new RegisterPage(_clan)));
                         break;
+                    case (int)MenuItemType.QRKod:
+                        MenuPages.Add(id, new NavigationPage(new QRCode(_clan)));
+                        break;
                 }
             }
 

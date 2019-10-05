@@ -14,7 +14,8 @@ using AForge.Video;
 using AForge.Video.DirectShow;
 using ZXing;
 using ZXing.Aztec;
-
+using Wellness.Model.Requests;
+using System.Media;
 
 namespace Wellness.WinUI
 {
@@ -27,6 +28,13 @@ namespace Wellness.WinUI
         private int _falseResult=0;
         private int _trueResult=0;
 
+        private string textMain = "";
+        private string textSide = "";
+
+        private readonly APIService _apiService_Clan = new APIService("Clan");
+        private readonly APIService _apiService_Clanarina = new APIService("Clanarina");
+        private readonly APIService _apiService_Paket = new APIService("Paket");
+        private readonly APIService _apiService_PaketPristupniDani = new APIService("PaketPristupniDani");
         public frmCameraQRDecoder()
         {
             InitializeComponent();
@@ -34,6 +42,7 @@ namespace Wellness.WinUI
 
         private void FrmCameraQRDecoder_Load(object sender, EventArgs e)
         {
+
             QRCodeHelper = new QRCodeHelper();
             CaptureDevice = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             foreach (FilterInfo Device in CaptureDevice)
@@ -44,19 +53,172 @@ namespace Wellness.WinUI
             FinalFrame = new VideoCaptureDevice();
         }
 
-        private void Timer1_Tick(object sender, EventArgs e)
+
+        /*
+               Imaju cetri moguca rezultata
+
+               1.QR Kod nije prepoznatljiv
+               2.QR Kod se ne moze ocitat
+               3.QR Kod je prepoznat i sve je u redu u vezi clanarina
+               4.QR Kod je prepoznat ali clan ima ne podmirenih obaveza
+               */
+
+
+        private async void Timer1_Tick(object sender, EventArgs e)
         {
             _ticks++;
-           var text = QRCodeHelper.DecodeQRCode(pictureBox1.Image);
-            if(String.IsNullOrEmpty(text))
+            var text = QRCodeHelper.DecodeQRCode(pictureBox1.Image);
+            if (String.IsNullOrEmpty(text))
             {
                 _falseResult++;
                 txtNegative.Text = _falseResult.ToString();
             }
-           else
+            else
             {
                 _trueResult++;
                 txtPositive.Text = _trueResult.ToString();
+
+
+                var ClanSearchRequest = new Model.Requests.ClanSearchRequest()
+                {
+                    QrCodeText = text
+                };
+
+                var list = await _apiService_Clan.Get<List<ClanViewRequest>>(ClanSearchRequest);
+
+
+
+                //1.QR Kod nije prepoznatljiv
+                if (list.Count == 0)
+                {
+                    textMain = "Pristup ogranicen";
+                    textSide = "QR kod koji ste prikazali nije prepoznatljiv ! ";
+                    CameraStopSetup(textMain, textSide);
+                    PanelRed();
+                    return;
+                }
+
+                var clan = list.FirstOrDefault();
+
+
+
+
+                //2.QR Kod se ne moze ocitat
+
+
+
+
+                //3.QR Kod je prepoznat i sve je u redu u vezi clanarina
+                //4.QR Kod je prepoznat ali clan ima ne podmirenih obaveza
+                //Prvo korisnik treba imati clanarinu za dati mjesec i godinu, zatim
+                if (clan != null)
+                {
+                    DateTime dateTime = DateTime.Now;
+                    var DanUSedmici = dateTime.DayOfWeek;
+                    var DanUSedmiciString = "";
+                    bool pristupDatimDanomOdobren = false;
+                    switch (Convert.ToInt32(DanUSedmici))
+                    {
+                        case 0: { DanUSedmiciString = "Nedjelja"; } break;
+                        case 1: { DanUSedmiciString = "Ponedjeljak"; } break;
+                        case 2: { DanUSedmiciString = "Utorak"; } break;
+                        case 3: { DanUSedmiciString = "Srijeda"; } break;
+                        case 4: { DanUSedmiciString = "Cetvrtak"; } break;
+                        case 5: { DanUSedmiciString = "Petak"; } break;
+                        case 6: { DanUSedmiciString = "Subota"; } break;
+                        default: { DanUSedmiciString = "Nepoznato"; } break;
+                    }
+
+                    var clanarinaSearchRequest = new ClanarinaSearchRequest()
+                    {
+                        ClanID = clan.Id,
+                        UplataZaGodinu = dateTime.Year,
+                        UplataZaMjesec = dateTime.Month
+                    };
+                    var clanarinaList = await _apiService_Clanarina.Get<List<Model.Clanarina>>(clanarinaSearchRequest);
+                    if (clanarinaList.Count == 0)
+                    {
+                        textMain = "Pristup ogranicen";
+                        textSide = "Niste uplatili clanarinu za " + dateTime.Month + ". mjesec " + dateTime.Year + ". godine";
+                        CameraStopSetup(textMain, textSide);
+                        PanelRed();
+                        return;
+                    }
+                    var clanarina = clanarinaList[0];
+                    var paketPristupniDaniSearchRequest = new PaketPristupniDaniSearchRequest()
+                    {
+                        PaketId = clanarina.Paket.Id,
+                    };
+                    var paketPristupniDaniList = await _apiService_PaketPristupniDani.Get<List<Model.PaketPristupniDani>>(paketPristupniDaniSearchRequest);//vraca 0 rezultata
+
+
+                    //Gledamo ima li pristup datim danima
+                    foreach (Model.PaketPristupniDani x in paketPristupniDaniList)
+                    {
+                        if (DanUSedmiciString == x.PristupniDani.DanUSedmici)
+                        {
+                            pristupDatimDanomOdobren = true;
+                            break;
+                        }
+                    }
+
+
+                    if (pristupDatimDanomOdobren == false)
+                    {
+                        textMain = "Pristup ogranicen";
+                        textSide = "Nemate pristup Fitness centru ovim danom(" + DanUSedmiciString + ")";
+                        CameraStopSetup(textMain, textSide);
+                        PanelRed();
+                        return;
+                    }
+                    else
+                    {
+                        //Gledamo ima li pristup u datom vremenskom intervalu
+                        var paketList = await _apiService_Paket.Get<List<Model.Paket>>(new PaketSearchRequest() { Id = clanarina.PaketId });
+                        var paket = paketList[0];
+                        if (paket.NeogranicenPristup == true)
+                        {
+                            textMain = "Pristup odobren";
+                            textSide = "Pristup odobren - dodatni tekst";
+                            CameraStopSetup(textMain, textSide);
+                            PanelGreen();
+                            return;
+                        }
+
+                        var DateTimeUsporedni = new DateTime(clanarina.Paket.VrijemePristupaOd.Value.Year,
+                            clanarina.Paket.VrijemePristupaOd.Value.Month,
+                            clanarina.Paket.VrijemePristupaOd.Value.Day,
+                            dateTime.Hour,
+                            dateTime.Minute,
+                            clanarina.Paket.VrijemePristupaOd.Value.Second,
+                            clanarina.Paket.VrijemePristupaOd.Value.Millisecond);
+                        if (DateTimeUsporedni > clanarina.Paket.VrijemePristupaOd && DateTimeUsporedni < clanarina.Paket.VrijemePristupaDo)
+                        {
+                            textMain = "Pristup odobren";
+                            textSide = "Pristup odobren - dodatni tekst";
+                            CameraStopSetup(textMain, textSide);
+                            PanelGreen();
+                            return;
+                        }
+                        else
+                        {
+                            textMain = "Pristup ogranicen";
+                            textSide = "Nemate pristup Fitness centru u terminu od " + clanarina.Paket.VrijemePristupaOd.Value.ToShortTimeString() + " do " + clanarina.Paket.VrijemePristupaDo.Value.ToShortTimeString();
+                            CameraStopSetup(textMain, textSide);
+                            PanelRed();
+                            return;
+                        }
+                    }
+
+
+                }
+                else
+                {
+
+                }
+
+
+
             }
 
             txtTotal.Text = _ticks.ToString();
@@ -89,8 +251,54 @@ namespace Wellness.WinUI
             }
         }
 
+        private void BtnZaustavi_Click(object sender, EventArgs e)
+        {
+            timer1.Stop();
+        }
+
+        private void Beep_Click(object sender, EventArgs e)
+        {
+
+
+            SystemSounds.Exclamation.Play();
+        }
 
 
 
+        private void Timer2_Tick(object sender, EventArgs e)
+        {
+            CameraStartSetup();
+
+        }
+
+
+        void CameraStopSetup(string textMain, string textSide)
+        {
+            timer1.Stop();
+            timer2.Start();
+            lblMain.Text = textMain;
+            lblSide.Text = textSide;
+
+            panelPictureBox.Visible = false;
+
+        }
+        void CameraStartSetup()
+        {
+            timer1.Start();
+            timer2.Stop();
+            lblMain.Text = "";
+            lblSide.Text = "";
+
+            panelPictureBox.BackColor = Color.Empty;
+            panelPictureBox.Visible = true;
+        }
+        void PanelGreen()
+        {
+            panelPictureBox.BackColor = Color.Green;
+        }
+        void PanelRed()
+        {
+            panelPictureBox.BackColor = Color.Red;
+        }
     }
 }

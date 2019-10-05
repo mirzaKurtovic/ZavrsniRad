@@ -12,6 +12,8 @@ namespace Wellness.WebAPI.Database
         public decimal IznosUplate { get; set; }
         public int ClanId { get; set; }
         public int PaketId { get; set; }
+        public int? TrajanjeDani { get; set; }
+        public bool? Aktivna { get; set; }
 
         public virtual Clan Clan { get; set; }
         public virtual Paket Paket { get; set; }

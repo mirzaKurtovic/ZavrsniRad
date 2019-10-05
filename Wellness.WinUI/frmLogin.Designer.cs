@@ -40,7 +40,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(41, 27);
+            this.label1.Location = new System.Drawing.Point(274, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 13);
             this.label1.TabIndex = 0;
@@ -48,14 +48,14 @@
             // 
             // txtUserName
             // 
-            this.txtUserName.Location = new System.Drawing.Point(44, 43);
+            this.txtUserName.Location = new System.Drawing.Point(277, 37);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(180, 20);
             this.txtUserName.TabIndex = 1;
             // 
             // txtSifra
             // 
-            this.txtSifra.Location = new System.Drawing.Point(44, 90);
+            this.txtSifra.Location = new System.Drawing.Point(277, 84);
             this.txtSifra.Name = "txtSifra";
             this.txtSifra.Size = new System.Drawing.Size(180, 20);
             this.txtSifra.TabIndex = 3;
@@ -63,7 +63,7 @@
             // Sifra
             // 
             this.Sifra.AutoSize = true;
-            this.Sifra.Location = new System.Drawing.Point(41, 74);
+            this.Sifra.Location = new System.Drawing.Point(274, 68);
             this.Sifra.Name = "Sifra";
             this.Sifra.Size = new System.Drawing.Size(28, 13);
             this.Sifra.TabIndex = 2;
@@ -71,7 +71,7 @@
             // 
             // btnPrijava
             // 
-            this.btnPrijava.Location = new System.Drawing.Point(44, 135);
+            this.btnPrijava.Location = new System.Drawing.Point(277, 129);
             this.btnPrijava.Name = "btnPrijava";
             this.btnPrijava.Size = new System.Drawing.Size(180, 24);
             this.btnPrijava.TabIndex = 4;
@@ -81,10 +81,10 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(13, 207);
+            this.richTextBox1.Location = new System.Drawing.Point(277, 183);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(247, 245);
+            this.richTextBox1.Size = new System.Drawing.Size(180, 33);
             this.richTextBox1.TabIndex = 5;
             this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
@@ -92,7 +92,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(272, 463);
+            this.ClientSize = new System.Drawing.Size(749, 291);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.btnPrijava);
             this.Controls.Add(this.txtSifra);

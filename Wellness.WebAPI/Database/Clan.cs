@@ -16,6 +16,7 @@ namespace Wellness.WebAPI.Database
         public DateTime? DatumRegistracije { get; set; }
         public int OsobaId { get; set; }
         public byte[] Qrcode { get; set; }
+        public string QrCodeText { get; set; }
 
         public virtual Osoba Osoba { get; set; }
         public virtual ICollection<ClanPrisustvo> ClanPrisustvo { get; set; }

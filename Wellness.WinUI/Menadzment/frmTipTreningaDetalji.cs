@@ -12,11 +12,11 @@ using Wellness.Model.Requests;
 
 namespace Wellness.WinUI.Menadzment
 {
-    public partial class TipTreninga : Form
+    public partial class frmTipTreninga : Form
     {
         TipTreningaInsertRequest request = new TipTreningaInsertRequest();
         APIService _apiService_tipTreninga = new APIService("TipTreninga");
-        public TipTreninga()
+        public frmTipTreninga()
         {
             InitializeComponent();
 

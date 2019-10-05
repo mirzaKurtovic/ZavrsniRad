@@ -27,6 +27,7 @@ namespace Wellness.WebAPI.Database
         public virtual DbSet<RadnikPlataHistorija> RadnikPlataHistorija { get; set; }
         public virtual DbSet<TipTreninga> TipTreninga { get; set; }
         public virtual DbSet<Trener> Trener { get; set; }
+        public virtual DbSet<TrenerSpecijalizacija> TrenerSpecijalizacija { get; set; }
         public virtual DbSet<Trening> Trening { get; set; }
         public virtual DbSet<Uloga> Uloga { get; set; }
 
@@ -41,11 +42,13 @@ namespace Wellness.WebAPI.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
+            modelBuilder.HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
 
             modelBuilder.Entity<Clan>(entity =>
             {
                 entity.Property(e => e.DatumRegistracije).HasColumnType("date");
+
+                entity.Property(e => e.QrCodeText).HasMaxLength(15);
 
                 entity.Property(e => e.Qrcode).HasColumnName("QRCode");
 
@@ -222,6 +225,21 @@ namespace Wellness.WebAPI.Database
                     .HasForeignKey(d => d.RadnikId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Trener__RadnikId__4CA06362");
+            });
+
+            modelBuilder.Entity<TrenerSpecijalizacija>(entity =>
+            {
+                entity.HasOne(d => d.TipTreninga)
+                    .WithMany(p => p.TrenerSpecijalizacija)
+                    .HasForeignKey(d => d.TipTreningaId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__TrenerSpe__TipTr__42E1EEFE");
+
+                entity.HasOne(d => d.Trener)
+                    .WithMany(p => p.TrenerSpecijalizacija)
+                    .HasForeignKey(d => d.TrenerId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__TrenerSpe__Trene__41EDCAC5");
             });
 
             modelBuilder.Entity<Trening>(entity =>

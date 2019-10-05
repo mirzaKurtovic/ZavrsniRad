@@ -125,8 +125,7 @@ namespace Wellness.WinUI
 
         private void NoviRadnikToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmRadniciDetalji frm= new frmRadniciDetalji();
-            frm.Show();
+
         }
 
         private async void FrmIndex_Load(object sender, EventArgs e)
@@ -136,10 +135,10 @@ namespace Wellness.WinUI
                 menadzmentToolStripMenuItem.Visible = false;
                 treningToolStripMenuItem.Visible = true;
                 clanarinaToolStripMenuItem.Visible = false;
+                upravljanjeClanovimaToolStripMenuItem.Visible = false;
 
 
-                
-                    var TrenerSearchRequest = new Model.Requests.TrenerSearchRequest()
+                var TrenerSearchRequest = new Model.Requests.TrenerSearchRequest()
                     {
                         OsobaId = _radnik.OsobaId
                     };
@@ -156,27 +155,26 @@ namespace Wellness.WinUI
                 menadzmentToolStripMenuItem.Visible = false;
                 treningToolStripMenuItem.Visible = false;
                 clanarinaToolStripMenuItem.Visible = true;
+                upravljanjeClanovimaToolStripMenuItem.Visible = true;
             }
             if (_radnik.Osoba.Uloga.Naziv == "Menadzer")
             {
                 menadzmentToolStripMenuItem.Visible = true;
                 treningToolStripMenuItem.Visible = false;
-                clanarinaToolStripMenuItem.Visible = true;
+                clanarinaToolStripMenuItem.Visible = false;
+                upravljanjeClanovimaToolStripMenuItem.Visible = false;
             }
         }
 
         private void PregledToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            frmRadnici frm = new frmRadnici(_radnik);
-            frm.Show();
-            frm.MdiParent = this;
+
 
         }
 
         private void IsplataRadnikaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmIsplataRadnika frm = new frmIsplataRadnika();
-            frm.Show();
+
         }
 
         private void IzvjestavanjeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -185,15 +183,67 @@ namespace Wellness.WinUI
             frm.Show();
         }
 
-        private void TipTreningaToolStripMenuItem_Click(object sender, EventArgs e)
+
+
+
+
+        private void DodajNovogClanaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new Menadzment.TipTreninga();
+            var frm = new frmRadniciDetalji(null,true);
             frm.Show();
         }
 
-        private void DodajNoviPaketToolStripMenuItem_Click(object sender, EventArgs e)
+        private void PregledClanovaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new frmRadnici(null, true);
+            frm.Show();
+        }
+
+        private void PokreniSkeniranjeQrKodovaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new frmCameraQRDecoder();
+            frm.Show();
+        }
+
+        private void PregledPaketaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new frmPaketi();
+            frm.Show();
+        }
+
+        private void DodajNoviPaketToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             var frm = new Menadzment.frmPaketDetalji();
+            frm.Show();
+        }
+
+        private void PregledZaposlenikaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRadnici frm = new frmRadnici(_radnik);
+            frm.Show();
+        }
+
+        private void DodajNovogZaposlenikaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRadniciDetalji frm = new frmRadniciDetalji();
+            frm.Show();
+        }
+
+        private void IsplataZaposlenikaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmIsplataRadnika frm = new frmIsplataRadnika();
+            frm.Show();
+        }
+
+        private void DodajNoviTipTreningaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new Menadzment.frmTipTreningaDetalji();
+            frm.Show();
+        }
+
+        private void PregledTipovaTreningaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new frmTipTreninga();
             frm.Show();
         }
     }

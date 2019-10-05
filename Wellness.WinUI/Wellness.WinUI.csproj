@@ -157,6 +157,12 @@
     <Compile Include="Menadzment\frmPaketDetalji.Designer.cs">
       <DependentUpon>frmPaketDetalji.cs</DependentUpon>
     </Compile>
+    <Compile Include="Menadzment\frmPaketi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menadzment\frmPaketi.Designer.cs">
+      <DependentUpon>frmPaketi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Menadzment\frmRadnici.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,11 +175,23 @@
     <Compile Include="Menadzment\frmRadniciDetalji.Designer.cs">
       <DependentUpon>frmRadniciDetalji.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menadzment\TipTreninga.cs">
+    <Compile Include="Menadzment\frmTipTreninga.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menadzment\TipTreninga.Designer.cs">
-      <DependentUpon>TipTreninga.cs</DependentUpon>
+    <Compile Include="Menadzment\frmTipTreninga.Designer.cs">
+      <DependentUpon>frmTipTreninga.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menadzment\frmTipTreningaDetalji.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menadzment\frmTipTreningaDetalji.Designer.cs">
+      <DependentUpon>frmTipTreningaDetalji.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menadzment\frmTrenerSpecijalizacija.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menadzment\frmTrenerSpecijalizacija.Designer.cs">
+      <DependentUpon>frmTrenerSpecijalizacija.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -221,14 +239,23 @@
     <EmbeddedResource Include="Menadzment\frmPaketDetalji.resx">
       <DependentUpon>frmPaketDetalji.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Menadzment\frmPaketi.resx">
+      <DependentUpon>frmPaketi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Menadzment\frmRadnici.resx">
       <DependentUpon>frmRadnici.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menadzment\frmRadniciDetalji.resx">
       <DependentUpon>frmRadniciDetalji.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menadzment\TipTreninga.resx">
-      <DependentUpon>TipTreninga.cs</DependentUpon>
+    <EmbeddedResource Include="Menadzment\frmTipTreninga.resx">
+      <DependentUpon>frmTipTreninga.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menadzment\frmTipTreningaDetalji.resx">
+      <DependentUpon>frmTipTreningaDetalji.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menadzment\frmTrenerSpecijalizacija.resx">
+      <DependentUpon>frmTrenerSpecijalizacija.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

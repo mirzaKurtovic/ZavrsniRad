@@ -45,5 +45,14 @@ namespace Wellness.WinUI
             var result = await url.WithBasicAuth(_username, _password).PutJsonAsync(request).ReceiveJson<T>();
             return result;
         }
+        public async Task<T> Delete<T>(object id)
+        {
+
+            var url = $"{ Properties.Settings.Default.APIUrl}/{ _route}/{id}";
+
+            return await url.WithBasicAuth(_username, _password).DeleteAsync().ReceiveJson<T>();
+
+        }
+
     }
 }

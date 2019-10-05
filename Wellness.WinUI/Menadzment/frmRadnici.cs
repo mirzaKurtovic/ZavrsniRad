@@ -17,7 +17,7 @@ namespace Wellness.WinUI.Menadzment
         private readonly APIService _apiService_radnik = new APIService("Radnik");
         private readonly APIService _apiService_uloga = new APIService("Uloga");
 
-        public frmRadnici(Radnik radnik = null)
+        public frmRadnici(Radnik radnik = null, bool calledByRecepcionar = false)
         {
             InitializeComponent();
             _radnik = radnik;
@@ -52,7 +52,7 @@ namespace Wellness.WinUI.Menadzment
                 row.Cells[1].Value = obj.Osoba.Ime;
                 row.Cells[2].Value = obj.Osoba.Prezime;
                 row.Cells[3].Value = obj.Osoba.Uloga.Naziv;
-                
+                row.Cells[8].Value = Math.Round((decimal)obj.Satnica,2);
             }
 
 
@@ -75,6 +75,7 @@ namespace Wellness.WinUI.Menadzment
                 row.Cells[1].Value = obj.Osoba.Ime;
                 row.Cells[2].Value = obj.Osoba.Prezime;
                 row.Cells[3].Value = obj.Osoba.Uloga.Naziv;
+                row.Cells[8].Value = Math.Round((decimal)obj.Satnica, 2);
             }
         }
 

@@ -1,6 +1,6 @@
 ﻿namespace Wellness.WinUI.Menadzment
 {
-    partial class TipTreninga
+    partial class frmTipTreninga
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TipTreninga));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTipTreninga));
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.pbSlika = new System.Windows.Forms.PictureBox();
             this.btnSacuvaj = new System.Windows.Forms.Button();
@@ -51,14 +51,14 @@
             this.pbSlika.Image = ((System.Drawing.Image)(resources.GetObject("pbSlika.Image")));
             this.pbSlika.Location = new System.Drawing.Point(271, 46);
             this.pbSlika.Name = "pbSlika";
-            this.pbSlika.Size = new System.Drawing.Size(202, 106);
+            this.pbSlika.Size = new System.Drawing.Size(264, 137);
             this.pbSlika.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbSlika.TabIndex = 0;
             this.pbSlika.TabStop = false;
             // 
             // btnSacuvaj
             // 
-            this.btnSacuvaj.Location = new System.Drawing.Point(27, 244);
+            this.btnSacuvaj.Location = new System.Drawing.Point(24, 206);
             this.btnSacuvaj.Name = "btnSacuvaj";
             this.btnSacuvaj.Size = new System.Drawing.Size(211, 23);
             this.btnSacuvaj.TabIndex = 1;
@@ -102,7 +102,7 @@
             // lblSlika
             // 
             this.lblSlika.AutoSize = true;
-            this.lblSlika.Location = new System.Drawing.Point(27, 189);
+            this.lblSlika.Location = new System.Drawing.Point(271, 191);
             this.lblSlika.Name = "lblSlika";
             this.lblSlika.Size = new System.Drawing.Size(30, 13);
             this.lblSlika.TabIndex = 7;
@@ -110,18 +110,18 @@
             // 
             // txtSlika
             // 
-            this.txtSlika.Location = new System.Drawing.Point(27, 207);
+            this.txtSlika.Location = new System.Drawing.Point(271, 209);
             this.txtSlika.Name = "txtSlika";
             this.txtSlika.Size = new System.Drawing.Size(214, 20);
             this.txtSlika.TabIndex = 6;
             // 
             // btnSlikaNova
             // 
-            this.btnSlikaNova.Location = new System.Drawing.Point(256, 207);
+            this.btnSlikaNova.Location = new System.Drawing.Point(500, 209);
             this.btnSlikaNova.Name = "btnSlikaNova";
-            this.btnSlikaNova.Size = new System.Drawing.Size(56, 21);
+            this.btnSlikaNova.Size = new System.Drawing.Size(72, 21);
             this.btnSlikaNova.TabIndex = 8;
-            this.btnSlikaNova.Text = "Dodaj";
+            this.btnSlikaNova.Text = "Dodaj sliku";
             this.btnSlikaNova.UseVisualStyleBackColor = true;
             this.btnSlikaNova.Click += new System.EventHandler(this.BtnSlikaNova_Click);
             // 
@@ -129,7 +129,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(591, 250);
             this.Controls.Add(this.btnSlikaNova);
             this.Controls.Add(this.lblSlika);
             this.Controls.Add(this.txtSlika);

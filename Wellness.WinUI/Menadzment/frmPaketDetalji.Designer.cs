@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPaketDetalji));
             this.txtNaziv = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,7 +49,11 @@
             this.btnDodajSliku = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.PaketErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.nudCijena = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PaketErrorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCijena)).BeginInit();
             this.SuspendLayout();
             // 
             // txtNaziv
@@ -57,6 +62,7 @@
             this.txtNaziv.Name = "txtNaziv";
             this.txtNaziv.Size = new System.Drawing.Size(255, 20);
             this.txtNaziv.TabIndex = 0;
+            this.txtNaziv.Validating += new System.ComponentModel.CancelEventHandler(this.TxtNaziv_Validating);
             // 
             // label1
             // 
@@ -80,8 +86,9 @@
             // 
             this.txtCijena.Location = new System.Drawing.Point(70, 59);
             this.txtCijena.Name = "txtCijena";
-            this.txtCijena.Size = new System.Drawing.Size(255, 20);
+            this.txtCijena.Size = new System.Drawing.Size(110, 20);
             this.txtCijena.TabIndex = 2;
+            this.txtCijena.Validating += new System.ComponentModel.CancelEventHandler(this.TxtCijena_Validating);
             // 
             // label3
             // 
@@ -99,6 +106,7 @@
             this.txtOpis.Name = "txtOpis";
             this.txtOpis.Size = new System.Drawing.Size(255, 94);
             this.txtOpis.TabIndex = 4;
+            this.txtOpis.Validating += new System.ComponentModel.CancelEventHandler(this.TxtOpis_Validating);
             // 
             // cbPristupGrupnimTreninzima
             // 
@@ -173,7 +181,7 @@
             this.btnDodajPaket.Name = "btnDodajPaket";
             this.btnDodajPaket.Size = new System.Drawing.Size(255, 23);
             this.btnDodajPaket.TabIndex = 14;
-            this.btnDodajPaket.Text = "Dodaj paket";
+            this.btnDodajPaket.Text = "Spasi";
             this.btnDodajPaket.UseVisualStyleBackColor = true;
             this.btnDodajPaket.Click += new System.EventHandler(this.BtnDodajPaket_Click);
             // 
@@ -191,6 +199,7 @@
             // 
             this.txtSlika.Location = new System.Drawing.Point(369, 220);
             this.txtSlika.Name = "txtSlika";
+            this.txtSlika.ReadOnly = true;
             this.txtSlika.Size = new System.Drawing.Size(239, 20);
             this.txtSlika.TabIndex = 16;
             this.txtSlika.TextChanged += new System.EventHandler(this.TxtSlika_TextChanged);
@@ -219,11 +228,30 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // PaketErrorProvider
+            // 
+            this.PaketErrorProvider.ContainerControl = this;
+            // 
+            // nudCijena
+            // 
+            this.nudCijena.DecimalPlaces = 2;
+            this.nudCijena.Location = new System.Drawing.Point(205, 59);
+            this.nudCijena.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            0});
+            this.nudCijena.Name = "nudCijena";
+            this.nudCijena.Size = new System.Drawing.Size(120, 20);
+            this.nudCijena.TabIndex = 19;
+            this.nudCijena.Validating += new System.ComponentModel.CancelEventHandler(this.NudCijena_Validating);
+            // 
             // frmPaketDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(717, 494);
+            this.ClientSize = new System.Drawing.Size(717, 493);
+            this.Controls.Add(this.nudCijena);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnDodajSliku);
             this.Controls.Add(this.txtSlika);
@@ -246,6 +274,8 @@
             this.Text = "frmPaketDetalji";
             this.Load += new System.EventHandler(this.FrmPaketDetalji_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PaketErrorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCijena)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -272,5 +302,7 @@
         private System.Windows.Forms.Button btnDodajSliku;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.ErrorProvider PaketErrorProvider;
+        private System.Windows.Forms.NumericUpDown nudCijena;
     }
 }

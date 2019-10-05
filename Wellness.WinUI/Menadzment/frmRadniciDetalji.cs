@@ -18,18 +18,21 @@ namespace Wellness.WinUI.Menadzment
         private readonly int? _id;
         private bool isTrener = false;
         private bool isRadnik = false;
+        private bool calledByRecepcionar;
         private readonly Validation _validation = new Validation();
+        private readonly QRCodeHelper _qrCodeHelper = new QRCodeHelper();
         private readonly APIService _apiService = new APIService("Osoba");
         private readonly APIService _apiService_Clan = new APIService("Clan");
         private readonly APIService _apiService_Grad = new APIService("Grad");
         private readonly APIService _apiService_Uloga = new APIService("Uloga");
         private readonly APIService _apiService_Radnik = new APIService("Radnik");
         private readonly APIService _apiService_Trener = new APIService("Trener");
-        public frmRadniciDetalji(int? id=null)
+        public frmRadniciDetalji(int? id=null,bool calledByRecepcionar=false)
         {
             InitializeComponent();
             if(id!=null)
             this._id = id;
+            this.calledByRecepcionar = calledByRecepcionar;
         }
         private async void BtnRegister_Click(object sender, EventArgs e)
         {
@@ -94,8 +97,29 @@ namespace Wellness.WinUI.Menadzment
 
                             Aktivan=true,
                             DatumRegistracije=DateTime.Now,
-                            OsobaId=osoba.Id
+                            OsobaId=osoba.Id,
                         };
+
+                        //-----------------------------------------------------------------QR Kod
+
+                        var randomStringPostoji = true;
+                        while (randomStringPostoji == true)
+                        {
+                            var randomString = _qrCodeHelper.GenerateRandomString(15);
+                            var clanSearchRequest = new ClanSearchRequest()
+                            {
+                                QrCodeText = randomString
+
+                            };
+                            var clanList = await _apiService_Clan.Get<List<Model.Requests.ClanViewRequest>>(clanSearchRequest);
+                            if (clanList.Count == 0)
+                                randomStringPostoji = false;
+
+                            clanInsertRequest.QrCodeText = randomString;
+                            clanInsertRequest.Qrcode = _qrCodeHelper.GenerateQRCode(randomString);
+                        }
+                        //-----------------------------------------------------------------QR Kod
+
                         var clan = await _apiService_Clan.Insert<Wellness.Model.Clan>(clanInsertRequest);
                     }
 
@@ -168,18 +192,28 @@ namespace Wellness.WinUI.Menadzment
             cbSpol.DataSource = spol;
             cbSpol.ValueMember = "spol";
             cbSpol.DisplayMember = "spol";
-
+            cbSpol.DropDownStyle = ComboBoxStyle.DropDownList;
             //------------------Grad
             List<Model.Grad> gradovi =await _apiService_Grad.Get<List<Model.Grad>>(null);
             cbMjestoBoravka.DataSource = gradovi;
             cbMjestoBoravka.DisplayMember = "Grad1";
             cbMjestoBoravka.ValueMember = "id";
+            cbMjestoBoravka.DropDownStyle = ComboBoxStyle.DropDownList;
             //------------------
             //------------------TipKorisnika
             var uloge = await _apiService_Uloga.Get<List<Wellness.Model.Uloga>>(null);
             cbUloga.DataSource = uloge;
             cbUloga.DisplayMember = "Naziv";
             cbUloga.ValueMember = "Id";
+            cbUloga.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            if (calledByRecepcionar == true)
+            {
+                cbUloga.SelectedValue = 4;
+                cbUloga.Enabled = false;
+            }
+
+
             //------------------
 
             if (_id != null)
@@ -214,7 +248,7 @@ namespace Wellness.WinUI.Menadzment
                 {
                     txtSatnica.Visible = true;
                     lblSatnica.Visible = true;
-                    txtSatnica.Text = Math.Round(Radnik.Satnica,0).ToString();
+                    txtSatnica.Text = Math.Round(Radnik.Satnica,2).ToString();
                 }
 
                 if (cbUloga.SelectedItem.ToString() == "Trener")
@@ -316,10 +350,9 @@ namespace Wellness.WinUI.Menadzment
 
         private void TxtSatnica_Validating(object sender, CancelEventArgs e)
         {
-            if(isRadnik)
-             if (_validation.Required(sender, e, radniciDetaljiErrorProvider))
-                if (_validation.IsNumberOnly(sender, e, radniciDetaljiErrorProvider))
-                    _validation.MinMaxValue(sender, e, radniciDetaljiErrorProvider, 1, 100);
+            if (isRadnik)
+                if (_validation.Required(sender, e, radniciDetaljiErrorProvider))
+                    _validation.IsDecimalNumber(sender, e, radniciDetaljiErrorProvider);
         }
 
         private void TxtSpecijalizacija_Validating(object sender, CancelEventArgs e)

@@ -24,13 +24,21 @@ namespace Wellness.WebAPI.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<Model.TipTreninga>> Get()
+        public ActionResult<List<Model.TipTreninga>> Get([FromQuery]Model.Requests.TipTreningaSearchRequest request)
         {
-            var list = _context.TipTreninga.ToList();
+            var query = _context.TipTreninga.AsQueryable();
+
+            if (request != null)
+            {
+                if (!string.IsNullOrWhiteSpace(request.TipTreninga1))
+                    query = query.Where(t => t.TipTreninga1 == request.TipTreninga1);
+            }
+
+            var list = query.ToList();
             return _mapper.Map<List<Model.TipTreninga>>(list);
         }
         [HttpPost]
-        public ActionResult<Model.TipTreninga> Insert(TipTreningaInsertRequest request)
+        public ActionResult<Model.TipTreninga> Insert([FromQuery]TipTreningaInsertRequest request)
         {
             var tipTreninga = _mapper.Map<Database.TipTreninga>(request);
 

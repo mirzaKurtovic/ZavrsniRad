@@ -12,5 +12,16 @@ namespace Wellness.Model
 
         public virtual Radnik Radnik { get; set; }
 
+        public string Display  {
+            get
+            {
+                if (Radnik != null)
+                    if (Radnik.Osoba != null)
+                        return Radnik.Osoba.Ime + " " + Radnik.Osoba.Prezime;
+
+                    return Id.ToString();
+                
+            }
+            set { } }
     }
 }

@@ -9,7 +9,8 @@ namespace Wellness.Mobile.Models
         Opis,
         TreningPage,
         Clanarine,
-        MojProfil
+        MojProfil,
+        QRKod
     }
     public class HomeMenuItem
     {

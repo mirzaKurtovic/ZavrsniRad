@@ -65,7 +65,6 @@ namespace Wellness.WinUI
 
             return false;//implement
         }
-
         public bool IsNumberOnly(object sender, CancelEventArgs e, ErrorProvider ep)
         {
             Regex reg = new Regex("[^0-9]");
@@ -93,7 +92,6 @@ namespace Wellness.WinUI
 
             return false;//implement
         }
-
         public bool IsLetterOnly(object sender, CancelEventArgs e, ErrorProvider ep)
         {
             Regex reg = new Regex("[^A-Za-z]");
@@ -122,7 +120,36 @@ namespace Wellness.WinUI
             return false;//implement
         }
 
+        public bool IsDecimalNumber(object sender, CancelEventArgs e, ErrorProvider ep)
+        {
+            //provjerit regex-e
 
+
+            if (sender is TextBox)
+            {
+                TextBox ele = ((TextBox)sender);
+                bool isDecimal = IsDecimalFormat(ele.Text);
+                var text = "Dozvoljeni samo decimalni brojevi";
+
+
+                if (isDecimal==false)
+                {
+                    e.Cancel = true;
+                    ele.Focus();
+                    ep.SetError(ele, text);
+                    return false;
+                }
+                else
+                {
+
+                    e.Cancel = false;
+                    ep.SetError(ele, null);
+                    return true;
+                }
+            }
+
+            return false;//implement
+        }
         public bool MinMaxLength(object sender, CancelEventArgs e, ErrorProvider ep, int minLength, int maxLength)
         {
             var text = "Vrijednost mora biti izmedju " + minLength + " i " + maxLength;
@@ -152,5 +179,13 @@ namespace Wellness.WinUI
 
             return false;
         }
+
+        bool IsDecimalFormat(string input)
+        {
+            Decimal dummy;
+            return Decimal.TryParse(input, out dummy);
+            
+        }
+
     }
 }

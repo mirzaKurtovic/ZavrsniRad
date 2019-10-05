@@ -20,7 +20,7 @@ namespace Wellness.WinUI
         }
 
         //https://www.codeproject.com/Articles/1005081/Basic-with-QR-Code-using-Zxing-Library
-        public static byte[] GenerateQRCode(string text)
+        public  byte[] GenerateQRCode(string text="")
         {
             QrCodeEncodingOptions options;
             options = new QrCodeEncodingOptions
@@ -69,7 +69,6 @@ namespace Wellness.WinUI
         }
 
 
-
         //https://stackoverflow.com/questions/7350679/convert-a-bitmap-into-a-byte-array
         public static byte[] ImageToByte2(Image img)
         {
@@ -78,6 +77,24 @@ namespace Wellness.WinUI
                 img.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
                 return stream.ToArray();
             }
+        }
+
+        //https://stackoverflow.com/questions/1344221/how-can-i-generate-random-alphanumeric-strings
+        public string GenerateRandomString(int length)
+        {
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var stringChars = new char[length];
+            var random = new Random();
+
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+
+            var finalString = new String(stringChars);
+
+
+            return finalString;
         }
 
 

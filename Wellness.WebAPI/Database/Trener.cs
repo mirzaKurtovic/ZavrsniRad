@@ -7,6 +7,7 @@ namespace Wellness.WebAPI.Database
     {
         public Trener()
         {
+            TrenerSpecijalizacija = new HashSet<TrenerSpecijalizacija>();
             Trening = new HashSet<Trening>();
         }
 
@@ -15,6 +16,7 @@ namespace Wellness.WebAPI.Database
         public string Specializacija { get; set; }
 
         public virtual Radnik Radnik { get; set; }
+        public virtual ICollection<TrenerSpecijalizacija> TrenerSpecijalizacija { get; set; }
         public virtual ICollection<Trening> Trening { get; set; }
     }
 }

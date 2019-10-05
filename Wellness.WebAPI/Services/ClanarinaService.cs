@@ -27,6 +27,8 @@ namespace Wellness.WebAPI.Services
                 .Include(c => c.Clan)
                 .ThenInclude(c => c.Osoba)
                 .Include(c => c.Paket)
+                .ThenInclude(p=>p.PaketPristupniDani)
+                .ThenInclude(p=>p.PristupniDani)
                 .OrderByDescending(c => c.DatumUplate)
                 .AsQueryable();
 

@@ -43,6 +43,7 @@
             this.ClanarineErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.cbPaket = new System.Windows.Forms.ComboBox();
             this.cbClan = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ClanarineErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -162,11 +163,22 @@
             this.cbClan.Size = new System.Drawing.Size(219, 21);
             this.cbClan.TabIndex = 34;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(314, 250);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(200, 23);
+            this.button1.TabIndex = 35;
+            this.button1.Text = "Pronađi korisnika pomoću QR koda";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            // 
             // frmClanarinaDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(374, 344);
+            this.ClientSize = new System.Drawing.Size(578, 344);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.cbClan);
             this.Controls.Add(this.cbPaket);
             this.Controls.Add(this.txtIznos);
@@ -206,5 +218,6 @@
         private System.Windows.Forms.ErrorProvider ClanarineErrorProvider;
         private System.Windows.Forms.ComboBox cbClan;
         private System.Windows.Forms.ComboBox cbPaket;
+        private System.Windows.Forms.Button button1;
     }
 }

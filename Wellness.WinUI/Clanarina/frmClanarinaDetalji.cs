@@ -114,5 +114,10 @@ namespace Wellness.WinUI.Clanarina
         {
             e.Cancel = false;
         }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            //sad bi se trebala aktivirati kamera...
+        }
     }
 }

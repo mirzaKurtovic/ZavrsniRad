@@ -34,8 +34,9 @@ namespace Wellness.WebAPI.Controllers
                            Id = clan.Id,
                            Ime = osoba.Ime,
                            Prezime = osoba.Prezime,
-                           OsobaId=osoba.Id
-                           
+                           OsobaId=osoba.Id,
+                           QrCodeText=clan.QrCodeText,
+                           Qrcode=clan.Qrcode
                        };
 
             if (request.OsobaId != null)
@@ -43,8 +44,17 @@ namespace Wellness.WebAPI.Controllers
                 list = list.Where(c => c.OsobaId == request.OsobaId);
 
             }
+            if(!string.IsNullOrEmpty(request.QrCodeText))
+            {
+                list = list.Where(c => c.QrCodeText == request.QrCodeText);
+            }
             return list.ToList();
         }
+
+
+
+
+
 
         [HttpPost]
         public Model.Requests.ClanViewRequest Insert(ClanInsertRequest request)

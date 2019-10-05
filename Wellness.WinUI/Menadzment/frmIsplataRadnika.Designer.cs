@@ -48,13 +48,6 @@
             this.x = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvIsplate = new System.Windows.Forms.DataGridView();
-            this.uplataZaGodinuDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uplataZaMjesecDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.datumUplateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.radnihSatiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.satnicaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.radnikIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.radnikDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.radnikPlataHistorijaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label8 = new System.Windows.Forms.Label();
             this.txtUplataZaGodinuSearch = new System.Windows.Forms.TextBox();
@@ -66,6 +59,13 @@
             this.label10 = new System.Windows.Forms.Label();
             this.RadnikIsplataErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.clanPrisustvoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.uplataZaGodinuDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uplataZaMjesecDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datumUplateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.radnihSatiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SatnicaCustom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.radnikIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.radnikDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIsplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radnikPlataHistorijaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RadnikIsplataErrorProvider)).BeginInit();
@@ -240,65 +240,15 @@
             this.uplataZaMjesecDataGridViewTextBoxColumn,
             this.datumUplateDataGridViewTextBoxColumn,
             this.radnihSatiDataGridViewTextBoxColumn,
-            this.satnicaDataGridViewTextBoxColumn,
+            this.SatnicaCustom,
             this.radnikIdDataGridViewTextBoxColumn,
             this.radnikDataGridViewTextBoxColumn});
             this.dgvIsplate.DataSource = this.radnikPlataHistorijaBindingSource;
             this.dgvIsplate.Location = new System.Drawing.Point(26, 361);
             this.dgvIsplate.Name = "dgvIsplate";
             this.dgvIsplate.ReadOnly = true;
-            this.dgvIsplate.Size = new System.Drawing.Size(647, 205);
+            this.dgvIsplate.Size = new System.Drawing.Size(686, 205);
             this.dgvIsplate.TabIndex = 21;
-            // 
-            // uplataZaGodinuDataGridViewTextBoxColumn
-            // 
-            this.uplataZaGodinuDataGridViewTextBoxColumn.DataPropertyName = "UplataZaGodinu";
-            this.uplataZaGodinuDataGridViewTextBoxColumn.HeaderText = "UplataZaGodinu";
-            this.uplataZaGodinuDataGridViewTextBoxColumn.Name = "uplataZaGodinuDataGridViewTextBoxColumn";
-            this.uplataZaGodinuDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // uplataZaMjesecDataGridViewTextBoxColumn
-            // 
-            this.uplataZaMjesecDataGridViewTextBoxColumn.DataPropertyName = "UplataZaMjesec";
-            this.uplataZaMjesecDataGridViewTextBoxColumn.HeaderText = "UplataZaMjesec";
-            this.uplataZaMjesecDataGridViewTextBoxColumn.Name = "uplataZaMjesecDataGridViewTextBoxColumn";
-            this.uplataZaMjesecDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // datumUplateDataGridViewTextBoxColumn
-            // 
-            this.datumUplateDataGridViewTextBoxColumn.DataPropertyName = "DatumUplate";
-            this.datumUplateDataGridViewTextBoxColumn.HeaderText = "DatumUplate";
-            this.datumUplateDataGridViewTextBoxColumn.Name = "datumUplateDataGridViewTextBoxColumn";
-            this.datumUplateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // radnihSatiDataGridViewTextBoxColumn
-            // 
-            this.radnihSatiDataGridViewTextBoxColumn.DataPropertyName = "RadnihSati";
-            this.radnihSatiDataGridViewTextBoxColumn.HeaderText = "RadnihSati";
-            this.radnihSatiDataGridViewTextBoxColumn.Name = "radnihSatiDataGridViewTextBoxColumn";
-            this.radnihSatiDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // satnicaDataGridViewTextBoxColumn
-            // 
-            this.satnicaDataGridViewTextBoxColumn.DataPropertyName = "Satnica";
-            this.satnicaDataGridViewTextBoxColumn.HeaderText = "Satnica";
-            this.satnicaDataGridViewTextBoxColumn.Name = "satnicaDataGridViewTextBoxColumn";
-            this.satnicaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // radnikIdDataGridViewTextBoxColumn
-            // 
-            this.radnikIdDataGridViewTextBoxColumn.DataPropertyName = "RadnikId";
-            this.radnikIdDataGridViewTextBoxColumn.HeaderText = "RadnikId";
-            this.radnikIdDataGridViewTextBoxColumn.Name = "radnikIdDataGridViewTextBoxColumn";
-            this.radnikIdDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // radnikDataGridViewTextBoxColumn
-            // 
-            this.radnikDataGridViewTextBoxColumn.DataPropertyName = "Radnik";
-            this.radnikDataGridViewTextBoxColumn.HeaderText = "Radnik";
-            this.radnikDataGridViewTextBoxColumn.Name = "radnikDataGridViewTextBoxColumn";
-            this.radnikDataGridViewTextBoxColumn.ReadOnly = true;
-            this.radnikDataGridViewTextBoxColumn.Visible = false;
             // 
             // radnikPlataHistorijaBindingSource
             // 
@@ -380,11 +330,62 @@
             // 
             this.clanPrisustvoBindingSource.DataSource = typeof(Wellness.Model.ClanPrisustvo);
             // 
+            // uplataZaGodinuDataGridViewTextBoxColumn
+            // 
+            this.uplataZaGodinuDataGridViewTextBoxColumn.DataPropertyName = "UplataZaGodinu";
+            this.uplataZaGodinuDataGridViewTextBoxColumn.HeaderText = "Uplata za godinu";
+            this.uplataZaGodinuDataGridViewTextBoxColumn.Name = "uplataZaGodinuDataGridViewTextBoxColumn";
+            this.uplataZaGodinuDataGridViewTextBoxColumn.ReadOnly = true;
+            this.uplataZaGodinuDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // uplataZaMjesecDataGridViewTextBoxColumn
+            // 
+            this.uplataZaMjesecDataGridViewTextBoxColumn.DataPropertyName = "UplataZaMjesec";
+            this.uplataZaMjesecDataGridViewTextBoxColumn.HeaderText = "Uplata za mjesec";
+            this.uplataZaMjesecDataGridViewTextBoxColumn.Name = "uplataZaMjesecDataGridViewTextBoxColumn";
+            this.uplataZaMjesecDataGridViewTextBoxColumn.ReadOnly = true;
+            this.uplataZaMjesecDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // datumUplateDataGridViewTextBoxColumn
+            // 
+            this.datumUplateDataGridViewTextBoxColumn.DataPropertyName = "DatumUplate";
+            this.datumUplateDataGridViewTextBoxColumn.HeaderText = "Datum uplate";
+            this.datumUplateDataGridViewTextBoxColumn.Name = "datumUplateDataGridViewTextBoxColumn";
+            this.datumUplateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // radnihSatiDataGridViewTextBoxColumn
+            // 
+            this.radnihSatiDataGridViewTextBoxColumn.DataPropertyName = "RadnihSati";
+            this.radnihSatiDataGridViewTextBoxColumn.HeaderText = "Radnih sati";
+            this.radnihSatiDataGridViewTextBoxColumn.Name = "radnihSatiDataGridViewTextBoxColumn";
+            this.radnihSatiDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // SatnicaCustom
+            // 
+            this.SatnicaCustom.HeaderText = "Satnica";
+            this.SatnicaCustom.Name = "SatnicaCustom";
+            this.SatnicaCustom.ReadOnly = true;
+            // 
+            // radnikIdDataGridViewTextBoxColumn
+            // 
+            this.radnikIdDataGridViewTextBoxColumn.DataPropertyName = "RadnikId";
+            this.radnikIdDataGridViewTextBoxColumn.HeaderText = "RadnikId";
+            this.radnikIdDataGridViewTextBoxColumn.Name = "radnikIdDataGridViewTextBoxColumn";
+            this.radnikIdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // radnikDataGridViewTextBoxColumn
+            // 
+            this.radnikDataGridViewTextBoxColumn.DataPropertyName = "Radnik";
+            this.radnikDataGridViewTextBoxColumn.HeaderText = "Radnik";
+            this.radnikDataGridViewTextBoxColumn.Name = "radnikDataGridViewTextBoxColumn";
+            this.radnikDataGridViewTextBoxColumn.ReadOnly = true;
+            this.radnikDataGridViewTextBoxColumn.Visible = false;
+            // 
             // frmIsplataRadnika
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 578);
+            this.ClientSize = new System.Drawing.Size(744, 578);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.btnTrazi);
             this.Controls.Add(this.label9);
@@ -461,7 +462,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn uplataZaMjesecDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn datumUplateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn radnihSatiDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn satnicaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SatnicaCustom;
         private System.Windows.Forms.DataGridViewTextBoxColumn radnikIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn radnikDataGridViewTextBoxColumn;
     }

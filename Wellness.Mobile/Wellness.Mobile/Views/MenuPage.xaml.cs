@@ -25,6 +25,7 @@ namespace Wellness.Mobile.Views
                 new HomeMenuItem {Id = MenuItemType.TreningPage, Title="Pregled treninga" },
                 new HomeMenuItem {Id = MenuItemType.Clanarine, Title="Pregled clanarina" },
                 new HomeMenuItem {Id = MenuItemType.MojProfil, Title="Moj Profil" },
+                new HomeMenuItem {Id = MenuItemType.QRKod, Title="Moj QR Kod" },
             };
 
             ListViewMenu.ItemsSource = menuItems;

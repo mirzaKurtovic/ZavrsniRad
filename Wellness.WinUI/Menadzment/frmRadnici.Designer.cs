@@ -39,6 +39,7 @@
             this.datumZaposlenjaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.osobaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OsobaUloga = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SatnicaCustom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.radnikBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtIme = new System.Windows.Forms.TextBox();
             this.txtPrezime = new System.Windows.Forms.TextBox();
@@ -76,7 +77,8 @@
             this.satnicaDataGridViewTextBoxColumn,
             this.datumZaposlenjaDataGridViewTextBoxColumn,
             this.osobaDataGridViewTextBoxColumn,
-            this.OsobaUloga});
+            this.OsobaUloga,
+            this.SatnicaCustom});
             this.dgvRadnici.DataSource = this.radnikBindingSource;
             this.dgvRadnici.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvRadnici.Location = new System.Drawing.Point(3, 16);
@@ -119,6 +121,7 @@
             this.satnicaDataGridViewTextBoxColumn.HeaderText = "Satnica";
             this.satnicaDataGridViewTextBoxColumn.Name = "satnicaDataGridViewTextBoxColumn";
             this.satnicaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.satnicaDataGridViewTextBoxColumn.Visible = false;
             // 
             // datumZaposlenjaDataGridViewTextBoxColumn
             // 
@@ -143,6 +146,12 @@
             this.OsobaUloga.Name = "OsobaUloga";
             this.OsobaUloga.ReadOnly = true;
             this.OsobaUloga.Visible = false;
+            // 
+            // SatnicaCustom
+            // 
+            this.SatnicaCustom.HeaderText = "Satnica";
+            this.SatnicaCustom.Name = "SatnicaCustom";
+            this.SatnicaCustom.ReadOnly = true;
             // 
             // radnikBindingSource
             // 
@@ -211,7 +220,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(611, 398);
+            this.ClientSize = new System.Drawing.Size(683, 398);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbUloga);
             this.Controls.Add(this.btnTrazi);
@@ -251,5 +260,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn datumZaposlenjaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn osobaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn OsobaUloga;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SatnicaCustom;
     }
 }
