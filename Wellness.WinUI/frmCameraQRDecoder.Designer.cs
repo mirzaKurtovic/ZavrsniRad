@@ -42,17 +42,22 @@
             this.btnTraziQR = new System.Windows.Forms.Button();
             this.btnZaustavi = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.lblMain = new System.Windows.Forms.Label();
-            this.lblSide = new System.Windows.Forms.Label();
             this.beep = new System.Windows.Forms.Button();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.panelPictureBox = new System.Windows.Forms.Panel();
+            this.lblMain = new System.Windows.Forms.Label();
+            this.lblSide = new System.Windows.Forms.Label();
+            this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
+            this.gbPostavkeSkenera = new System.Windows.Forms.GroupBox();
+            this.btnSakriPostavke = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelPictureBox.SuspendLayout();
+            this.gbPostavkeSkenera.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Location = new System.Drawing.Point(18, 16);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(679, 447);
@@ -62,7 +67,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(953, 28);
+            this.comboBox1.Location = new System.Drawing.Point(124, 19);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(196, 21);
             this.comboBox1.TabIndex = 1;
@@ -70,7 +75,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(847, 36);
+            this.label1.Location = new System.Drawing.Point(18, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 13);
             this.label1.TabIndex = 2;
@@ -79,7 +84,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(869, 75);
+            this.label2.Location = new System.Drawing.Point(40, 66);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 13);
             this.label2.TabIndex = 3;
@@ -87,14 +92,14 @@
             // 
             // txtTotal
             // 
-            this.txtTotal.Location = new System.Drawing.Point(953, 68);
+            this.txtTotal.Location = new System.Drawing.Point(124, 59);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(196, 20);
             this.txtTotal.TabIndex = 4;
             // 
             // txtPositive
             // 
-            this.txtPositive.Location = new System.Drawing.Point(953, 107);
+            this.txtPositive.Location = new System.Drawing.Point(124, 98);
             this.txtPositive.Name = "txtPositive";
             this.txtPositive.Size = new System.Drawing.Size(196, 20);
             this.txtPositive.TabIndex = 6;
@@ -102,7 +107,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(843, 114);
+            this.label3.Location = new System.Drawing.Point(14, 105);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(95, 13);
             this.label3.TabIndex = 5;
@@ -110,7 +115,7 @@
             // 
             // txtNegative
             // 
-            this.txtNegative.Location = new System.Drawing.Point(953, 143);
+            this.txtNegative.Location = new System.Drawing.Point(124, 134);
             this.txtNegative.Name = "txtNegative";
             this.txtNegative.Size = new System.Drawing.Size(196, 20);
             this.txtNegative.TabIndex = 8;
@@ -118,7 +123,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(837, 150);
+            this.label4.Location = new System.Drawing.Point(8, 141);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(101, 13);
             this.label4.TabIndex = 7;
@@ -126,7 +131,7 @@
             // 
             // btnPokreni
             // 
-            this.btnPokreni.Location = new System.Drawing.Point(953, 179);
+            this.btnPokreni.Location = new System.Drawing.Point(124, 170);
             this.btnPokreni.Name = "btnPokreni";
             this.btnPokreni.Size = new System.Drawing.Size(196, 23);
             this.btnPokreni.TabIndex = 9;
@@ -136,21 +141,21 @@
             // 
             // btnTraziQR
             // 
-            this.btnTraziQR.Location = new System.Drawing.Point(953, 208);
+            this.btnTraziQR.Location = new System.Drawing.Point(124, 199);
             this.btnTraziQR.Name = "btnTraziQR";
             this.btnTraziQR.Size = new System.Drawing.Size(196, 23);
             this.btnTraziQR.TabIndex = 10;
-            this.btnTraziQR.Text = "Trazi qr kod";
+            this.btnTraziQR.Text = "Pokreni skeniranje";
             this.btnTraziQR.UseVisualStyleBackColor = true;
             this.btnTraziQR.Click += new System.EventHandler(this.BtnTraziQR_Click);
             // 
             // btnZaustavi
             // 
-            this.btnZaustavi.Location = new System.Drawing.Point(953, 237);
+            this.btnZaustavi.Location = new System.Drawing.Point(124, 228);
             this.btnZaustavi.Name = "btnZaustavi";
             this.btnZaustavi.Size = new System.Drawing.Size(196, 23);
             this.btnZaustavi.TabIndex = 11;
-            this.btnZaustavi.Text = "Zaustavi kameru";
+            this.btnZaustavi.Text = "Zaustavi skeniranje";
             this.btnZaustavi.UseVisualStyleBackColor = true;
             this.btnZaustavi.Click += new System.EventHandler(this.BtnZaustavi_Click);
             // 
@@ -158,24 +163,6 @@
             // 
             this.timer1.Interval = 250;
             this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
-            // 
-            // lblMain
-            // 
-            this.lblMain.AutoSize = true;
-            this.lblMain.Location = new System.Drawing.Point(847, 298);
-            this.lblMain.Name = "lblMain";
-            this.lblMain.Size = new System.Drawing.Size(35, 13);
-            this.lblMain.TabIndex = 12;
-            this.lblMain.Text = "label5";
-            // 
-            // lblSide
-            // 
-            this.lblSide.AutoSize = true;
-            this.lblSide.Location = new System.Drawing.Point(847, 324);
-            this.lblSide.Name = "lblSide";
-            this.lblSide.Size = new System.Drawing.Size(35, 13);
-            this.lblSide.TabIndex = 13;
-            this.lblSide.Text = "label5";
             // 
             // beep
             // 
@@ -200,32 +187,75 @@
             this.panelPictureBox.Size = new System.Drawing.Size(716, 480);
             this.panelPictureBox.TabIndex = 15;
             // 
+            // lblMain
+            // 
+            this.lblMain.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblMain.AutoSize = true;
+            this.lblMain.Font = new System.Drawing.Font("Bahnschrift Condensed", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblMain.Location = new System.Drawing.Point(50, 50);
+            this.lblMain.Name = "lblMain";
+            this.lblMain.Size = new System.Drawing.Size(166, 77);
+            this.lblMain.TabIndex = 16;
+            this.lblMain.Text = "label5";
+            // 
+            // lblSide
+            // 
+            this.lblSide.AutoSize = true;
+            this.lblSide.Font = new System.Drawing.Font("Bahnschrift Condensed", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblSide.Location = new System.Drawing.Point(50, 150);
+            this.lblSide.Name = "lblSide";
+            this.lblSide.Size = new System.Drawing.Size(97, 45);
+            this.lblSide.TabIndex = 18;
+            this.lblSide.Text = "label5";
+            // 
+            // gbPostavkeSkenera
+            // 
+            this.gbPostavkeSkenera.Controls.Add(this.btnSakriPostavke);
+            this.gbPostavkeSkenera.Controls.Add(this.btnZaustavi);
+            this.gbPostavkeSkenera.Controls.Add(this.comboBox1);
+            this.gbPostavkeSkenera.Controls.Add(this.label1);
+            this.gbPostavkeSkenera.Controls.Add(this.label2);
+            this.gbPostavkeSkenera.Controls.Add(this.txtTotal);
+            this.gbPostavkeSkenera.Controls.Add(this.label3);
+            this.gbPostavkeSkenera.Controls.Add(this.btnTraziQR);
+            this.gbPostavkeSkenera.Controls.Add(this.txtPositive);
+            this.gbPostavkeSkenera.Controls.Add(this.btnPokreni);
+            this.gbPostavkeSkenera.Controls.Add(this.label4);
+            this.gbPostavkeSkenera.Controls.Add(this.txtNegative);
+            this.gbPostavkeSkenera.Location = new System.Drawing.Point(752, 28);
+            this.gbPostavkeSkenera.Name = "gbPostavkeSkenera";
+            this.gbPostavkeSkenera.Size = new System.Drawing.Size(343, 301);
+            this.gbPostavkeSkenera.TabIndex = 19;
+            this.gbPostavkeSkenera.TabStop = false;
+            this.gbPostavkeSkenera.Text = "Postavke skenera";
+            // 
+            // btnSakriPostavke
+            // 
+            this.btnSakriPostavke.Location = new System.Drawing.Point(124, 257);
+            this.btnSakriPostavke.Name = "btnSakriPostavke";
+            this.btnSakriPostavke.Size = new System.Drawing.Size(196, 23);
+            this.btnSakriPostavke.TabIndex = 12;
+            this.btnSakriPostavke.Text = "Sakri postavke";
+            this.btnSakriPostavke.UseVisualStyleBackColor = true;
+            this.btnSakriPostavke.Click += new System.EventHandler(this.BtnSakriPostavke_Click);
+            // 
             // frmCameraQRDecoder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1176, 628);
-            this.Controls.Add(this.panelPictureBox);
-            this.Controls.Add(this.beep);
+            this.Controls.Add(this.gbPostavkeSkenera);
             this.Controls.Add(this.lblSide);
             this.Controls.Add(this.lblMain);
-            this.Controls.Add(this.btnZaustavi);
-            this.Controls.Add(this.btnTraziQR);
-            this.Controls.Add(this.btnPokreni);
-            this.Controls.Add(this.txtNegative);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtPositive);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtTotal);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.panelPictureBox);
+            this.Controls.Add(this.beep);
             this.Name = "frmCameraQRDecoder";
-            this.Text = "frmCameraQRDecoder";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCameraQRDecoder_FormClosing);
             this.Load += new System.EventHandler(this.FrmCameraQRDecoder_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelPictureBox.ResumeLayout(false);
+            this.gbPostavkeSkenera.ResumeLayout(false);
+            this.gbPostavkeSkenera.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -246,10 +276,13 @@
         private System.Windows.Forms.Button btnTraziQR;
         private System.Windows.Forms.Button btnZaustavi;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label lblMain;
-        private System.Windows.Forms.Label lblSide;
         private System.Windows.Forms.Button beep;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Panel panelPictureBox;
+        private System.Windows.Forms.Label lblMain;
+        private System.Windows.Forms.Label lblSide;
+        private System.Windows.Forms.PageSetupDialog pageSetupDialog1;
+        private System.Windows.Forms.GroupBox gbPostavkeSkenera;
+        private System.Windows.Forms.Button btnSakriPostavke;
     }
 }

@@ -48,6 +48,13 @@
             this.x = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvIsplate = new System.Windows.Forms.DataGridView();
+            this.uplataZaGodinuDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uplataZaMjesecDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datumUplateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.radnihSatiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SatnicaCustom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.radnikIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.radnikDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.radnikPlataHistorijaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label8 = new System.Windows.Forms.Label();
             this.txtUplataZaGodinuSearch = new System.Windows.Forms.TextBox();
@@ -59,13 +66,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.RadnikIsplataErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.clanPrisustvoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.uplataZaGodinuDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uplataZaMjesecDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.datumUplateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.radnihSatiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SatnicaCustom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.radnikIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.radnikDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIsplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radnikPlataHistorijaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RadnikIsplataErrorProvider)).BeginInit();
@@ -250,86 +250,6 @@
             this.dgvIsplate.Size = new System.Drawing.Size(686, 205);
             this.dgvIsplate.TabIndex = 21;
             // 
-            // radnikPlataHistorijaBindingSource
-            // 
-            this.radnikPlataHistorijaBindingSource.DataSource = typeof(Wellness.Model.RadnikPlataHistorija);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(26, 281);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(87, 13);
-            this.label8.TabIndex = 24;
-            this.label8.Text = "Uplata za godinu";
-            // 
-            // txtUplataZaGodinuSearch
-            // 
-            this.txtUplataZaGodinuSearch.Location = new System.Drawing.Point(29, 297);
-            this.txtUplataZaGodinuSearch.Name = "txtUplataZaGodinuSearch";
-            this.txtUplataZaGodinuSearch.Size = new System.Drawing.Size(85, 20);
-            this.txtUplataZaGodinuSearch.TabIndex = 23;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(135, 281);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(88, 13);
-            this.label7.TabIndex = 26;
-            this.label7.Text = "Uplata za mjesec";
-            // 
-            // txtUplataZaMjesecSearch
-            // 
-            this.txtUplataZaMjesecSearch.Location = new System.Drawing.Point(138, 297);
-            this.txtUplataZaMjesecSearch.Name = "txtUplataZaMjesecSearch";
-            this.txtUplataZaMjesecSearch.Size = new System.Drawing.Size(85, 20);
-            this.txtUplataZaMjesecSearch.TabIndex = 25;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(29, 238);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(41, 13);
-            this.label9.TabIndex = 28;
-            this.label9.Text = "Radnik";
-            // 
-            // cbRadnikSearch
-            // 
-            this.cbRadnikSearch.FormattingEnabled = true;
-            this.cbRadnikSearch.Location = new System.Drawing.Point(29, 257);
-            this.cbRadnikSearch.Name = "cbRadnikSearch";
-            this.cbRadnikSearch.Size = new System.Drawing.Size(162, 21);
-            this.cbRadnikSearch.TabIndex = 27;
-            // 
-            // btnTrazi
-            // 
-            this.btnTrazi.Location = new System.Drawing.Point(29, 332);
-            this.btnTrazi.Name = "btnTrazi";
-            this.btnTrazi.Size = new System.Drawing.Size(85, 23);
-            this.btnTrazi.TabIndex = 29;
-            this.btnTrazi.Text = "Trazi";
-            this.btnTrazi.UseVisualStyleBackColor = true;
-            this.btnTrazi.Click += new System.EventHandler(this.BtnTrazi_Click);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(29, 219);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(415, 13);
-            this.label10.TabIndex = 30;
-            this.label10.Text = "____________________________________________________________________";
-            // 
-            // RadnikIsplataErrorProvider
-            // 
-            this.RadnikIsplataErrorProvider.ContainerControl = this;
-            // 
-            // clanPrisustvoBindingSource
-            // 
-            this.clanPrisustvoBindingSource.DataSource = typeof(Wellness.Model.ClanPrisustvo);
-            // 
             // uplataZaGodinuDataGridViewTextBoxColumn
             // 
             this.uplataZaGodinuDataGridViewTextBoxColumn.DataPropertyName = "UplataZaGodinu";
@@ -380,6 +300,86 @@
             this.radnikDataGridViewTextBoxColumn.Name = "radnikDataGridViewTextBoxColumn";
             this.radnikDataGridViewTextBoxColumn.ReadOnly = true;
             this.radnikDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // radnikPlataHistorijaBindingSource
+            // 
+            this.radnikPlataHistorijaBindingSource.DataSource = typeof(Wellness.Model.RadnikPlataHistorija);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(26, 281);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(87, 13);
+            this.label8.TabIndex = 24;
+            this.label8.Text = "Uplata za godinu";
+            // 
+            // txtUplataZaGodinuSearch
+            // 
+            this.txtUplataZaGodinuSearch.Location = new System.Drawing.Point(29, 297);
+            this.txtUplataZaGodinuSearch.Name = "txtUplataZaGodinuSearch";
+            this.txtUplataZaGodinuSearch.Size = new System.Drawing.Size(85, 20);
+            this.txtUplataZaGodinuSearch.TabIndex = 23;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(135, 281);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(88, 13);
+            this.label7.TabIndex = 26;
+            this.label7.Text = "Uplata za mjesec";
+            // 
+            // txtUplataZaMjesecSearch
+            // 
+            this.txtUplataZaMjesecSearch.Location = new System.Drawing.Point(138, 297);
+            this.txtUplataZaMjesecSearch.Name = "txtUplataZaMjesecSearch";
+            this.txtUplataZaMjesecSearch.Size = new System.Drawing.Size(85, 20);
+            this.txtUplataZaMjesecSearch.TabIndex = 25;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(29, 238);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(41, 13);
+            this.label9.TabIndex = 28;
+            this.label9.Text = "Radnik";
+            // 
+            // cbRadnikSearch
+            // 
+            this.cbRadnikSearch.FormattingEnabled = true;
+            this.cbRadnikSearch.Location = new System.Drawing.Point(29, 257);
+            this.cbRadnikSearch.Name = "cbRadnikSearch";
+            this.cbRadnikSearch.Size = new System.Drawing.Size(193, 21);
+            this.cbRadnikSearch.TabIndex = 27;
+            // 
+            // btnTrazi
+            // 
+            this.btnTrazi.Location = new System.Drawing.Point(29, 332);
+            this.btnTrazi.Name = "btnTrazi";
+            this.btnTrazi.Size = new System.Drawing.Size(85, 23);
+            this.btnTrazi.TabIndex = 29;
+            this.btnTrazi.Text = "Trazi";
+            this.btnTrazi.UseVisualStyleBackColor = true;
+            this.btnTrazi.Click += new System.EventHandler(this.BtnTrazi_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(29, 219);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(415, 13);
+            this.label10.TabIndex = 30;
+            this.label10.Text = "____________________________________________________________________";
+            // 
+            // RadnikIsplataErrorProvider
+            // 
+            this.RadnikIsplataErrorProvider.ContainerControl = this;
+            // 
+            // clanPrisustvoBindingSource
+            // 
+            this.clanPrisustvoBindingSource.DataSource = typeof(Wellness.Model.ClanPrisustvo);
             // 
             // frmIsplataRadnika
             // 

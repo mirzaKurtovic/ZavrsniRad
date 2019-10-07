@@ -46,6 +46,7 @@ namespace Wellness.WinUI.Clanarina
             foreach (DataGridViewRow row in dgvClanarina.Rows)
             {
                 Model.Clanarina obj = (Model.Clanarina)row.DataBoundItem;
+                row.Cells[4].Value = Math.Round(obj.IznosUplate, 2);
                 row.Cells[5].Value = obj.Clan.Osoba.Ime + " " + obj.Clan.Osoba.Prezime + " #" + obj.Clan.Id;
                 row.Cells[6].Value = obj.Paket.Naziv;
             }
@@ -100,6 +101,7 @@ namespace Wellness.WinUI.Clanarina
             foreach (DataGridViewRow row in dgvClanarina.Rows)
             {
                 Model.Clanarina obj = (Model.Clanarina)row.DataBoundItem;
+                row.Cells[4].Value = Math.Round(obj.IznosUplate, 2);
                 row.Cells[5].Value = obj.Clan.Osoba.Ime + " " + obj.Clan.Osoba.Prezime + " #" + obj.Clan.Id;
                 row.Cells[6].Value = obj.Paket.Naziv;
             }

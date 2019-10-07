@@ -21,8 +21,10 @@ namespace Wellness.Mobile.UWP
         {
             this.InitializeComponent();
 
+
             LoadApplication(new Wellness.Mobile.App());
 
+            Syncfusion.SfDataGrid.XForms.UWP.SfDataGridRenderer.Init();
             Rg.Plugins.Popup.Popup.Init();
 
         }

@@ -16,10 +16,11 @@ using ZXing;
 using ZXing.Aztec;
 using Wellness.Model.Requests;
 using System.Media;
+using MetroFramework.Forms;
 
 namespace Wellness.WinUI
 {
-    public partial class frmCameraQRDecoder: Form
+    public partial class frmCameraQRDecoder: MetroForm
     {
         private FilterInfoCollection CaptureDevice;
         private VideoCaptureDevice FinalFrame;
@@ -30,6 +31,14 @@ namespace Wellness.WinUI
 
         private string textMain = "";
         private string textSide = "";
+
+        private string BeepNotOK = @"C:\Users\Mirza\source\repos\ZavrsniRad\Sounds\NotOK.wav";
+        private string BeepOK = @"C:\Users\Mirza\source\repos\ZavrsniRad\Sounds\OK.wav";
+
+        //private string BeepOK = @"..\Sounds\NotOK.wav";
+        //private string BeepNotOK = @"..\Sounds\NotOK.wav";
+        //src="~/images/image.jpg"
+        //"C:\Users\Mirza\source\repos\ZavrsniRad\Sounds\NotOK.wav"
 
         private readonly APIService _apiService_Clan = new APIService("Clan");
         private readonly APIService _apiService_Clanarina = new APIService("Clanarina");
@@ -42,7 +51,9 @@ namespace Wellness.WinUI
 
         private void FrmCameraQRDecoder_Load(object sender, EventArgs e)
         {
-
+            lblMain.Text = "";
+            lblSide.Text = "";
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             QRCodeHelper = new QRCodeHelper();
             CaptureDevice = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             foreach (FilterInfo Device in CaptureDevice)
@@ -95,6 +106,7 @@ namespace Wellness.WinUI
                     textSide = "QR kod koji ste prikazali nije prepoznatljiv ! ";
                     CameraStopSetup(textMain, textSide);
                     PanelRed();
+                    playBeep(BeepNotOK);
                     return;
                 }
 
@@ -142,6 +154,8 @@ namespace Wellness.WinUI
                         textSide = "Niste uplatili clanarinu za " + dateTime.Month + ". mjesec " + dateTime.Year + ". godine";
                         CameraStopSetup(textMain, textSide);
                         PanelRed();
+                        playBeep(BeepNotOK);
+
                         return;
                     }
                     var clanarina = clanarinaList[0];
@@ -169,6 +183,7 @@ namespace Wellness.WinUI
                         textSide = "Nemate pristup Fitness centru ovim danom(" + DanUSedmiciString + ")";
                         CameraStopSetup(textMain, textSide);
                         PanelRed();
+                        playBeep(BeepNotOK);
                         return;
                     }
                     else
@@ -179,9 +194,10 @@ namespace Wellness.WinUI
                         if (paket.NeogranicenPristup == true)
                         {
                             textMain = "Pristup odobren";
-                            textSide = "Pristup odobren - dodatni tekst";
+                            textSide = "Dobro došli";
                             CameraStopSetup(textMain, textSide);
                             PanelGreen();
+                            playBeep(BeepOK);
                             return;
                         }
 
@@ -195,9 +211,10 @@ namespace Wellness.WinUI
                         if (DateTimeUsporedni > clanarina.Paket.VrijemePristupaOd && DateTimeUsporedni < clanarina.Paket.VrijemePristupaDo)
                         {
                             textMain = "Pristup odobren";
-                            textSide = "Pristup odobren - dodatni tekst";
+                            textSide = "Dobro došli";
                             CameraStopSetup(textMain, textSide);
                             PanelGreen();
+                            playBeep(BeepOK);
                             return;
                         }
                         else
@@ -206,16 +223,14 @@ namespace Wellness.WinUI
                             textSide = "Nemate pristup Fitness centru u terminu od " + clanarina.Paket.VrijemePristupaOd.Value.ToShortTimeString() + " do " + clanarina.Paket.VrijemePristupaDo.Value.ToShortTimeString();
                             CameraStopSetup(textMain, textSide);
                             PanelRed();
+                            playBeep(BeepNotOK);
                             return;
                         }
                     }
 
 
                 }
-                else
-                {
 
-                }
 
 
 
@@ -258,8 +273,6 @@ namespace Wellness.WinUI
 
         private void Beep_Click(object sender, EventArgs e)
         {
-
-
             SystemSounds.Exclamation.Play();
         }
 
@@ -288,7 +301,6 @@ namespace Wellness.WinUI
             timer2.Stop();
             lblMain.Text = "";
             lblSide.Text = "";
-
             panelPictureBox.BackColor = Color.Empty;
             panelPictureBox.Visible = true;
         }
@@ -299,6 +311,17 @@ namespace Wellness.WinUI
         void PanelRed()
         {
             panelPictureBox.BackColor = Color.Red;
+        }
+        void playBeep(string soundLocation)
+        {
+            //"C:\Users\Mirza\source\repos\ZavrsniRad\Sounds\NotOK.wav"
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer(soundLocation);
+            player.Play();
+        }
+
+        private void BtnSakriPostavke_Click(object sender, EventArgs e)
+        {
+            gbPostavkeSkenera.Visible = false;
         }
     }
 }
