@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Syncfusion.SfPicker.XForms.UWP;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,10 +22,10 @@ namespace Wellness.Mobile.UWP
         {
             this.InitializeComponent();
 
-
-            LoadApplication(new Wellness.Mobile.App());
-
             Syncfusion.SfDataGrid.XForms.UWP.SfDataGridRenderer.Init();
+            SfPickerRenderer.Init();
+            LoadApplication(new Wellness.Mobile.App());
+            
             Rg.Plugins.Popup.Popup.Init();
 
         }

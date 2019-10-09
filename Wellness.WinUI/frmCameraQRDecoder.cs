@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 using System.IO;
 using AForge;
+
 using AForge.Video;
 using AForge.Video.DirectShow;
 using ZXing;
@@ -17,23 +18,45 @@ using ZXing.Aztec;
 using Wellness.Model.Requests;
 using System.Media;
 using MetroFramework.Forms;
+using AForge.Vision.Motion;
+using System.Timers;
+using System.Threading;
 
 namespace Wellness.WinUI
 {
-    public partial class frmCameraQRDecoder: MetroForm
+    public partial class frmCameraQRDecoder : Form
     {
+
+        private delegate void SafeCallDelegate(string text);
+
         private FilterInfoCollection CaptureDevice;
         private VideoCaptureDevice FinalFrame;
+
+        MotionDetector detector;
+        bool SkeniranjeUToku = false;
+        int positiveResults = 0;
+
+
+        System.Timers.Timer timerDecodingTotal;
+
+
+        BetterTimer timer = new BetterTimer();
+
+
+
+
         QRCodeHelper QRCodeHelper;
-        private int _ticks=0;
-        private int _falseResult=0;
-        private int _trueResult=0;
+        private int _ticks = 0;
+        private int _falseResult = 0;
+        private int _trueResult = 0;
 
         private string textMain = "";
         private string textSide = "";
 
         private string BeepNotOK = @"C:\Users\Mirza\source\repos\ZavrsniRad\Sounds\NotOK.wav";
         private string BeepOK = @"C:\Users\Mirza\source\repos\ZavrsniRad\Sounds\OK.wav";
+
+        
 
         //private string BeepOK = @"..\Sounds\NotOK.wav";
         //private string BeepNotOK = @"..\Sounds\NotOK.wav";
@@ -51,8 +74,23 @@ namespace Wellness.WinUI
 
         private void FrmCameraQRDecoder_Load(object sender, EventArgs e)
         {
+            #region motionDetectionSetup
+            // create motion detector
+                detector = new MotionDetector(
+                new SimpleBackgroundModelingDetector(),
+                new MotionAreaHighlighting());
+
+
+
+
+
+            #endregion motionDetectionSetup
+
+            #region init
+            panelPictureBox.BackColor = Color.Green;
             lblMain.Text = "";
             lblSide.Text = "";
+
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             QRCodeHelper = new QRCodeHelper();
             CaptureDevice = new FilterInfoCollection(FilterCategory.VideoInputDevice);
@@ -62,10 +100,45 @@ namespace Wellness.WinUI
             }
             comboBox1.SelectedIndex = 0;
             FinalFrame = new VideoCaptureDevice();
+
+
+
+            #endregion init
+
+            #region timersSetup
+            timer.Interval = 250;
+            timer.Tick += new EventHandler(timer_Tick);
+            
+            timerDecodingTotal = new System.Timers.Timer(5000);
+            timerDecodingTotal.Elapsed += new ElapsedEventHandler(timerDecodingTotal_Elapsed);
+            #endregion timersSetup
+        }
+
+        //pokretanje dekodiranja na osnovu video kamere
+        private  void  timerDecodeOnce_Elapsed(object sender, ElapsedEventArgs e)
+        {
+           //...
+            
+        }
+        async void timer_Tick(object sender, EventArgs e)
+        {
+            await tick();
+            lblTrenutnaRadnja.Text = "eso";
+        }
+        //zaustavljanje dekodiranja nakon odredjenog intervala...
+        private void timerDecodingTotal_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            SkeniranjeUToku = false;
+            timer.Enabled = false;
+            timerDecodingTotal.Enabled = false;
         }
 
 
-        /*
+
+
+        private async Task tick()
+        {
+                    /*
                Imaju cetri moguca rezultata
 
                1.QR Kod nije prepoznatljiv
@@ -75,8 +148,6 @@ namespace Wellness.WinUI
                */
 
 
-        private async void Timer1_Tick(object sender, EventArgs e)
-        {
             _ticks++;
             var text = QRCodeHelper.DecodeQRCode(pictureBox1.Image);
             if (String.IsNullOrEmpty(text))
@@ -89,6 +160,7 @@ namespace Wellness.WinUI
                 _trueResult++;
                 txtPositive.Text = _trueResult.ToString();
 
+                
 
                 var ClanSearchRequest = new Model.Requests.ClanSearchRequest()
                 {
@@ -116,7 +188,7 @@ namespace Wellness.WinUI
 
 
                 //2.QR Kod se ne moze ocitat
-
+                //event se pozove nakon 10 sekundi.. iznad
 
 
 
@@ -227,15 +299,8 @@ namespace Wellness.WinUI
                             return;
                         }
                     }
-
-
                 }
-
-
-
-
             }
-
             txtTotal.Text = _ticks.ToString();
         }
 
@@ -246,21 +311,43 @@ namespace Wellness.WinUI
             FinalFrame.Start();
         }
 
-        private void FinalFrame_NewFrame(object sender,NewFrameEventArgs eventArgs)
+        private void FinalFrame_NewFrame(object sender, NewFrameEventArgs eventArgs)
         {
+            var videoFrame = (Bitmap)eventArgs.Frame.Clone();
+
             pictureBox1.Image = (Bitmap)eventArgs.Frame.Clone();
-        }
 
-        private void BtnTraziQR_Click(object sender, EventArgs e)
-        {
-            timer1.Enabled = true;
-            timer1.Start();
 
+            //process new video frame and check motion level
+            if (SkeniranjeUToku == false)
+            {
+                if (detector.ProcessFrame(videoFrame) > 0.25)
+                {
+                    positiveResults++;
+                    if (positiveResults >= 15)
+                    {
+                        positiveResults = 0;
+                        SkeniranjeUToku = true;
+                        timerDecodingTotal.Enabled = true;
+
+                        timer.Enabled = true;
+
+                        playBeep(BeepOK);
+                    }
+                }
+                if (lblTrenutnaRadnja.Text!= "Detekcija pokreta")
+                lblTrenutnaRadnja.Text = "Detekcija pokreta";
+            }
+            else
+            {
+                if (lblTrenutnaRadnja.Text != "Detekcija QR koda")
+                    lblTrenutnaRadnja.Text = "Detekcija QR koda";
+            }
         }
 
         private void FrmCameraQRDecoder_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(FinalFrame.IsRunning==true)
+            if (FinalFrame.IsRunning == true)
             {
                 FinalFrame.Stop();
             }
@@ -268,42 +355,47 @@ namespace Wellness.WinUI
 
         private void BtnZaustavi_Click(object sender, EventArgs e)
         {
-            timer1.Stop();
+            SkeniranjeUToku = false;
+            timerDecodingTotal.Enabled = false;
         }
-
-        private void Beep_Click(object sender, EventArgs e)
-        {
-            SystemSounds.Exclamation.Play();
-        }
-
-
 
         private void Timer2_Tick(object sender, EventArgs e)
         {
             CameraStartSetup();
-
         }
+
+
+
 
 
         void CameraStopSetup(string textMain, string textSide)
         {
-            timer1.Stop();
             timer2.Start();
             lblMain.Text = textMain;
             lblSide.Text = textSide;
 
             panelPictureBox.Visible = false;
 
+
+            timerDecodingTotal.Enabled = false;
+            timer.Enabled = false;
+
         }
         void CameraStartSetup()
         {
-            timer1.Start();
             timer2.Stop();
+
             lblMain.Text = "";
             lblSide.Text = "";
+
             panelPictureBox.BackColor = Color.Empty;
             panelPictureBox.Visible = true;
+
+            SkeniranjeUToku = false;
         }
+
+
+
         void PanelGreen()
         {
             panelPictureBox.BackColor = Color.Green;
@@ -318,10 +410,48 @@ namespace Wellness.WinUI
             System.Media.SoundPlayer player = new System.Media.SoundPlayer(soundLocation);
             player.Play();
         }
-
         private void BtnSakriPostavke_Click(object sender, EventArgs e)
         {
             gbPostavkeSkenera.Visible = false;
+            sizeChanged();
         }
+        private void FrmCameraQRDecoder_SizeChanged(object sender, EventArgs e)
+        {
+            sizeChanged();
+        }
+        void sizeChanged()
+        {
+            panelPictureBox.Height = panelPictureBox.Parent.Height;
+            panelPictureBox.Width = panelPictureBox.Parent.Width;
+
+            pictureBox1.Height = pictureBox1.Parent.Height-25;
+            pictureBox1.Width = pictureBox1.Parent.Width-25;
+        }
+
+
+
+
+
+
     }
+}
+
+
+public class BetterTimer : System.Windows.Forms.Timer
+{
+    public BetterTimer() : base()
+    { base.Enabled = true; }
+
+    public BetterTimer(System.ComponentModel.IContainer container) : base(container)
+    { base.Enabled = true; }
+
+    private bool _Enabled;
+    public override bool Enabled
+    {
+        get { return _Enabled; }
+        set { _Enabled = value; }
+    }
+
+    protected override void OnTick(System.EventArgs e)
+    { if (this.Enabled) base.OnTick(e); }
 }

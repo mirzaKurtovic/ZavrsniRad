@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Syncfusion.SfPicker.XForms.UWP;
+using Syncfusion.SfRating.XForms.UWP;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -52,7 +55,18 @@ namespace Wellness.Mobile.UWP
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
-                Xamarin.Forms.Forms.Init(e);
+                // you'll need to add `using System.Reflection;`
+                List<Assembly> assembliesToInclude = new List<Assembly>();
+
+                //Now, add all the assemblies your app uses
+                assembliesToInclude.Add(typeof(SfRatingRenderer).GetTypeInfo().Assembly);
+                assembliesToInclude.Add(typeof(Syncfusion.SfDataGrid.XForms.UWP.SfDataGridRenderer).GetTypeInfo().Assembly);
+                assembliesToInclude.Add(typeof(Syncfusion.SfNumericTextBox.XForms.UWP.SfNumericTextBoxRenderer).GetTypeInfo().Assembly);
+                assembliesToInclude.Add(typeof(SfPickerRenderer).GetTypeInfo().Assembly);
+                //Xamarin.Forms.Forms.Init(e);
+
+                // replaces Xamarin.Forms.Forms.Init(e);        
+                Xamarin.Forms.Forms.Init(e, assembliesToInclude);
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
@@ -61,6 +75,13 @@ namespace Wellness.Mobile.UWP
 
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
+
+
+
+
+
+
+
             }
 
             if (rootFrame.Content == null)

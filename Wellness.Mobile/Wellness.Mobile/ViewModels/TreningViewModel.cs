@@ -110,9 +110,6 @@ namespace Wellness.Mobile.ViewModels
             }
         }
 
-
-
-
         #endregion valued;
 
 

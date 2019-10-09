@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:Wellness.Mobile.ViewModels"
              xmlns:converters="clr-namespace:Wellness.Mobile.Converters"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
              x:Class="Wellness.Mobile.Views.TreningPage"
                            Title="Pregled treninga">
     <ContentPage.BindingContext>
@@ -49,7 +50,7 @@
 
 
 
-            <ListView ItemsSource="{Binding Trening}" ItemSelected="ListView_ItemSelected" >
+            <!--<ListView ItemsSource="{Binding Trening}" ItemSelected="ListView_ItemSelected" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -109,7 +110,57 @@
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>
+            </ListView>-->
+
+
+
+
+            <syncfusion:SfDataGrid x:Name="dataGrid"
+            ColumnSizer="Star"
+            AutoGenerateColumns="False"
+            ItemsSource="{Binding Trening}"
+            AllowSorting="True"
+            ValueChanged="DataGrid_ValueChanged"
+            GridDoubleTapped="DataGrid_GridDoubleTapped"
+                                   
+                    >
+
+
+                <!--<syncfusion:SfDataGrid.GroupColumnDescriptions>
+                    <syncfusion:GroupColumnDescription ColumnName="DatumTreninga" />
+                </syncfusion:SfDataGrid.GroupColumnDescriptions>-->
+
+
+                <!--<Image Source="{Binding  Image, Converter={StaticResource imgConv}}"
+                                           HeightRequest="200"
+                                           WidthRequest="300"
+                                           
+                                           FlowDirection="LeftToRight"
+                                           ></Image>-->
+
+
+                <syncfusion:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns">
+
+                    <syncfusion:GridTextColumn HeaderText="Trener" 
+                                   MappingName="Trener" />
+
+                    <syncfusion:GridTextColumn HeaderText="Tip treninga" 
+                                   MappingName="TipTreninga" />
+
+                    <syncfusion:GridTextColumn HeaderText="Datum treninga" 
+                                   MappingName="DatumTreninga" />
+                    <syncfusion:GridTextColumn HeaderText="Pocetak-Kraj" 
+                                   MappingName="PocetakKraj" />
+                    <syncfusion:GridTextColumn HeaderText="Trenutno/Maksimalno prisutnih" 
+                                   MappingName="TrenutnoMaxPrisutnih" />
+                    <syncfusion:GridSwitchColumn HeaderText="Prisustvuje" 
+                                   MappingName="Prisustvuje"
+                                               />
+                    
+
+                </syncfusion:SfDataGrid.Columns>
+            </syncfusion:SfDataGrid>
+
 
 
         </StackLayout>

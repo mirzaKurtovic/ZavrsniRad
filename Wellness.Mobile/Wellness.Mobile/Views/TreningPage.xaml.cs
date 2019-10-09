@@ -51,6 +51,26 @@ namespace Wellness.Mobile.Views
             
         }
 
+        private void DataGrid_ValueChanged(object sender, Syncfusion.SfDataGrid.XForms.ValueChangedEventArgs e)
+        {
+            
+
+
+        }
+
+        private async void DataGrid_GridDoubleTapped(object sender, Syncfusion.SfDataGrid.XForms.GridDoubleTappedEventArgs e)
+        {
+            var rowData = (Mobile.Models.TreningModel)e.RowData;
+
+            
+            if (rowData == null)
+                return;
+
+            var trening = await _apiService_Trening.GetById<Wellness.Model.Trening>(rowData.Id);
+
+            await Navigation.PushAsync(new TreningDetalji(trening, _clan));
+        }
+
 
 
         /*

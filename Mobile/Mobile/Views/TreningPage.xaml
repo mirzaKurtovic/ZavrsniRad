@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             xmlns:vm="clr-namespace:Mobile.ViewModels"
+             xmlns:syncfusion1="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:syncfusion2="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
+             mc:Ignorable="d"
+             x:Class="Mobile.Views.TreningPage">
+
+
+    <ContentPage.BindingContext>
+        <vm:TreningViewModel>
+
+        </vm:TreningViewModel>
+    </ContentPage.BindingContext>
+
+
+
+    <ContentPage.Content>
+        <StackLayout>
+
+
+            <syncfusion2:SfExpander>
+                
+
+                <syncfusion2:SfExpander.Header>
+                    <Label TextColor="#495F6E" Text="Filter" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                </syncfusion2:SfExpander.Header>
+                <syncfusion2:SfExpander.Content>
+
+                    <StackLayout>
+                        <Picker 
+                    Margin="10"
+                    ItemsSource ="{Binding TipTreninga}" 
+                    ItemDisplayBinding="{Binding TipTreninga1}" 
+                    SelectedItem="{Binding SelectedTipTreninga}"
+                    Title="Tip treninga"
+                    >
+                        </Picker>
+
+                        <Picker 
+                    Margin="10"
+                    ItemsSource ="{Binding SearchFilter}"
+                    SelectedItem="{Binding selectedSearchFilter}"
+                    Title="Mod"
+                    >
+                            <Picker.SelectedIndex>
+                                0
+                            </Picker.SelectedIndex>
+                        </Picker>
+                    </StackLayout>
+                </syncfusion2:SfExpander.Content>
+            </syncfusion2:SfExpander>
+
+
+
+
+
+
+
+            <!--<Picker 
+                    Margin="10"
+                    ItemsSource ="{Binding TipTreninga}" 
+                    ItemDisplayBinding="{Binding TipTreninga1}" 
+                    SelectedItem="{Binding SelectedTipTreninga}"
+                    Title="Tip treninga"
+                    >
+            </Picker>
+
+            <Picker 
+                    Margin="10"
+                    ItemsSource ="{Binding SearchFilter}"
+                    SelectedItem="{Binding selectedSearchFilter}"
+                    Title="Mod"
+                    >
+                <Picker.SelectedIndex>
+                    0
+                </Picker.SelectedIndex>
+            </Picker>-->
+
+
+
+            <syncfusion:SfDataGrid x:Name="dataGrid"
+            ColumnSizer="Star"
+            AutoGenerateColumns="False"
+            ItemsSource="{Binding Trening}"
+            AllowSorting="True"
+            ValueChanged="dataGrid_ValueChanged"
+            GridDoubleTapped="dataGrid_GridDoubleTapped"           
+                    >
+
+
+                
+                
+                
+                <!--<syncfusion:SfDataGrid.GroupColumnDescriptions>
+                    <syncfusion:GroupColumnDescription ColumnName="DatumTreninga" />
+                </syncfusion:SfDataGrid.GroupColumnDescriptions>-->
+                
+                <syncfusion:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns">
+
+                    <syncfusion:GridTextColumn HeaderText="Trener" 
+                                   MappingName="Trener" />
+
+                    <syncfusion:GridTextColumn HeaderText="Tip treninga" 
+                                   MappingName="TipTreninga" />
+
+                    <syncfusion:GridDateTimeColumn 
+                                   HeaderText="Datum treninga" 
+                                   MappingName="DatumT"
+                                        />
+                    <syncfusion:GridTextColumn HeaderText="Pocetak-Kraj" 
+                                   MappingName="PocetakKraj" />
+                    <syncfusion:GridTextColumn HeaderText="Trenutno/Maksimalno prisutnih" 
+                                   MappingName="TrenutnoMaxPrisutnih" />
+                    <syncfusion:GridSwitchColumn HeaderText="Prisustvuje" 
+                                   MappingName="Prisustvuje"
+                                               />
+                </syncfusion:SfDataGrid.Columns>
+            
+            
+          </syncfusion:SfDataGrid>
+
+
+
+
+
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

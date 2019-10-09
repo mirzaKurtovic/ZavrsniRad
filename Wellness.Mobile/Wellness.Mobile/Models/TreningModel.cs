@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Wellness.Mobile.AsyncHelper;
 using Wellness.Mobile.Views;
+using Xamarin.Forms;
 
 namespace Wellness.Mobile.Models
 {

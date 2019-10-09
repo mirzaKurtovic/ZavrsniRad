@@ -51,6 +51,7 @@ namespace Wellness.WinUI
         }
         public string DecodeQRCode(Image img)
         {
+            if (img == null) return null;
             BarcodeReader Reader = new BarcodeReader() { AutoRotate = true, TryInverted = true };
             Bitmap bitmap = new Bitmap(img);
             Result result = Reader.Decode(bitmap);

@@ -39,16 +39,14 @@
             this.txtNegative = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnPokreni = new System.Windows.Forms.Button();
-            this.btnTraziQR = new System.Windows.Forms.Button();
             this.btnZaustavi = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.beep = new System.Windows.Forms.Button();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.panelPictureBox = new System.Windows.Forms.Panel();
             this.lblMain = new System.Windows.Forms.Label();
             this.lblSide = new System.Windows.Forms.Label();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             this.gbPostavkeSkenera = new System.Windows.Forms.GroupBox();
+            this.lblTrenutnaRadnja = new System.Windows.Forms.Label();
             this.btnSakriPostavke = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelPictureBox.SuspendLayout();
@@ -139,40 +137,15 @@
             this.btnPokreni.UseVisualStyleBackColor = true;
             this.btnPokreni.Click += new System.EventHandler(this.BtnPokreni_Click);
             // 
-            // btnTraziQR
-            // 
-            this.btnTraziQR.Location = new System.Drawing.Point(124, 199);
-            this.btnTraziQR.Name = "btnTraziQR";
-            this.btnTraziQR.Size = new System.Drawing.Size(196, 23);
-            this.btnTraziQR.TabIndex = 10;
-            this.btnTraziQR.Text = "Pokreni skeniranje";
-            this.btnTraziQR.UseVisualStyleBackColor = true;
-            this.btnTraziQR.Click += new System.EventHandler(this.BtnTraziQR_Click);
-            // 
             // btnZaustavi
             // 
-            this.btnZaustavi.Location = new System.Drawing.Point(124, 228);
+            this.btnZaustavi.Location = new System.Drawing.Point(124, 199);
             this.btnZaustavi.Name = "btnZaustavi";
             this.btnZaustavi.Size = new System.Drawing.Size(196, 23);
             this.btnZaustavi.TabIndex = 11;
             this.btnZaustavi.Text = "Zaustavi skeniranje";
             this.btnZaustavi.UseVisualStyleBackColor = true;
             this.btnZaustavi.Click += new System.EventHandler(this.BtnZaustavi_Click);
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 250;
-            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
-            // 
-            // beep
-            // 
-            this.beep.Location = new System.Drawing.Point(893, 643);
-            this.beep.Name = "beep";
-            this.beep.Size = new System.Drawing.Size(75, 23);
-            this.beep.TabIndex = 14;
-            this.beep.Text = "beep";
-            this.beep.UseVisualStyleBackColor = true;
-            this.beep.Click += new System.EventHandler(this.Beep_Click);
             // 
             // timer2
             // 
@@ -184,6 +157,7 @@
             this.panelPictureBox.Controls.Add(this.pictureBox1);
             this.panelPictureBox.Location = new System.Drawing.Point(12, 12);
             this.panelPictureBox.Name = "panelPictureBox";
+            this.panelPictureBox.Padding = new System.Windows.Forms.Padding(25);
             this.panelPictureBox.Size = new System.Drawing.Size(716, 480);
             this.panelPictureBox.TabIndex = 15;
             // 
@@ -192,7 +166,7 @@
             this.lblMain.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblMain.AutoSize = true;
             this.lblMain.Font = new System.Drawing.Font("Bahnschrift Condensed", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblMain.Location = new System.Drawing.Point(50, 50);
+            this.lblMain.Location = new System.Drawing.Point(41, 52);
             this.lblMain.Name = "lblMain";
             this.lblMain.Size = new System.Drawing.Size(166, 77);
             this.lblMain.TabIndex = 16;
@@ -210,6 +184,7 @@
             // 
             // gbPostavkeSkenera
             // 
+            this.gbPostavkeSkenera.Controls.Add(this.lblTrenutnaRadnja);
             this.gbPostavkeSkenera.Controls.Add(this.btnSakriPostavke);
             this.gbPostavkeSkenera.Controls.Add(this.btnZaustavi);
             this.gbPostavkeSkenera.Controls.Add(this.comboBox1);
@@ -217,21 +192,30 @@
             this.gbPostavkeSkenera.Controls.Add(this.label2);
             this.gbPostavkeSkenera.Controls.Add(this.txtTotal);
             this.gbPostavkeSkenera.Controls.Add(this.label3);
-            this.gbPostavkeSkenera.Controls.Add(this.btnTraziQR);
             this.gbPostavkeSkenera.Controls.Add(this.txtPositive);
             this.gbPostavkeSkenera.Controls.Add(this.btnPokreni);
             this.gbPostavkeSkenera.Controls.Add(this.label4);
             this.gbPostavkeSkenera.Controls.Add(this.txtNegative);
             this.gbPostavkeSkenera.Location = new System.Drawing.Point(752, 28);
             this.gbPostavkeSkenera.Name = "gbPostavkeSkenera";
-            this.gbPostavkeSkenera.Size = new System.Drawing.Size(343, 301);
+            this.gbPostavkeSkenera.Size = new System.Drawing.Size(343, 356);
             this.gbPostavkeSkenera.TabIndex = 19;
             this.gbPostavkeSkenera.TabStop = false;
             this.gbPostavkeSkenera.Text = "Postavke skenera";
             // 
+            // lblTrenutnaRadnja
+            // 
+            this.lblTrenutnaRadnja.AutoSize = true;
+            this.lblTrenutnaRadnja.Font = new System.Drawing.Font("Bahnschrift SemiBold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblTrenutnaRadnja.Location = new System.Drawing.Point(14, 299);
+            this.lblTrenutnaRadnja.Name = "lblTrenutnaRadnja";
+            this.lblTrenutnaRadnja.Size = new System.Drawing.Size(232, 39);
+            this.lblTrenutnaRadnja.TabIndex = 20;
+            this.lblTrenutnaRadnja.Text = "Trenutna akcija";
+            // 
             // btnSakriPostavke
             // 
-            this.btnSakriPostavke.Location = new System.Drawing.Point(124, 257);
+            this.btnSakriPostavke.Location = new System.Drawing.Point(124, 228);
             this.btnSakriPostavke.Name = "btnSakriPostavke";
             this.btnSakriPostavke.Size = new System.Drawing.Size(196, 23);
             this.btnSakriPostavke.TabIndex = 12;
@@ -243,15 +227,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1176, 628);
+            this.ClientSize = new System.Drawing.Size(1159, 632);
             this.Controls.Add(this.gbPostavkeSkenera);
             this.Controls.Add(this.lblSide);
             this.Controls.Add(this.lblMain);
             this.Controls.Add(this.panelPictureBox);
-            this.Controls.Add(this.beep);
             this.Name = "frmCameraQRDecoder";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCameraQRDecoder_FormClosing);
             this.Load += new System.EventHandler(this.FrmCameraQRDecoder_Load);
+            this.SizeChanged += new System.EventHandler(this.FrmCameraQRDecoder_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelPictureBox.ResumeLayout(false);
             this.gbPostavkeSkenera.ResumeLayout(false);
@@ -273,10 +257,7 @@
         private System.Windows.Forms.TextBox txtNegative;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnPokreni;
-        private System.Windows.Forms.Button btnTraziQR;
         private System.Windows.Forms.Button btnZaustavi;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Button beep;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Panel panelPictureBox;
         private System.Windows.Forms.Label lblMain;
@@ -284,5 +265,6 @@
         private System.Windows.Forms.PageSetupDialog pageSetupDialog1;
         private System.Windows.Forms.GroupBox gbPostavkeSkenera;
         private System.Windows.Forms.Button btnSakriPostavke;
+        private System.Windows.Forms.Label lblTrenutnaRadnja;
     }
 }

@@ -2,8 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:Wellness.Mobile.ViewModels"
-                           Title="Prijava"
+             xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             Title="Prijava"
              x:Class="Wellness.Mobile.Views.LoginPage">
+
+    <!--xmlns:syncfusion="clr- namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"-->
+    
     <ContentPage.BindingContext>
         <vm:LoginViewModel></vm:LoginViewModel>
     </ContentPage.BindingContext>
@@ -11,7 +16,7 @@
     <ContentPage.Content>
         <StackLayout Padding="10" VerticalOptions="CenterAndExpand">
 
-            <Label Text="Korisnicko ime: "
+            <Label Text="Korisnicko ime:: "
       HorizontalOptions="CenterAndExpand" />
             <Entry
       Text="{Binding Username}"
@@ -30,14 +35,46 @@
 
 
             <Label
-                Text="--Napomena--"
+                Text="--Napomena--//////"
                 />
             <Label
                 Text="Username: Clan12"
                 />
+
             <Label
                 Text="Password: Clan12"
                 />
+            <Label
+                Text="Ello"
+                />
+            <!--<rating:SfRating 
+                ItemCount="5"
+                TooltipPrecision="2"
+                TooltipPlacement="TopLeft"   
+                ItemSize="30"
+                >
+
+                <rating:SfRating.RatingSettings>
+                    <rating:SfRatingSettings
+                        
+                        RatedFill="Yellow"
+                        UnRatedFill="Gray"
+                        RatedStroke="Black"
+                        UnRatedStroke="Black"
+                        
+                        />
+                </rating:SfRating.RatingSettings>
+
+            </rating:SfRating>-->
+
+
+            <!--<syncfusion:SfPicker x:Name="picker" />-->
+
+
+
+            <syncfusion:SfPicker x:Name="picker" HeaderText="Select a Color" />
+
+
         </StackLayout>
 
 

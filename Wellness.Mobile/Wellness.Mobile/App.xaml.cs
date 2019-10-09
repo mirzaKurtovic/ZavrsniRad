@@ -13,8 +13,8 @@ namespace Wellness.Mobile
         {
             InitializeComponent();
 
-            
-
+            //Register Syncfusion license v17.xx
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTUzMzUyQDMxMzYyZTM0MmUzMFBPYXByeWRRS0VHOHU5RTZFdUNkemdoRWlyWWUzYng0NTR4QWQwcVFZRzg9");
             DependencyService.Register<MockDataStore>();
             MainPage = new LoginPage();
         }

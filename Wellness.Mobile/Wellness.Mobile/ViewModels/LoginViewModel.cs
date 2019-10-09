@@ -47,6 +47,8 @@ namespace Wellness.Mobile.ViewModels
 
         async Task Login()
         {
+
+
             IsBusy = true;
 
             APIService._username = Username;
