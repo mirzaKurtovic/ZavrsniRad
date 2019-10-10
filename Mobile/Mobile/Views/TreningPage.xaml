@@ -24,8 +24,6 @@
 
 
             <syncfusion2:SfExpander>
-                
-
                 <syncfusion2:SfExpander.Header>
                     <Label TextColor="#495F6E" Text="Filter" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
                 </syncfusion2:SfExpander.Header>
@@ -57,53 +55,22 @@
 
 
 
-
-
-
-
-            <!--<Picker 
-                    Margin="10"
-                    ItemsSource ="{Binding TipTreninga}" 
-                    ItemDisplayBinding="{Binding TipTreninga1}" 
-                    SelectedItem="{Binding SelectedTipTreninga}"
-                    Title="Tip treninga"
-                    >
-            </Picker>
-
-            <Picker 
-                    Margin="10"
-                    ItemsSource ="{Binding SearchFilter}"
-                    SelectedItem="{Binding selectedSearchFilter}"
-                    Title="Mod"
-                    >
-                <Picker.SelectedIndex>
-                    0
-                </Picker.SelectedIndex>
-            </Picker>-->
-
-
-
             <syncfusion:SfDataGrid x:Name="dataGrid"
             ColumnSizer="Star"
             AutoGenerateColumns="False"
             ItemsSource="{Binding Trening}"
             AllowSorting="True"
             ValueChanged="dataGrid_ValueChanged"
-            GridDoubleTapped="dataGrid_GridDoubleTapped"           
+            GridDoubleTapped="dataGrid_GridDoubleTapped"
+            GridViewCreated="dataGrid_GridViewCreated"
+            
+                                   
                     >
 
-
-                
-                
-                
-                <!--<syncfusion:SfDataGrid.GroupColumnDescriptions>
-                    <syncfusion:GroupColumnDescription ColumnName="DatumTreninga" />
-                </syncfusion:SfDataGrid.GroupColumnDescriptions>-->
-                
-                <syncfusion:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns">
+                <syncfusion:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns" >
 
                     <syncfusion:GridTextColumn HeaderText="Trener" 
-                                   MappingName="Trener" />
+                                   MappingName="Trener"/>
 
                     <syncfusion:GridTextColumn HeaderText="Tip treninga" 
                                    MappingName="TipTreninga" />
@@ -117,17 +84,13 @@
                     <syncfusion:GridTextColumn HeaderText="Trenutno/Maksimalno prisutnih" 
                                    MappingName="TrenutnoMaxPrisutnih" />
                     <syncfusion:GridSwitchColumn HeaderText="Prisustvuje" 
-                                   MappingName="Prisustvuje"
-                                               />
+                                   MappingName="Prisustvuje" 
+                                            />
+
+
+
                 </syncfusion:SfDataGrid.Columns>
-            
-            
-          </syncfusion:SfDataGrid>
-
-
-
-
-
+            </syncfusion:SfDataGrid>
 
 
         </StackLayout>

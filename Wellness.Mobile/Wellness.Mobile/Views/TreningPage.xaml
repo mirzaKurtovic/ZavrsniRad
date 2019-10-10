@@ -155,6 +155,7 @@
                                    MappingName="TrenutnoMaxPrisutnih" />
                     <syncfusion:GridSwitchColumn HeaderText="Prisustvuje" 
                                    MappingName="Prisustvuje"
+                                                 
                                                />
                     
 

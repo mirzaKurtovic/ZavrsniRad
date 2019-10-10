@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -18,18 +19,20 @@ namespace Mobile.ViewModels
         private readonly APIService _apiService_TipTreninga;
         private readonly APIService _apiService_ClanPrisustvo;
         private readonly Wellness.Model.Requests.ClanViewRequest _clan = null;
+        private readonly bool _historyOnly=false;
 
         public ObservableCollection<Mobile.Models.TreningModel> Trening { get; set; }
         public ObservableCollection<Wellness.Model.TipTreninga> TipTreninga { get; set; }
         public ObservableCollection<string> SearchFilter { get; set; }
 
 
-        public TreningViewModel(Wellness.Model.Requests.ClanViewRequest clan)
+        public TreningViewModel(Wellness.Model.Requests.ClanViewRequest clan, bool historyOnly = false)
         {
             _apiService = new APIService("trening");
             _apiService_TipTreninga = new APIService("TipTreninga");
             _apiService_ClanPrisustvo = new APIService("ClanPrisustvo");
             _clan = clan;
+            _historyOnly = historyOnly;
             //--------------------------------------------------------
             Trening = new ObservableCollection<Mobile.Models.TreningModel>();
             TipTreninga = new ObservableCollection<Wellness.Model.TipTreninga>();
@@ -115,10 +118,50 @@ namespace Mobile.ViewModels
 
 
             var list = await _apiService.Get<List<Wellness.Model.Trening>>(search);
-            Trening.Clear();
 
+
+            //filter if historyOnly = true
+            //u toDeleteList se nalaze treninga koji nisu odrzani
+            var newList = new List<Wellness.Model.Trening>();
+            if (_historyOnly == true)
+            {
+
+                //uklanjamo treninge koji se nisu odrzali
+                for (int i = 0;i<list.Count;i++)
+                {
+
+                    if (list[i].Odrzan == null) list[i].Odrzan = false;
+                    Wellness.Model.Trening x = list[i];
+                    
+                    if (x.Odrzan == true)
+                    {
+                        //clan je prisustvovo treninug x
+                        var prisustvoList = AsyncHelpers.RunSync<List<Wellness.Model.ClanPrisustvo>>(() => _apiService_ClanPrisustvo.Get<List<Wellness.Model.ClanPrisustvo>>(new ClanPrisustvoSearchRequest() { TreningId = x.Id, ClanId = ClanId }));
+                        //ako _clan nije prosustvovo treningu x izbacujemo x iz liste
+                        if (prisustvoList.Count > 0)
+                        { 
+                            newList.Add(list[i]);
+                        }
+                    }
+                }
+
+
+                list = newList;
+            }
+            else
+            {
+                newList = list.Where(p => p.Odrzan == false || p.Odrzan == null).ToList();
+                list = newList;
+
+                foreach (var x in list)
+                {
+                    if (x.Odrzan == null)
+                        x.Odrzan = false;
+                }
+            }
+  
             //-----------------------------------------------------------------------------------------------
-
+            Trening.Clear();
             for (int i = 0; i < list.Count; i++)
             {
 
@@ -145,9 +188,7 @@ namespace Mobile.ViewModels
 
                 };
 
-
                 var prisustvo = AsyncHelpers.RunSync<List<Wellness.Model.ClanPrisustvo>>(() => _apiService_ClanPrisustvo.Get<List<Wellness.Model.ClanPrisustvo>>(new ClanPrisustvoSearchRequest() { TreningId = x.Id, ClanId = ClanId }));
-
 
                 if (prisustvo.Count > 0 && (selectedSearchFilter == "Svi" || selectedSearchFilter == "Prijavljeni"))
                 {
@@ -182,8 +223,7 @@ namespace Mobile.ViewModels
 
 
             }
+
         }
-
-
     }
 }

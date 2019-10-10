@@ -9,7 +9,10 @@ namespace Mobile.Models
         Browse,
         About,
         TreningPage,
-        QRCode
+        QRCode,
+        ClanarinaPage,
+        Historija,
+        PostavkePage
     }
     public class HomeMenuItem
     {

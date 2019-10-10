@@ -44,7 +44,12 @@ namespace Wellness.WebAPI.Controllers
                 list = list.Where(c => c.OsobaId == request.OsobaId);
 
             }
-            if(!string.IsNullOrEmpty(request.QrCodeText))
+            if (request.ClanId != null)
+            {
+                list = list.Where(c => c.Id == request.ClanId);
+
+            }
+            if (!string.IsNullOrEmpty(request.QrCodeText))
             {
                 list = list.Where(c => c.QrCodeText == request.QrCodeText);
             }

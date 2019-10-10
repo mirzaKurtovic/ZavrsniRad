@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:dataForm="clr-namespace:Syncfusion.XForms.DataForm;assembly=Syncfusion.SfDataForm.XForms"
+             xmlns:vm="clr-namespace:Mobile.ViewModels"
+             x:Class="Mobile.Views.PostavkePage">
+
+
+    <ContentPage.BindingContext>
+        <vm:PostavkeViewModel>
+
+        </vm:PostavkeViewModel>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout x:Name="stackLayout" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="25">
+
+            <dataForm:SfDataForm x:Name="dataForm"
+                                 VerticalOptions="FillAndExpand"
+                                 HorizontalOptions="Center" 
+						         LabelPosition="Top"
+                                 WidthRequest="350"
+                                 ContainerType="None"
+                                 LayoutOptions="TextInputLayout"
+                                 AutoGeneratingDataFormItem="dataForm_AutoGeneratingDataFormItem"
+                                 DataObject="{Binding postavkeModel}"
+                                 />
+
+
+            <Button 
+                Clicked="Button_Clicked"
+                Text="Spasi"
+                />
+        </StackLayout>
+
+
+
+
+
+    </ContentPage.Content>
+</ContentPage>

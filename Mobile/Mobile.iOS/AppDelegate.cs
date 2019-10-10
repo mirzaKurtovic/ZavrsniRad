@@ -5,6 +5,9 @@ using System.Linq;
 using Foundation;
 using Syncfusion.SfDataGrid.XForms.iOS;
 using Syncfusion.SfPicker.XForms.iOS;
+using Syncfusion.SfRating.XForms.iOS;
+using Syncfusion.XForms.iOS.Border;
+using Syncfusion.XForms.iOS.DataForm;
 using Syncfusion.XForms.iOS.Expander;
 using UIKit;
 
@@ -31,6 +34,9 @@ namespace Mobile.iOS
             SfDataGridRenderer.Init();
             SfPickerRenderer.Init();
             SfExpanderRenderer.Init();
+            SfDataFormRenderer.Init();
+            SfBorderRenderer.Init();
+            new SfRatingRenderer();
 
             LoadApplication(new App());
 

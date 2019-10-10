@@ -22,8 +22,12 @@ namespace Mobile.Views
             {
                 new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
                 new HomeMenuItem {Id = MenuItemType.About, Title="About" },
-                new HomeMenuItem {Id = MenuItemType.TreningPage, Title="Aktivni treninzi" },
-                new HomeMenuItem {Id = MenuItemType.QRCode, Title="Moj QR kod" }
+                new HomeMenuItem {Id = MenuItemType.QRCode, Title="Moj QR kod" },
+                new HomeMenuItem {Id = MenuItemType.TreningPage, Title="Rezervisi" },
+                new HomeMenuItem {Id = MenuItemType.Historija, Title="Historija" },
+                new HomeMenuItem {Id = MenuItemType.ClanarinaPage, Title="Clanarine" },
+                new HomeMenuItem {Id = MenuItemType.PostavkePage, Title="Postavke" },
+
             };
 
             ListViewMenu.ItemsSource = menuItems;
@@ -31,6 +35,10 @@ namespace Mobile.Views
             ListViewMenu.SelectedItem = menuItems[0];
             ListViewMenu.ItemSelected += async (sender, e) =>
             {
+               
+                  
+                
+
                 if (e.SelectedItem == null)
                     return;
 

@@ -6,6 +6,7 @@ namespace Wellness.Model.Requests
 {
     public class ClanSearchRequest
     {
+        public int? ClanId { get; set; }
         public int? OsobaId { get; set; }
         public string QrCodeText { get; set; }
 

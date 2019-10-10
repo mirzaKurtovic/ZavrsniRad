@@ -6,12 +6,18 @@ using System.Threading.Tasks;
 using Wellness.Mobile.AsyncHelper;
 using Mobile.Views;
 using Xamarin.Forms;
+using Wellness.Model.Requests;
+using Wellness.Mobile.Views;
+using System.ComponentModel;
 
 namespace Mobile.Models
 {
     public class TreningModel
     {
         private APIService _apiService_ClanPrisustvo = new APIService("ClanPrisustvo");
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        public event EventHandler<System.ComponentModel.DataErrorsChangedEventArgs> ErrorsChanged;
+
 
         public int Id { get; set; }
         public string DatumTreninga
@@ -55,23 +61,36 @@ namespace Mobile.Models
                     {
                         var result = _apiService_ClanPrisustvo.Delete<bool>(PrisustvoId);
                         PrisustvoId = 0;
+                        _Prisustvuje = value;
                     }
                     if (value == true && PrisustvoId == 0)
                     {
-                        var insert = new Wellness.Model.Requests.ClanPrisustvoInsertRequest()
+                        var searchRequest = new ClanPrisustvoSearchRequest()
                         {
-                            ClanId = ClanId,
-                            TreningId = Id,
-                            Prisustvovao = false,
+                            TreningId = Id
                         };
-                        var result = AsyncHelpers.RunSync<Wellness.Model.ClanPrisustvo>(() => _apiService_ClanPrisustvo.Insert<Wellness.Model.ClanPrisustvo>(insert));
-                       
+                        var treninzi = AsyncHelpers.RunSync<List<Wellness.Model.ClanPrisustvo>>(() => _apiService_ClanPrisustvo.Get<List<Wellness.Model.ClanPrisustvo>>(searchRequest));
+                        if (treninzi.Count == MaxPrisutnih)
+                        {
+                            _Prisustvuje = false;
+                            PopupNavigation.Instance.PushAsync(new PopupView("Error", "Sva mjesta su vec popunjenja!"));
+                        }
 
 
-                        PrisustvoId = result.Id;
+                        else
+                        {
+                            var insert = new Wellness.Model.Requests.ClanPrisustvoInsertRequest()
+                            {
+                                ClanId = ClanId,
+                                TreningId = Id,
+                                Prisustvovao = false,
+                            };
+                            var result = AsyncHelpers.RunSync<Wellness.Model.ClanPrisustvo>(() => _apiService_ClanPrisustvo.Insert<Wellness.Model.ClanPrisustvo>(insert));
+                            PrisustvoId = result.Id;
+                        }
                     }
                 }
-                _Prisustvuje = value;
+
             }
 
         }
@@ -81,7 +100,13 @@ namespace Mobile.Models
         public string TrenutnoMaxPrisutnih { get { return TrenutnoPrisutnih.ToString() + "/" + MaxPrisutnih.ToString(); } }
         public bool? OdrzanNeagitve
         {
-            get { return !Odrzan; }
+            get
+            {
+
+                if (Odrzan == null)
+                    return false;
+                return !Odrzan;
+            }
             set { OdrzanNeagitve = !Odrzan; }
         }
         public bool OcjenjenNeagtive
@@ -95,5 +120,24 @@ namespace Mobile.Models
                 return !ClanPrisustvovaoTreningu;
             }
         }
+
+
+
+
+
+
+
+
+
+
+        
+        private void RaisePropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+
+
     }
 }

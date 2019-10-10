@@ -1,4 +1,13 @@
-﻿using Syncfusion.SfPicker.XForms.UWP;
+﻿using Syncfusion.SfAutoComplete.XForms.UWP;
+using Syncfusion.SfNumericTextBox.XForms.UWP;
+using Syncfusion.SfNumericUpDown.XForms.UWP;
+using Syncfusion.SfPicker.XForms.UWP;
+using Syncfusion.SfRating.XForms.UWP;
+using Syncfusion.XForms.UWP.Buttons;
+using Syncfusion.XForms.UWP.ComboBox;
+using Syncfusion.XForms.UWP.DataForm;
+using Syncfusion.XForms.UWP.MaskedEdit;
+using Syncfusion.XForms.UWP.TextInputLayout;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -64,7 +73,20 @@ namespace Mobile.UWP
                 assembliesToInclude.Add(typeof(Syncfusion.SfNumericTextBox.XForms.UWP.SfNumericTextBoxRenderer).GetTypeInfo().Assembly);
                 assembliesToInclude.Add(typeof(SfPickerRenderer).GetTypeInfo().Assembly);
                 assembliesToInclude.Add(typeof(Syncfusion.XForms.UWP.Expander.SfExpanderRenderer).GetTypeInfo().Assembly);
-
+                assembliesToInclude.Add(typeof(Syncfusion.XForms.UWP.Border.SfBorderRenderer).GetTypeInfo().Assembly);
+                assembliesToInclude.Add(typeof(SfRatingRenderer).GetTypeInfo().Assembly);
+                #region DataForm
+                assembliesToInclude.Add(typeof(SfDataFormRenderer).GetTypeInfo().Assembly);
+                assembliesToInclude.Add(typeof(SfNumericTextBoxRenderer).GetTypeInfo().Assembly);
+                assembliesToInclude.Add(typeof(SfNumericUpDownRenderer).GetTypeInfo().Assembly);
+                assembliesToInclude.Add(typeof(SfSegmentedControlRenderer).GetTypeInfo().Assembly);
+                assembliesToInclude.Add(typeof(SfComboBoxRenderer).GetTypeInfo().Assembly);
+                assembliesToInclude.Add(typeof(SfCheckBoxRenderer).GetTypeInfo().Assembly);
+                assembliesToInclude.Add(typeof(SfRadioButtonRenderer).GetTypeInfo().Assembly);
+                assembliesToInclude.Add(typeof(SfMaskedEditRenderer).GetTypeInfo().Assembly);
+                assembliesToInclude.Add(typeof(SfTextInputLayoutRenderer).GetTypeInfo().Assembly);
+                assembliesToInclude.Add(typeof(SfAutoCompleteRenderer).GetTypeInfo().Assembly);
+                #endregion DataForm
                 //Xamarin.Forms.Forms.Init(e);
                 // replaces Xamarin.Forms.Forms.Init(e);        
                 Xamarin.Forms.Forms.Init(e, assembliesToInclude);

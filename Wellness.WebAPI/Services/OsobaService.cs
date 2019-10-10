@@ -131,6 +131,11 @@ namespace Wellness.WebAPI.Services
             var osoba = _context.Osoba.Where(o => o.Id == id)
                 .Include(o => o.Uloga)
                 .FirstOrDefault();
+
+            if (request.UlogaId == 0)
+                request.UlogaId =(int)osoba.UlogaId;
+
+
             _mapper.Map(request, osoba);
             _context.SaveChanges();
 

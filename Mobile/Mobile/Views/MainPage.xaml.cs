@@ -33,6 +33,14 @@ namespace Mobile.Views
         {
             if (!MenuPages.ContainsKey(id))
             {
+
+                MenuPages.Clear();
+                if(MenuPages.ContainsKey(id))
+                {
+                    MenuPages.Remove(id);
+                }
+
+
                 switch (id)
                 {
                     case (int)MenuItemType.Browse:
@@ -42,10 +50,19 @@ namespace Mobile.Views
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
                         break;
                     case (int)MenuItemType.TreningPage:
-                        MenuPages.Add(id, new NavigationPage(new TreningPage(_clan)));
+                        MenuPages.Add(id, new NavigationPage(new TreningPage(_clan,false)));
+                        break;
+                    case (int)MenuItemType.Historija:
+                        MenuPages.Add(id, new NavigationPage(new TreningPage(_clan,true)));
                         break;
                     case (int)MenuItemType.QRCode:
                         MenuPages.Add(id, new NavigationPage(new QRCodePage(_clan)));
+                        break;
+                    case (int)MenuItemType.ClanarinaPage:
+                        MenuPages.Add(id, new NavigationPage(new ClanarinaPage(_clan)));
+                        break;
+                    case (int)MenuItemType.PostavkePage:
+                        MenuPages.Add(id, new NavigationPage(new PostavkePage(_clan)));
                         break;
                 }
             }
