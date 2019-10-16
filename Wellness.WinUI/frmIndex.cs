@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Wellness.Model;
+using Wellness.WinUI.Clan;
 using Wellness.WinUI.Clanarina;
 using Wellness.WinUI.Menadzment;
 using Wellness.WinUI.Trening;
@@ -20,11 +21,13 @@ namespace Wellness.WinUI
         private readonly Radnik _radnik;
         private  Trener _trener = null;
         private readonly APIService _apiService_Trener = new APIService("Trener");
-        public frmIndex(Radnik radnik)
+        private readonly frmLogin _frmLogin;
+        public frmIndex(Radnik radnik,frmLogin frmLogin)
         {
             InitializeComponent();
             _radnik = radnik;
-            
+            _frmLogin = frmLogin;
+            frmLogin.Hide();
         }
 
         private void ShowNewForm(object sender, EventArgs e)
@@ -96,7 +99,6 @@ namespace Wellness.WinUI
         {
             frmClanarine frm = new frmClanarine();
             frm.MdiParent = this;
-            frm.WindowState = FormWindowState.Maximized;
             frm.Show();
            
         }
@@ -137,7 +139,7 @@ namespace Wellness.WinUI
                 treningToolStripMenuItem.Visible = true;
                 clanarinaToolStripMenuItem.Visible = false;
                 upravljanjeClanovimaToolStripMenuItem.Visible = false;
-
+                qRKodSkenerToolStripMenuItem.Visible = true;
 
                 var TrenerSearchRequest = new Model.Requests.TrenerSearchRequest()
                     {
@@ -157,6 +159,7 @@ namespace Wellness.WinUI
                 treningToolStripMenuItem.Visible = false;
                 clanarinaToolStripMenuItem.Visible = true;
                 upravljanjeClanovimaToolStripMenuItem.Visible = true;
+                qRKodSkenerToolStripMenuItem.Visible = false;
             }
             if (_radnik.Osoba.Uloga.Naziv == "Menadzer")
             {
@@ -164,6 +167,7 @@ namespace Wellness.WinUI
                 treningToolStripMenuItem.Visible = false;
                 clanarinaToolStripMenuItem.Visible = false;
                 upravljanjeClanovimaToolStripMenuItem.Visible = false;
+                qRKodSkenerToolStripMenuItem.Visible = true;
             }
         }
 
@@ -181,6 +185,7 @@ namespace Wellness.WinUI
         private void IzvjestavanjeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmIzvjestaj frm = new frmIzvjestaj();
+            frm.MdiParent = this;
             frm.Show();
         }
 
@@ -191,24 +196,28 @@ namespace Wellness.WinUI
         private void DodajNovogClanaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frm = new frmRadniciDetalji(null,true);
+            frm.MdiParent = this;
             frm.Show();
         }
 
         private void PregledClanovaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frm = new frmRadnici(null, true);
+            frm.MdiParent = this;
             frm.Show();
         }
 
         private void PokreniSkeniranjeQrKodovaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frm = new frmCameraQRDecoder();
+            frm.MdiParent = this;
             frm.Show();
         }
 
         private void PregledPaketaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frm = new frmPaketi();
+            frm.MdiParent = this;
             frm.Show();
         }
 
@@ -221,31 +230,64 @@ namespace Wellness.WinUI
         private void PregledZaposlenikaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmRadnici frm = new frmRadnici(_radnik);
+            frm.MdiParent = this;
             frm.Show();
         }
 
         private void DodajNovogZaposlenikaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmRadniciDetalji frm = new frmRadniciDetalji();
+
             frm.Show();
         }
 
         private void IsplataZaposlenikaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmIsplataRadnika frm = new frmIsplataRadnika();
+            frm.MdiParent = this;
             frm.Show();
         }
 
         private void DodajNoviTipTreningaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new Menadzment.frmTipTreningaDetalji();
+            var frm = new frmTipTreninga(null);
+            frm.MdiParent = this;
             frm.Show();
+
         }
 
         private void PregledTipovaTreningaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new frmTipTreninga();
+            var frm = new Menadzment.frmTipTreningaDetalji();
+            frm.MdiParent = this;
             frm.Show();
+        }
+
+        private void pregledClanovaToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            var frm = new frmClan();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void dodajNovogClanaToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            var frm = new frmRadniciDetalji(null, true);
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void odjaviSeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            APIService._password = "";
+            APIService._password = "";
+            this.Close();
+            _frmLogin.Show();
+        }
+
+        private void frmIndex_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _frmLogin.Close();
         }
     }
 }

@@ -56,6 +56,22 @@ namespace Wellness.WebAPI.Services
                     {
                         query = query.Where(q => q.TrenerId == request.TrenerID);
                     }
+                    if (request.MaksimalnoPristunihManjeOd != 0)
+                    {
+                        query = query.Where(q => q.MaksimalnoPrisutnih < request.MaksimalnoPristunihManjeOd);
+                    }
+                    if (request.MaksimalnoPristunihVeceOd != 0)
+                    {
+                        query = query.Where(q => q.MaksimalnoPrisutnih > request.MaksimalnoPristunihVeceOd);
+                    }
+                    if (request.Odrzan==true)
+                    {
+                        query = query.Where(q => q.Odrzan==request.Odrzan);
+                    }
+                    if (request.Odrzan == false)
+                    {
+                        query = query.Where(q => q.Odrzan == false || q.Odrzan == null);
+                    }
                 }
             }
             var list = query.ToList();

@@ -33,7 +33,6 @@
             this.txtNaziv = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtCijena = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtOpis = new System.Windows.Forms.TextBox();
             this.cbPristupGrupnimTreninzima = new System.Windows.Forms.CheckBox();
@@ -81,14 +80,6 @@
             this.label2.Size = new System.Drawing.Size(36, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Cijena";
-            // 
-            // txtCijena
-            // 
-            this.txtCijena.Location = new System.Drawing.Point(70, 59);
-            this.txtCijena.Name = "txtCijena";
-            this.txtCijena.Size = new System.Drawing.Size(110, 20);
-            this.txtCijena.TabIndex = 2;
-            this.txtCijena.Validating += new System.ComponentModel.CancelEventHandler(this.TxtCijena_Validating);
             // 
             // label3
             // 
@@ -203,6 +194,7 @@
             this.txtSlika.Size = new System.Drawing.Size(239, 20);
             this.txtSlika.TabIndex = 16;
             this.txtSlika.TextChanged += new System.EventHandler(this.TxtSlika_TextChanged);
+            this.txtSlika.Validating += new System.ComponentModel.CancelEventHandler(this.txtSlika_Validating);
             // 
             // btnDodajSliku
             // 
@@ -235,7 +227,7 @@
             // nudCijena
             // 
             this.nudCijena.DecimalPlaces = 2;
-            this.nudCijena.Location = new System.Drawing.Point(205, 59);
+            this.nudCijena.Location = new System.Drawing.Point(71, 60);
             this.nudCijena.Maximum = new decimal(new int[] {
             1410065407,
             2,
@@ -244,6 +236,11 @@
             this.nudCijena.Name = "nudCijena";
             this.nudCijena.Size = new System.Drawing.Size(120, 20);
             this.nudCijena.TabIndex = 19;
+            this.nudCijena.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.nudCijena.Validating += new System.ComponentModel.CancelEventHandler(this.NudCijena_Validating);
             // 
             // frmPaketDetalji
@@ -267,7 +264,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtOpis);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtCijena);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNaziv);
             this.Name = "frmPaketDetalji";
@@ -286,7 +282,6 @@
         private System.Windows.Forms.TextBox txtNaziv;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtCijena;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtOpis;
         private System.Windows.Forms.CheckBox cbPristupGrupnimTreninzima;

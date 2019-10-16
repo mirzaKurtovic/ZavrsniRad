@@ -35,12 +35,17 @@ namespace Wellness.WinUI.Trening
             };
 
             var treninzi = await _apiService.Get<List<Model.Trening>>(search);
+            treninzi = treninzi.OrderByDescending(t => t.Odrzan).ToList();
             dgvTreninzi.DataSource = treninzi;
 
             foreach (DataGridViewRow row in dgvTreninzi.Rows)
             {
                 Model.Trening obj = (Model.Trening)row.DataBoundItem;
                 row.Cells[1].Value = obj.TipTreninga.TipTreninga1;
+                if (obj.Odrzan == false || obj.Odrzan == null)
+                    row.Cells[10].Value = "false";
+                else
+                    row.Cells[10].Value = "true";
             }
 
             //---------------------------------------------------
@@ -57,9 +62,18 @@ namespace Wellness.WinUI.Trening
             cbTipTreninga.DisplayMember = "TipTreninga1";
             cbTipTreninga.ValueMember = "id";
             cbTipTreninga.SelectedValue = svi.Id;
+            cbTipTreninga.DropDownStyle = ComboBoxStyle.DropDownList;
             //---------------------------------------------------
             dtpDatumTreninga.Enabled = false;
             cbSviDatumi.Checked = true;
+            //---------------------------------------------------
+            List<string> Odrzan = new List<string>();
+
+            Odrzan.Add("svi");
+            Odrzan.Add("odrzani");
+            Odrzan.Add("ne odrzani");
+            cbOdrzan.DataSource = Odrzan;
+            cbOdrzan.DropDownStyle = ComboBoxStyle.DropDownList;
 
         }
 
@@ -88,17 +102,36 @@ namespace Wellness.WinUI.Trening
             {
                 TipTreningaID = Convert.ToInt32(cbTipTreninga.SelectedValue),
                 DatumTreninga = dt,
-                TrenerID = _trener.Id
+                TrenerID = _trener.Id,
+                MaksimalnoPristunihManjeOd=(int)numMaksimalnoPrisutnihManjeOd.Value,
+                MaksimalnoPristunihVeceOd = (int)numMaksimalnoPrisutnihVeceOd.Value,
             };
+            if((string)cbOdrzan.SelectedValue=="svi")
+            {
+                search.Odrzan = null;
+            }
+            if ((string)cbOdrzan.SelectedValue == "odrzani")
+            {
+                search.Odrzan = true;
+            }
+            if ((string)cbOdrzan.SelectedValue == "ne odrzani")
+            {
+                search.Odrzan = false;
+            }
 
 
             var treninzi = await _apiService.Get<List<Model.Trening>>(search);
+            treninzi = treninzi.OrderByDescending(t => t.Odrzan).ToList();
             dgvTreninzi.DataSource = treninzi;
 
             foreach (DataGridViewRow row in dgvTreninzi.Rows)
             {
                 Model.Trening obj = (Model.Trening)row.DataBoundItem;
                 row.Cells[1].Value = obj.TipTreninga.TipTreninga1;
+                if (obj.Odrzan == false || obj.Odrzan == null)
+                    row.Cells[10].Value = "false";
+                else
+                    row.Cells[10].Value = "true";
             }
 
         }

@@ -180,6 +180,7 @@
             // 
             // pbQRKod
             // 
+            this.pbQRKod.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbQRKod.Location = new System.Drawing.Point(168, 406);
             this.pbQRKod.Name = "pbQRKod";
             this.pbQRKod.Size = new System.Drawing.Size(238, 152);

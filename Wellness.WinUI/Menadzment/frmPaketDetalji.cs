@@ -20,6 +20,8 @@ namespace Wellness.WinUI.Menadzment
         APIService _apiService_Paket = new APIService("Paket");
         APIService _apiService_PaketPristupniDani = new APIService("PaketPristupniDani");
 
+        public Wellness.Model.Paket p = null;
+
         Validation _validation = new Validation();
 
         byte[] Img = null;
@@ -62,7 +64,7 @@ namespace Wellness.WinUI.Menadzment
                     Id = (int)paketId
                 });
                 var paket = paketList[0];
-
+                p = paket;
                 if (paket != null)
                 {
                     if (!string.IsNullOrEmpty(paket.Naziv))
@@ -148,71 +150,84 @@ namespace Wellness.WinUI.Menadzment
 
         private async void BtnDodajPaket_Click(object sender, EventArgs e)
         {
-            var PaketInsertRequest = new Wellness.Model.Requests.PaketInsertRequest
+            if (this.ValidateChildren())
             {
-                Naziv = txtNaziv.Text,
-                Cijena = nudCijena.Value,
-                Opis = txtOpis.Text,
-                PristupGrupnimTreninzima = cbPristupGrupnimTreninzima.Checked,
-                NeogranicenPristup = cbNeogranicenPristup.Checked,
-                Slika = Img
-            };
-
-            if (PaketInsertRequest.NeogranicenPristup == false)
-            {
-                DateTime Od = new DateTime(2000, 1, 1, dtpDatumOd.Value.Hour, dtpDatumOd.Value.Minute, 1, 1);
-                DateTime Do = new DateTime(2000, 1, 1, dtpDatumDo.Value.Hour, dtpDatumDo.Value.Minute, 1, 1);
-
-                PaketInsertRequest.VrijemePristupaOd = Od;
-                PaketInsertRequest.VrijemePristupaDo = Do;
-            }
-
-            if (paketId == null)
-            {
-                var paketDB = await _apiService_Paket.Insert<Model.Paket>(PaketInsertRequest);
-
-
-                foreach (Wellness.Model.PristupDanima x in clbPristupniDani.CheckedItems)
+                var PaketInsertRequest = new Wellness.Model.Requests.PaketInsertRequest
                 {
-                    var paketPristupniDaniInsertRequest = new Model.Requests.PaketPristupniDaniInsertRequest()
+                    Naziv = txtNaziv.Text,
+                    Cijena = nudCijena.Value,
+                    Opis = txtOpis.Text,
+                    PristupGrupnimTreninzima = cbPristupGrupnimTreninzima.Checked,
+                    NeogranicenPristup = cbNeogranicenPristup.Checked,
+                };
+                if (Img != null)
+                {
+                    PaketInsertRequest.Slika = Img;
+                }
+                else
+                {
+                    if (p != null)
                     {
-                        PaketId = paketDB.Id,
-                        PristupniDaniId = x.Id
-                    };
-
-                    await _apiService_PaketPristupniDani.Insert<Model.PaketPristupniDani>(paketPristupniDaniInsertRequest);
+                        PaketInsertRequest.Slika = p.Slika;
+                    }
                 }
 
-                //doradit
-                MessageBox.Show("Uspjesno ste dodali novi paket", "Success", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            }
-            else
-            {
-                var paketDB = await _apiService_Paket.Update<Model.Paket>(paketId,PaketInsertRequest);
-                var paketPristupniDani = await _apiService_PaketPristupniDani.Get<List<Model.PaketPristupniDani>>(new PaketPristupniDaniSearchRequest()
+                if (PaketInsertRequest.NeogranicenPristup == false)
                 {
+                    DateTime Od = new DateTime(2000, 1, 1, dtpDatumOd.Value.Hour, dtpDatumOd.Value.Minute, 1, 1);
+                    DateTime Do = new DateTime(2000, 1, 1, dtpDatumDo.Value.Hour, dtpDatumDo.Value.Minute, 1, 1);
 
-                    PaketId = (int)paketId
-                });
-
-                foreach(Model.PaketPristupniDani x in paketPristupniDani)
-                {
-                    await _apiService_PaketPristupniDani.Delete<bool>(x.Id);
+                    PaketInsertRequest.VrijemePristupaOd = Od;
+                    PaketInsertRequest.VrijemePristupaDo = Do;
                 }
-                foreach (Wellness.Model.PristupDanima x in clbPristupniDani.CheckedItems)
+
+                if (paketId == null)
                 {
-                    var paketPristupniDaniInsertRequest = new Model.Requests.PaketPristupniDaniInsertRequest()
+                    var paketDB = await _apiService_Paket.Insert<Model.Paket>(PaketInsertRequest);
+
+
+                    foreach (Wellness.Model.PristupDanima x in clbPristupniDani.CheckedItems)
                     {
-                        PaketId = paketDB.Id,
-                        PristupniDaniId = x.Id
-                    };
-                    await _apiService_PaketPristupniDani.Insert<Model.PaketPristupniDani>(paketPristupniDaniInsertRequest);
+                        var paketPristupniDaniInsertRequest = new Model.Requests.PaketPristupniDaniInsertRequest()
+                        {
+                            PaketId = paketDB.Id,
+                            PristupniDaniId = x.Id
+                        };
 
+                        await _apiService_PaketPristupniDani.Insert<Model.PaketPristupniDani>(paketPristupniDaniInsertRequest);
+                    }
+
+                    //doradit
+                    MessageBox.Show("Uspjesno ste dodali novi paket", "Success", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
-                MessageBox.Show("Uspjesno ste azurirali paket", "Success", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            }
+                else
+                {
+                    var paketDB = await _apiService_Paket.Update<Model.Paket>(paketId, PaketInsertRequest);
+                    var paketPristupniDani = await _apiService_PaketPristupniDani.Get<List<Model.PaketPristupniDani>>(new PaketPristupniDaniSearchRequest()
+                    {
 
-            Close();
+                        PaketId = (int)paketId
+                    });
+
+                    foreach (Model.PaketPristupniDani x in paketPristupniDani)
+                    {
+                        await _apiService_PaketPristupniDani.Delete<bool>(x.Id);
+                    }
+                    foreach (Wellness.Model.PristupDanima x in clbPristupniDani.CheckedItems)
+                    {
+                        var paketPristupniDaniInsertRequest = new Model.Requests.PaketPristupniDaniInsertRequest()
+                        {
+                            PaketId = paketDB.Id,
+                            PristupniDaniId = x.Id
+                        };
+                        await _apiService_PaketPristupniDani.Insert<Model.PaketPristupniDani>(paketPristupniDaniInsertRequest);
+
+                    }
+                    MessageBox.Show("Uspjesno ste azurirali paket", "Success", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                }
+
+                Close();
+            }
         }
 
         private void BtnDodajSliku_Click(object sender, EventArgs e)
@@ -277,6 +292,14 @@ namespace Wellness.WinUI.Menadzment
         private void NudCijena_Validating(object sender, CancelEventArgs e)
         {
 
+        }
+
+        private void txtSlika_Validating(object sender, CancelEventArgs e)
+        {
+            if (p == null)
+            {
+                _validation.Required(sender, e, PaketErrorProvider);
+            }
         }
     }
 }

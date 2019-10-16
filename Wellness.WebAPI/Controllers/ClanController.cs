@@ -35,10 +35,12 @@ namespace Wellness.WebAPI.Controllers
                            Ime = osoba.Ime,
                            Prezime = osoba.Prezime,
                            OsobaId=osoba.Id,
+                           Osoba=_mapper.Map<Model.Osoba>(osoba),
                            QrCodeText=clan.QrCodeText,
                            Qrcode=clan.Qrcode
                        };
 
+            #region filter
             if (request.OsobaId != null)
             {
                 list = list.Where(c => c.OsobaId == request.OsobaId);
@@ -53,6 +55,20 @@ namespace Wellness.WebAPI.Controllers
             {
                 list = list.Where(c => c.QrCodeText == request.QrCodeText);
             }
+            if (!string.IsNullOrEmpty(request.Ime))
+            {
+                list = list.Where(c => c.Ime == request.Ime);
+            }
+            if (!string.IsNullOrEmpty(request.Prezime))
+            {
+                list = list.Where(c => c.Prezime == request.Prezime);
+            }
+            if (!string.IsNullOrEmpty(request.KorisnickoIme))
+            {
+                list = list.Where(c => c.Osoba.KorisnickoIme == request.KorisnickoIme);
+            }
+            #endregion filter
+
             return list.ToList();
         }
 

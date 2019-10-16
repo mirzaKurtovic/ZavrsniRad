@@ -123,7 +123,7 @@ namespace Wellness.WinUI
         async void timer_Tick(object sender, EventArgs e)
         {
             await tick();
-            lblTrenutnaRadnja.Text = "eso";
+            //lblTrenutnaRadnja.Text = "eso";
         }
         //zaustavljanje dekodiranja nakon odredjenog intervala...
         private void timerDecodingTotal_Elapsed(object sender, ElapsedEventArgs e)
@@ -280,7 +280,7 @@ namespace Wellness.WinUI
                             dateTime.Minute,
                             clanarina.Paket.VrijemePristupaOd.Value.Second,
                             clanarina.Paket.VrijemePristupaOd.Value.Millisecond);
-                        if (DateTimeUsporedni > clanarina.Paket.VrijemePristupaOd && DateTimeUsporedni < clanarina.Paket.VrijemePristupaDo)
+                        if (DateTimeUsporedni > clanarina.Paket.VrijemePristupaOd && clanarina.Paket.VrijemePristupaDo > DateTimeUsporedni)
                         {
                             textMain = "Pristup odobren";
                             textSide = "Dobro došli";
@@ -331,18 +331,17 @@ namespace Wellness.WinUI
                         timerDecodingTotal.Enabled = true;
 
                         timer.Enabled = true;
-
-                        playBeep(BeepOK);
                     }
                 }
-                if (lblTrenutnaRadnja.Text!= "Detekcija pokreta")
-                lblTrenutnaRadnja.Text = "Detekcija pokreta";
+            
             }
-            else
-            {
-                if (lblTrenutnaRadnja.Text != "Detekcija QR koda")
-                    lblTrenutnaRadnja.Text = "Detekcija QR koda";
-            }
+            //if (lblTrenutnaRadnja.Text != "Detekcija pokreta")
+            //    lblTrenutnaRadnja.Text = "Detekcija pokreta";
+            //else
+            //{
+            //    if (lblTrenutnaRadnja.Text != "Detekcija QR koda")
+            //        lblTrenutnaRadnja.Text = "Detekcija QR koda";
+            //}
         }
 
         private void FrmCameraQRDecoder_FormClosing(object sender, FormClosingEventArgs e)
@@ -421,11 +420,12 @@ namespace Wellness.WinUI
         }
         void sizeChanged()
         {
+            panelPictureBox.Location = new System.Drawing.Point(0, 0);
             panelPictureBox.Height = panelPictureBox.Parent.Height;
             panelPictureBox.Width = panelPictureBox.Parent.Width;
 
-            pictureBox1.Height = pictureBox1.Parent.Height-25;
-            pictureBox1.Width = pictureBox1.Parent.Width-25;
+            pictureBox1.Height = pictureBox1.Parent.Height;
+            pictureBox1.Width = pictureBox1.Parent.Width;
         }
 
 

@@ -41,6 +41,7 @@
             this.tipTreningaIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipTreningaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.trenerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Odrzan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.treningBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cbTipTreninga = new System.Windows.Forms.ComboBox();
             this.dtpDatumTreninga = new System.Windows.Forms.DateTimePicker();
@@ -48,17 +49,24 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnTrazi = new System.Windows.Forms.Button();
             this.cbSviDatumi = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbOdrzan = new System.Windows.Forms.ComboBox();
+            this.numMaksimalnoPrisutnihVeceOd = new System.Windows.Forms.NumericUpDown();
+            this.numMaksimalnoPrisutnihManjeOd = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTreninzi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.treningBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numMaksimalnoPrisutnihVeceOd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numMaksimalnoPrisutnihManjeOd)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgvTreninzi);
-            this.groupBox1.Location = new System.Drawing.Point(12, 153);
+            this.groupBox1.Location = new System.Drawing.Point(15, 227);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(590, 285);
+            this.groupBox1.Size = new System.Drawing.Size(773, 285);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Treninzi";
@@ -68,6 +76,7 @@
             this.dgvTreninzi.AllowUserToAddRows = false;
             this.dgvTreninzi.AllowUserToDeleteRows = false;
             this.dgvTreninzi.AutoGenerateColumns = false;
+            this.dgvTreninzi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTreninzi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTreninzi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
@@ -79,14 +88,15 @@
             this.trenerIdDataGridViewTextBoxColumn,
             this.tipTreningaIdDataGridViewTextBoxColumn,
             this.tipTreningaDataGridViewTextBoxColumn,
-            this.trenerDataGridViewTextBoxColumn});
+            this.trenerDataGridViewTextBoxColumn,
+            this.Odrzan});
             this.dgvTreninzi.DataSource = this.treningBindingSource;
             this.dgvTreninzi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvTreninzi.Location = new System.Drawing.Point(3, 16);
             this.dgvTreninzi.Name = "dgvTreninzi";
             this.dgvTreninzi.ReadOnly = true;
             this.dgvTreninzi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTreninzi.Size = new System.Drawing.Size(584, 266);
+            this.dgvTreninzi.Size = new System.Drawing.Size(767, 266);
             this.dgvTreninzi.TabIndex = 0;
             this.dgvTreninzi.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DgvTreninzi_MouseDoubleClick);
             // 
@@ -131,7 +141,6 @@
             this.maksimalnoPrisutnihDataGridViewTextBoxColumn.HeaderText = "MaksimalnoPrisutnih";
             this.maksimalnoPrisutnihDataGridViewTextBoxColumn.Name = "maksimalnoPrisutnihDataGridViewTextBoxColumn";
             this.maksimalnoPrisutnihDataGridViewTextBoxColumn.ReadOnly = true;
-            this.maksimalnoPrisutnihDataGridViewTextBoxColumn.Width = 140;
             // 
             // trenerIdDataGridViewTextBoxColumn
             // 
@@ -164,6 +173,12 @@
             this.trenerDataGridViewTextBoxColumn.Name = "trenerDataGridViewTextBoxColumn";
             this.trenerDataGridViewTextBoxColumn.ReadOnly = true;
             this.trenerDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // Odrzan
+            // 
+            this.Odrzan.HeaderText = "Odrzan";
+            this.Odrzan.Name = "Odrzan";
+            this.Odrzan.ReadOnly = true;
             // 
             // treningBindingSource
             // 
@@ -206,7 +221,7 @@
             // 
             // btnTrazi
             // 
-            this.btnTrazi.Location = new System.Drawing.Point(15, 105);
+            this.btnTrazi.Location = new System.Drawing.Point(15, 182);
             this.btnTrazi.Name = "btnTrazi";
             this.btnTrazi.Size = new System.Drawing.Size(121, 23);
             this.btnTrazi.TabIndex = 5;
@@ -227,11 +242,56 @@
             this.cbSviDatumi.UseVisualStyleBackColor = true;
             this.cbSviDatumi.CheckedChanged += new System.EventHandler(this.CbSviDatumi_CheckedChanged);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 93);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Odrzan";
+            // 
+            // cbOdrzan
+            // 
+            this.cbOdrzan.FormattingEnabled = true;
+            this.cbOdrzan.Location = new System.Drawing.Point(15, 109);
+            this.cbOdrzan.Name = "cbOdrzan";
+            this.cbOdrzan.Size = new System.Drawing.Size(121, 21);
+            this.cbOdrzan.TabIndex = 7;
+            // 
+            // numMaksimalnoPrisutnihVeceOd
+            // 
+            this.numMaksimalnoPrisutnihVeceOd.Location = new System.Drawing.Point(15, 145);
+            this.numMaksimalnoPrisutnihVeceOd.Name = "numMaksimalnoPrisutnihVeceOd";
+            this.numMaksimalnoPrisutnihVeceOd.Size = new System.Drawing.Size(51, 20);
+            this.numMaksimalnoPrisutnihVeceOd.TabIndex = 9;
+            // 
+            // numMaksimalnoPrisutnihManjeOd
+            // 
+            this.numMaksimalnoPrisutnihManjeOd.Location = new System.Drawing.Point(165, 145);
+            this.numMaksimalnoPrisutnihManjeOd.Name = "numMaksimalnoPrisutnihManjeOd";
+            this.numMaksimalnoPrisutnihManjeOd.Size = new System.Drawing.Size(51, 20);
+            this.numMaksimalnoPrisutnihManjeOd.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(72, 147);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(87, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "> Max prisutnih <";
+            // 
             // frmTrening
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(615, 450);
+            this.ClientSize = new System.Drawing.Size(801, 524);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.numMaksimalnoPrisutnihManjeOd);
+            this.Controls.Add(this.numMaksimalnoPrisutnihVeceOd);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.cbOdrzan);
             this.Controls.Add(this.cbSviDatumi);
             this.Controls.Add(this.btnTrazi);
             this.Controls.Add(this.label2);
@@ -245,6 +305,8 @@
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTreninzi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.treningBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numMaksimalnoPrisutnihVeceOd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numMaksimalnoPrisutnihManjeOd)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -255,6 +317,12 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvTreninzi;
         private System.Windows.Forms.BindingSource treningBindingSource;
+        private System.Windows.Forms.ComboBox cbTipTreninga;
+        private System.Windows.Forms.DateTimePicker dtpDatumTreninga;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnTrazi;
+        private System.Windows.Forms.CheckBox cbSviDatumi;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn TipTreninga;
         private System.Windows.Forms.DataGridViewTextBoxColumn datumTreningaDataGridViewTextBoxColumn;
@@ -265,11 +333,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tipTreningaIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipTreningaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn trenerDataGridViewTextBoxColumn;
-        private System.Windows.Forms.ComboBox cbTipTreninga;
-        private System.Windows.Forms.DateTimePicker dtpDatumTreninga;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnTrazi;
-        private System.Windows.Forms.CheckBox cbSviDatumi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Odrzan;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cbOdrzan;
+        private System.Windows.Forms.NumericUpDown numMaksimalnoPrisutnihVeceOd;
+        private System.Windows.Forms.NumericUpDown numMaksimalnoPrisutnihManjeOd;
+        private System.Windows.Forms.Label label4;
     }
 }

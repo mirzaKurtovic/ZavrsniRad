@@ -216,27 +216,27 @@ namespace Wellness.WinUI.Menadzment
 
             //------------------
 
+            Wellness.Model.Radnik Radnik = null;
+
             if (_id != null)
             {
                 var Osoba = await _apiService.GetById<Wellness.Model.Osoba>(_id);
-                var radnikList =await _apiService_Radnik.Get<List<Wellness.Model.Radnik>>(new RadnikSearchRequest() { OsobaId=Osoba.Id});
-                var Radnik = radnikList[0];
 
-                if (Osoba.Ime != null)txtIme.Text = Radnik.Osoba.Ime;
-                if(Osoba.Prezime != null)txtPrezime.Text = Radnik.Osoba.Prezime;
-                if (Osoba.Spol != null) cbSpol.SelectedValue = Radnik.Osoba.Spol;
-                if (Osoba.GradId != null) cbMjestoBoravka.SelectedValue = Radnik.Osoba.GradId;
-                if (Osoba.Jmbg != null) txtJMBG.Text = Radnik.Osoba.Jmbg;
-                if (Osoba.Email != null) txtEmail.Text = Radnik.Osoba.Email;
-                if (Osoba.BrojTelefona != null) txtBrojTelefona.Text = Radnik.Osoba.BrojTelefona;
-                if (Osoba.KorisnickoIme != null) txtUserName.Text = Radnik.Osoba.KorisnickoIme;
+                if (Osoba.Ime != null)txtIme.Text = Osoba.Ime;
+                if(Osoba.Prezime != null)txtPrezime.Text = Osoba.Prezime;
+                if (Osoba.Spol != null) cbSpol.SelectedValue = Osoba.Spol;
+                if (Osoba.GradId != null) cbMjestoBoravka.SelectedValue = Osoba.GradId;
+                if (Osoba.Jmbg != null) txtJMBG.Text = Osoba.Jmbg;
+                if (Osoba.Email != null) txtEmail.Text = Osoba.Email;
+                if (Osoba.BrojTelefona != null) txtBrojTelefona.Text = Osoba.BrojTelefona;
+                if (Osoba.KorisnickoIme != null) txtUserName.Text = Osoba.KorisnickoIme;
                 txtPassword.Enabled=false;
                 txtPasswordPotvrda.Enabled = false;
-                cbUloga.SelectedValue = Radnik.Osoba.UlogaId;
+                cbUloga.SelectedValue = Osoba.UlogaId;
                 cbUloga.DropDownStyle = ComboBoxStyle.DropDownList;
                 cbSpol.DropDownStyle = ComboBoxStyle.DropDownList;
                 cbMjestoBoravka.DropDownStyle = ComboBoxStyle.DropDownList;
-                if (cbUloga.SelectedItem.ToString() == "Clan")
+                if ((int)cbUloga.SelectedValue == 4)
                 {
                     txtSpecijalizacija.Visible = false;
                     lblSpecijalizacija.Visible = false;
@@ -246,12 +246,15 @@ namespace Wellness.WinUI.Menadzment
                 }
                 else
                 {
+                    var radnikList = await _apiService_Radnik.Get<List<Wellness.Model.Radnik>>(new RadnikSearchRequest() { OsobaId = Osoba.Id });
+                    Radnik = radnikList[0];
+
                     txtSatnica.Visible = true;
                     lblSatnica.Visible = true;
                     txtSatnica.Text = Math.Round(Radnik.Satnica,2).ToString();
                 }
 
-                if (cbUloga.SelectedItem.ToString() == "Trener")
+                if ((int)cbUloga.SelectedValue == 3)
                 {
                     txtSpecijalizacija.Visible = true;
                     txtSpecijalizacija.Enabled = true;
@@ -266,7 +269,7 @@ namespace Wellness.WinUI.Menadzment
                     lblSpecijalizacija.Visible = false;
                     isTrener = false;
                 }
-                if (cbUloga.SelectedItem.ToString() != "Clan")
+                if ((int)cbUloga.SelectedValue != 4)
                 {
                     txtSatnica.Visible = true;
                     txtSatnica.Enabled = true;
@@ -299,6 +302,7 @@ namespace Wellness.WinUI.Menadzment
             if (_validation.Required(sender, e, radniciDetaljiErrorProvider))
                 if (_validation.IsLetterOnly(sender, e, radniciDetaljiErrorProvider))
                     _validation.MinMaxLength(sender, e, radniciDetaljiErrorProvider, 3, 32);
+
         }
 
         private void TxtJMBG_Validating(object sender, CancelEventArgs e)

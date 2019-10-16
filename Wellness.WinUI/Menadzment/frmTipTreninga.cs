@@ -62,7 +62,15 @@ namespace Wellness.WinUI.Menadzment
                 var frm = new frmTrenerSpecijalizacija();
                 frm.Show();
             }
+
             
+        }
+
+        private void dgvTipTreninga_DoubleClick(object sender, EventArgs e)
+        {
+            Model.TipTreninga obj = (Model.TipTreninga)dgvTipTreninga.SelectedRows[0].DataBoundItem;
+            var frm = new frmTipTreninga(obj);
+            frm.Show();
         }
     }
 }

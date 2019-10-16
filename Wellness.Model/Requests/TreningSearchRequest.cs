@@ -14,5 +14,9 @@ namespace Wellness.Model.Requests
 
         public DateTime? VrijemePocetak { get; set; }
         public DateTime? VrijemeKraj { get; set; }
+
+        public int MaksimalnoPristunihVeceOd { get; set; }
+        public int MaksimalnoPristunihManjeOd { get; set; }
+        public bool? Odrzan { get; set; }
     }
 }

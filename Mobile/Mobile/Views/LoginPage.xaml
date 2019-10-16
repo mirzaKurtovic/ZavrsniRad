@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:Mobile.ViewModels"
+             xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
              mc:Ignorable="d"
              x:Class="Mobile.Views.LoginPage">
 
@@ -17,7 +18,46 @@
 
 
     <ContentPage.Content>
-        <StackLayout Padding="10" VerticalOptions="CenterAndExpand">
+
+
+
+        <Grid>
+
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+
+            <gradient:SfGradientView
+                
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="3"
+                >
+                <gradient:SfGradientView.BackgroundBrush>
+                    <gradient:SfLinearGradientBrush>
+                        <gradient:SfLinearGradientBrush.GradientStops>
+                            <gradient:SfGradientStop Color="#d9a7c7" Offset="0.0" />
+                            <gradient:SfGradientStop Color="#fffcdc" Offset="1.0" />
+                        </gradient:SfLinearGradientBrush.GradientStops>
+                    </gradient:SfLinearGradientBrush>
+                </gradient:SfGradientView.BackgroundBrush>
+            </gradient:SfGradientView>
+
+
+
+        <StackLayout 
+            Grid.Row="1"
+            Grid.ColumnSpan="3"
+            Padding="10" 
+            VerticalOptions="CenterAndExpand">
 
             
        
@@ -39,7 +79,7 @@
 
         </StackLayout>
 
-
+        </Grid>
 
     </ContentPage.Content>
 </ContentPage>

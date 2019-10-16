@@ -9,6 +9,7 @@
              xmlns:syncfusion2="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
              xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+             xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
              mc:Ignorable="d"
              x:Class="Mobile.Views.TreningDetaljiPage">
 
@@ -30,7 +31,6 @@
 
         <ScrollView>
             <Grid
-            Padding="15"
             FlowDirection="LeftToRight"
             >
                 <Grid.RowDefinitions>
@@ -59,19 +59,20 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
+
+              
+
                 <StackLayout
                 Grid.Row="0"
                 Grid.ColumnSpan="3"
                 >
 
-                    <border:SfBorder BorderColor="Black" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="20" >
-                        <Image Source="{Binding  treningDetaljiModel.TreningModel.Image, Converter={StaticResource imgConv}}"
+
+                    <Image Source="{Binding  treningDetaljiModel.TreningModel.Image, Converter={StaticResource imgConv}}"
                                            HeightRequest="200"
                                            WidthRequest="300"
                                            FlowDirection="LeftToRight"
                                            ></Image>
-                    </border:SfBorder>
-
                 </StackLayout>
 
 
@@ -137,25 +138,6 @@
                    IsVisible="{Binding treningDetaljiModel.TreningModel.ClanPrisustvovaoTreninguNeagativ}"
                    />
 
-                <!--<Entry  Placeholder="5" 
-                    IsVisible="{Binding treningDetaljiModel.TreningModel.ClanPrisustvovaoTreningu}"
-                    Keyboard="Numeric"
-                    Text="{Binding treningDetaljiModel.TreningModel.Ocjena}"
-                    IsEnabled="{Binding treningDetaljiModel.TreningModel.OcjenjenNeagtive}"
-                    Grid.Row="8"
-                    Grid.Column="1"
-                    />-->
-
-
-
-                <!--<Button 
-                  Text="Ocjeni"
-                    IsVisible="{Binding treningDetaljiModel.TreningModel.ClanPrisustvovaoTreningu}"
-                    IsEnabled="{Binding treningDetaljiModel.TreningModel.OcjenjenNeagtive}"
-
-                            />-->
-
-
 
                 <rating:SfRating
                     x:Name="rating"
@@ -188,9 +170,11 @@
                         Grid.Row="11"
                         Grid.RowSpan="3"
                         Grid.ColumnSpan="3"
+                    BackgroundColor="Transparent"
                         >
-                    <syncfusion2:SfExpander.Header>
-                        <Label TextColor="#495F6E" Text="Prisutni" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                    <syncfusion2:SfExpander.Header
+                        >
+                        <Label TextColor="#495F6E" Text="Prisutni" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" BackgroundColor="Transparent"/>
                     </syncfusion2:SfExpander.Header>
                     <syncfusion2:SfExpander.Content>
 

@@ -234,6 +234,7 @@
             this.dgvIsplate.AllowUserToAddRows = false;
             this.dgvIsplate.AllowUserToDeleteRows = false;
             this.dgvIsplate.AutoGenerateColumns = false;
+            this.dgvIsplate.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvIsplate.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvIsplate.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.uplataZaGodinuDataGridViewTextBoxColumn,
@@ -247,7 +248,7 @@
             this.dgvIsplate.Location = new System.Drawing.Point(26, 361);
             this.dgvIsplate.Name = "dgvIsplate";
             this.dgvIsplate.ReadOnly = true;
-            this.dgvIsplate.Size = new System.Drawing.Size(686, 205);
+            this.dgvIsplate.Size = new System.Drawing.Size(694, 205);
             this.dgvIsplate.TabIndex = 21;
             // 
             // uplataZaGodinuDataGridViewTextBoxColumn
@@ -256,7 +257,6 @@
             this.uplataZaGodinuDataGridViewTextBoxColumn.HeaderText = "Uplata za godinu";
             this.uplataZaGodinuDataGridViewTextBoxColumn.Name = "uplataZaGodinuDataGridViewTextBoxColumn";
             this.uplataZaGodinuDataGridViewTextBoxColumn.ReadOnly = true;
-            this.uplataZaGodinuDataGridViewTextBoxColumn.Width = 120;
             // 
             // uplataZaMjesecDataGridViewTextBoxColumn
             // 
@@ -264,7 +264,6 @@
             this.uplataZaMjesecDataGridViewTextBoxColumn.HeaderText = "Uplata za mjesec";
             this.uplataZaMjesecDataGridViewTextBoxColumn.Name = "uplataZaMjesecDataGridViewTextBoxColumn";
             this.uplataZaMjesecDataGridViewTextBoxColumn.ReadOnly = true;
-            this.uplataZaMjesecDataGridViewTextBoxColumn.Width = 120;
             // 
             // datumUplateDataGridViewTextBoxColumn
             // 
@@ -356,7 +355,7 @@
             // 
             // btnTrazi
             // 
-            this.btnTrazi.Location = new System.Drawing.Point(29, 332);
+            this.btnTrazi.Location = new System.Drawing.Point(29, 323);
             this.btnTrazi.Name = "btnTrazi";
             this.btnTrazi.Size = new System.Drawing.Size(85, 23);
             this.btnTrazi.TabIndex = 29;
@@ -385,7 +384,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(744, 578);
+            this.ClientSize = new System.Drawing.Size(750, 578);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.btnTrazi);
             this.Controls.Add(this.label9);

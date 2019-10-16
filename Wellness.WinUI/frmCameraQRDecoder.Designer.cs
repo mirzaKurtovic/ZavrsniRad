@@ -46,7 +46,6 @@
             this.lblSide = new System.Windows.Forms.Label();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             this.gbPostavkeSkenera = new System.Windows.Forms.GroupBox();
-            this.lblTrenutnaRadnja = new System.Windows.Forms.Label();
             this.btnSakriPostavke = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelPictureBox.SuspendLayout();
@@ -56,9 +55,9 @@
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(18, 16);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(679, 447);
+            this.pictureBox1.Size = new System.Drawing.Size(716, 480);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -184,7 +183,6 @@
             // 
             // gbPostavkeSkenera
             // 
-            this.gbPostavkeSkenera.Controls.Add(this.lblTrenutnaRadnja);
             this.gbPostavkeSkenera.Controls.Add(this.btnSakriPostavke);
             this.gbPostavkeSkenera.Controls.Add(this.btnZaustavi);
             this.gbPostavkeSkenera.Controls.Add(this.comboBox1);
@@ -198,20 +196,10 @@
             this.gbPostavkeSkenera.Controls.Add(this.txtNegative);
             this.gbPostavkeSkenera.Location = new System.Drawing.Point(752, 28);
             this.gbPostavkeSkenera.Name = "gbPostavkeSkenera";
-            this.gbPostavkeSkenera.Size = new System.Drawing.Size(343, 356);
+            this.gbPostavkeSkenera.Size = new System.Drawing.Size(343, 276);
             this.gbPostavkeSkenera.TabIndex = 19;
             this.gbPostavkeSkenera.TabStop = false;
             this.gbPostavkeSkenera.Text = "Postavke skenera";
-            // 
-            // lblTrenutnaRadnja
-            // 
-            this.lblTrenutnaRadnja.AutoSize = true;
-            this.lblTrenutnaRadnja.Font = new System.Drawing.Font("Bahnschrift SemiBold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblTrenutnaRadnja.Location = new System.Drawing.Point(14, 299);
-            this.lblTrenutnaRadnja.Name = "lblTrenutnaRadnja";
-            this.lblTrenutnaRadnja.Size = new System.Drawing.Size(232, 39);
-            this.lblTrenutnaRadnja.TabIndex = 20;
-            this.lblTrenutnaRadnja.Text = "Trenutna akcija";
             // 
             // btnSakriPostavke
             // 
@@ -265,6 +253,5 @@
         private System.Windows.Forms.PageSetupDialog pageSetupDialog1;
         private System.Windows.Forms.GroupBox gbPostavkeSkenera;
         private System.Windows.Forms.Button btnSakriPostavke;
-        private System.Windows.Forms.Label lblTrenutnaRadnja;
     }
 }

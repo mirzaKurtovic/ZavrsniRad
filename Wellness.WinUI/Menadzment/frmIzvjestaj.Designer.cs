@@ -116,7 +116,7 @@
             this.Tab1_cbPaket.FormattingEnabled = true;
             this.Tab1_cbPaket.Location = new System.Drawing.Point(18, 35);
             this.Tab1_cbPaket.Name = "Tab1_cbPaket";
-            this.Tab1_cbPaket.Size = new System.Drawing.Size(121, 21);
+            this.Tab1_cbPaket.Size = new System.Drawing.Size(118, 21);
             this.Tab1_cbPaket.TabIndex = 16;
             // 
             // Tab1_cbOmoguci_DatumKraj

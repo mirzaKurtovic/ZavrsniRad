@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTipTreninga));
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.pbSlika = new System.Windows.Forms.PictureBox();
@@ -39,7 +40,9 @@
             this.lblSlika = new System.Windows.Forms.Label();
             this.txtSlika = new System.Windows.Forms.TextBox();
             this.btnSlikaNova = new System.Windows.Forms.Button();
+            this.tipTreningaErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipTreningaErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -72,6 +75,7 @@
             this.txtNaziv.Name = "txtNaziv";
             this.txtNaziv.Size = new System.Drawing.Size(214, 20);
             this.txtNaziv.TabIndex = 2;
+            this.txtNaziv.Validating += new System.ComponentModel.CancelEventHandler(this.txtNaziv_Validating);
             // 
             // lblNaziv
             // 
@@ -98,6 +102,7 @@
             this.txtOpis.Name = "txtOpis";
             this.txtOpis.Size = new System.Drawing.Size(211, 91);
             this.txtOpis.TabIndex = 4;
+            this.txtOpis.Validating += new System.ComponentModel.CancelEventHandler(this.txtOpis_Validating);
             // 
             // lblSlika
             // 
@@ -114,6 +119,7 @@
             this.txtSlika.Name = "txtSlika";
             this.txtSlika.Size = new System.Drawing.Size(214, 20);
             this.txtSlika.TabIndex = 6;
+            this.txtSlika.Validating += new System.ComponentModel.CancelEventHandler(this.txtSlika_Validating);
             // 
             // btnSlikaNova
             // 
@@ -125,7 +131,11 @@
             this.btnSlikaNova.UseVisualStyleBackColor = true;
             this.btnSlikaNova.Click += new System.EventHandler(this.BtnSlikaNova_Click);
             // 
-            // TipTreninga
+            // tipTreningaErrorProvider
+            // 
+            this.tipTreningaErrorProvider.ContainerControl = this;
+            // 
+            // frmTipTreninga
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -139,10 +149,12 @@
             this.Controls.Add(this.txtNaziv);
             this.Controls.Add(this.btnSacuvaj);
             this.Controls.Add(this.pbSlika);
-            this.Name = "TipTreninga";
+            this.Name = "frmTipTreninga";
             this.Text = "Tip treninga - detaljan prikaz";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmTipTreninga_FormClosing);
             this.Load += new System.EventHandler(this.TipTreninga_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipTreningaErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,5 +172,6 @@
         private System.Windows.Forms.Label lblSlika;
         private System.Windows.Forms.TextBox txtSlika;
         private System.Windows.Forms.Button btnSlikaNova;
+        private System.Windows.Forms.ErrorProvider tipTreningaErrorProvider;
     }
 }

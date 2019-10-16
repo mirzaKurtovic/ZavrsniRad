@@ -96,6 +96,7 @@
             this.dtpPocetak.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpPocetak.Location = new System.Drawing.Point(246, 113);
             this.dtpPocetak.Name = "dtpPocetak";
+            this.dtpPocetak.ShowUpDown = true;
             this.dtpPocetak.Size = new System.Drawing.Size(72, 20);
             this.dtpPocetak.TabIndex = 4;
             this.dtpPocetak.Validating += new System.ComponentModel.CancelEventHandler(this.DtpPocetak_Validating);
@@ -115,6 +116,7 @@
             this.dtpKraj.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpKraj.Location = new System.Drawing.Point(333, 113);
             this.dtpKraj.Name = "dtpKraj";
+            this.dtpKraj.ShowUpDown = true;
             this.dtpKraj.Size = new System.Drawing.Size(72, 20);
             this.dtpKraj.TabIndex = 6;
             this.dtpKraj.Validating += new System.ComponentModel.CancelEventHandler(this.DtpKraj_Validating);
@@ -138,7 +140,7 @@
             // 
             // btnSnimi
             // 
-            this.btnSnimi.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnSnimi.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnSnimi.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSnimi.Location = new System.Drawing.Point(43, 202);
             this.btnSnimi.Name = "btnSnimi";

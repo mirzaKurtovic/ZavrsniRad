@@ -54,7 +54,10 @@ namespace Wellness.WinUI
 
                     var radnikList = await _apiService_Radnik.Get<List<Wellness.Model.Radnik>>(RadnikSearchRequest);
                     var radnik = radnikList[0];
-                    frmIndex frm = new frmIndex(radnik);
+
+
+                    
+                    frmIndex frm = new frmIndex(radnik,this);
                     frm.Show();
                     MessageBox.Show("Uspjesna prijava", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
 

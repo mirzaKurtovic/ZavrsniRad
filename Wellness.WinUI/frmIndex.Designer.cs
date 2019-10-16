@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmIndex));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.clanarinaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pregledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,6 +54,7 @@
             this.izvjestavanjeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.qRKodSkenerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pokreniSkeniranjeQrKodovaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.odjaviSeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -67,10 +69,11 @@
             this.upravljanjeClanovimaToolStripMenuItem,
             this.treningToolStripMenuItem,
             this.menadzmentToolStripMenuItem,
-            this.qRKodSkenerToolStripMenuItem});
-            this.menuStrip.Location = new System.Drawing.Point(20, 60);
+            this.qRKodSkenerToolStripMenuItem,
+            this.odjaviSeToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(762, 24);
+            this.menuStrip.Size = new System.Drawing.Size(983, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
@@ -111,12 +114,14 @@
             this.pregledClanovaToolStripMenuItem.Name = "pregledClanovaToolStripMenuItem";
             this.pregledClanovaToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.pregledClanovaToolStripMenuItem.Text = "Pregled clanova";
+            this.pregledClanovaToolStripMenuItem.Click += new System.EventHandler(this.pregledClanovaToolStripMenuItem_Click_1);
             // 
             // dodajNovogClanaToolStripMenuItem
             // 
             this.dodajNovogClanaToolStripMenuItem.Name = "dodajNovogClanaToolStripMenuItem";
             this.dodajNovogClanaToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.dodajNovogClanaToolStripMenuItem.Text = "Dodaj novog clana";
+            this.dodajNovogClanaToolStripMenuItem.Click += new System.EventHandler(this.dodajNovogClanaToolStripMenuItem_Click_1);
             // 
             // treningToolStripMenuItem
             // 
@@ -247,17 +252,25 @@
             // pokreniSkeniranjeQrKodovaToolStripMenuItem
             // 
             this.pokreniSkeniranjeQrKodovaToolStripMenuItem.Name = "pokreniSkeniranjeQrKodovaToolStripMenuItem";
-            this.pokreniSkeniranjeQrKodovaToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
-            this.pokreniSkeniranjeQrKodovaToolStripMenuItem.Text = "Pokreni skeniranje qr kodova";
+            this.pokreniSkeniranjeQrKodovaToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.pokreniSkeniranjeQrKodovaToolStripMenuItem.Text = "Pokreni skeniranje";
             this.pokreniSkeniranjeQrKodovaToolStripMenuItem.Click += new System.EventHandler(this.PokreniSkeniranjeQrKodovaToolStripMenuItem_Click);
+            // 
+            // odjaviSeToolStripMenuItem
+            // 
+            this.odjaviSeToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.odjaviSeToolStripMenuItem.Name = "odjaviSeToolStripMenuItem";
+            this.odjaviSeToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.odjaviSeToolStripMenuItem.Text = "Odjavi se";
+            this.odjaviSeToolStripMenuItem.Click += new System.EventHandler(this.odjaviSeToolStripMenuItem_Click);
             // 
             // statusStrip
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(20, 411);
+            this.statusStrip.Location = new System.Drawing.Point(0, 523);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(762, 22);
+            this.statusStrip.Size = new System.Drawing.Size(983, 22);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
             // 
@@ -271,14 +284,18 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(802, 453);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(983, 545);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
+            this.DoubleBuffered = true;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "frmIndex";
             this.Text = "Wellness centar";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmIndex_FormClosing);
             this.Load += new System.EventHandler(this.FrmIndex_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
@@ -318,6 +335,7 @@
         private System.Windows.Forms.ToolStripMenuItem upravljanjeTipovimaTreningaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pregledTipovaTreningaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodajNoviTipTreningaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem odjaviSeToolStripMenuItem;
     }
 }
 

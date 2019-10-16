@@ -20,8 +20,8 @@ namespace Mobile.Views
 
             menuItems = new List<HomeMenuItem>
             {
-                new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
-                new HomeMenuItem {Id = MenuItemType.About, Title="About" },
+                //new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
+                //new HomeMenuItem {Id = MenuItemType.About, Title="About" },
                 new HomeMenuItem {Id = MenuItemType.QRCode, Title="Moj QR kod" },
                 new HomeMenuItem {Id = MenuItemType.TreningPage, Title="Rezervisi" },
                 new HomeMenuItem {Id = MenuItemType.Historija, Title="Historija" },

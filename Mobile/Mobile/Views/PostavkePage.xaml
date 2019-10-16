@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:dataForm="clr-namespace:Syncfusion.XForms.DataForm;assembly=Syncfusion.SfDataForm.XForms"
              xmlns:vm="clr-namespace:Mobile.ViewModels"
+             xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
              x:Class="Mobile.Views.PostavkePage">
 
 
@@ -15,7 +16,12 @@
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
-        <StackLayout x:Name="stackLayout" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="25">
+
+
+
+       
+
+            <StackLayout x:Name="stackLayout" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="25">
 
             <dataForm:SfDataForm x:Name="dataForm"
                                  VerticalOptions="FillAndExpand"
@@ -34,7 +40,6 @@
                 Text="Spasi"
                 />
         </StackLayout>
-
 
 
 

@@ -49,13 +49,13 @@ namespace Wellness.WinUI.Trening
                     //request.Id = Convert.ToInt32(_id);
                     await _apiService_Trening.Update<Model.Trening>(_id, request);
                     this.Close();
-                    MessageBox.Show("Uspješna promjena !");
+                    MessageBox.Show("Uspješna promjena!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1);
                 }
                 else
                 {
                     await _apiService_Trening.Insert<Model.Trening>(request);
                     this.Close();
-                    MessageBox.Show("Uspješna ste dodali novi trening !");
+                    MessageBox.Show("Uspješna ste dodali novi trening!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1);
                 }
             }
         }

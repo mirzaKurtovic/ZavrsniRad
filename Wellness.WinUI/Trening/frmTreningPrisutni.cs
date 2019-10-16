@@ -28,10 +28,13 @@ namespace Wellness.WinUI.Trening
 
             _trening = await _apiService_Trening.GetById<Model.Trening>(_id);
 
-            if (_trening.Odrzan!=null)
-                if(_trening.Odrzan!=false)
-                btnSacuvaj.Enabled = false;
-            
+            if (_trening.Odrzan != null)
+                if (_trening.Odrzan != false)
+                {
+                    btnSacuvaj.Enabled = false;
+                    dgvClanoviPrisustvo.Enabled = false;
+                    dgvClanoviPrisustvo.ReadOnly = true;
+                }
 
 
             var search = new ClanPrisustvoSearchRequest()

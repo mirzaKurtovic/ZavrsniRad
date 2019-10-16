@@ -96,6 +96,7 @@
             this.dgvTrenerSpecijalizacija.AllowUserToAddRows = false;
             this.dgvTrenerSpecijalizacija.AllowUserToDeleteRows = false;
             this.dgvTrenerSpecijalizacija.AutoGenerateColumns = false;
+            this.dgvTrenerSpecijalizacija.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTrenerSpecijalizacija.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTrenerSpecijalizacija.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -106,7 +107,7 @@
             this.dgvTrenerSpecijalizacija.Location = new System.Drawing.Point(29, 179);
             this.dgvTrenerSpecijalizacija.Name = "dgvTrenerSpecijalizacija";
             this.dgvTrenerSpecijalizacija.ReadOnly = true;
-            this.dgvTrenerSpecijalizacija.Size = new System.Drawing.Size(343, 150);
+            this.dgvTrenerSpecijalizacija.Size = new System.Drawing.Size(389, 150);
             this.dgvTrenerSpecijalizacija.TabIndex = 5;
             this.dgvTrenerSpecijalizacija.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvTrenerSpecijalizacija_CellContentClick);
             // 
@@ -152,7 +153,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(548, 384);
+            this.ClientSize = new System.Drawing.Size(451, 384);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.dgvTrenerSpecijalizacija);
             this.Controls.Add(this.btnSpasi);

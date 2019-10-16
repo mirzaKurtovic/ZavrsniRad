@@ -40,6 +40,8 @@ namespace Wellness.WinUI.Clanarina
                 comboBox1.Items.Add(Device.Name);
             }
             comboBox1.SelectedIndex = 0;
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+
             FinalFrame = new VideoCaptureDevice();
             pbQRKod.SizeMode = PictureBoxSizeMode.StretchImage;
             #endregion cameraSetup
@@ -52,7 +54,6 @@ namespace Wellness.WinUI.Clanarina
             cbClan.DisplayMember = "Display";
             cbClan.ValueMember = "Id";
             cbClan.DropDownStyle = ComboBoxStyle.DropDownList;
-
             var defaultPaket = new Model.Paket()
             {
                 Id = 0,
@@ -62,7 +63,6 @@ namespace Wellness.WinUI.Clanarina
             cbPaket.DataSource = paketi;
             cbPaket.DisplayMember = "Display";
             cbPaket.ValueMember = "Id";
-
             cbPaket.DropDownStyle = ComboBoxStyle.DropDownList;
 
 
@@ -169,13 +169,13 @@ namespace Wellness.WinUI.Clanarina
                     var clanId = list[0].Id;
                     cbClan.SelectedValue = clanId;
                     timer1.Stop();
-                    MessageBox.Show(list[0].Display);
+                    MessageBox.Show(list[0].Display,"Korisnik pronadje", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     //doradit messagebox
 
                 }
                 else
                 {
-                    MessageBox.Show("QR Kod nije validan");
+                     MessageBox.Show("QR Kod nije validan", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 setScannerVisible(false);
             }
@@ -184,6 +184,12 @@ namespace Wellness.WinUI.Clanarina
 
         private void BtnOdaberiKameru_Click(object sender, EventArgs e)
         {
+            if(comboBox1.Items.Count<=0)
+            {
+                MessageBox.Show("Za skeniranje QR koda potrebna je kamera", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //beep if possible.
+            }
+            
             FinalFrame = new VideoCaptureDevice(CaptureDevice[comboBox1.SelectedIndex].MonikerString);
             FinalFrame.NewFrame += new NewFrameEventHandler(FinalFrame_NewFrame);
             FinalFrame.Start();

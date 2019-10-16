@@ -38,21 +38,21 @@
             this.cbSortiranje = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvPaketi = new System.Windows.Forms.DataGridView();
-            this.CijenaCustom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VrijemePristupaOdCustom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VrijemePristupaDoCustom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label10 = new System.Windows.Forms.Label();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nazivDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cijenaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CijenaCustom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.opisDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pristupGrupnimTreninzimaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.neogranicenPristupDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vrijemePristupaOdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VrijemePristupaOdCustom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vrijemePristupaDoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VrijemePristupaDoCustom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.slikaDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.displayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paketBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPaketi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.paketBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -128,6 +128,7 @@
             this.dgvPaketi.AllowUserToAddRows = false;
             this.dgvPaketi.AllowUserToDeleteRows = false;
             this.dgvPaketi.AutoGenerateColumns = false;
+            this.dgvPaketi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPaketi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPaketi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
@@ -148,38 +149,9 @@
             this.dgvPaketi.Name = "dgvPaketi";
             this.dgvPaketi.ReadOnly = true;
             this.dgvPaketi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPaketi.Size = new System.Drawing.Size(622, 197);
+            this.dgvPaketi.Size = new System.Drawing.Size(626, 197);
             this.dgvPaketi.TabIndex = 8;
             this.dgvPaketi.DoubleClick += new System.EventHandler(this.DgvPaketi_DoubleClick);
-            // 
-            // CijenaCustom
-            // 
-            this.CijenaCustom.HeaderText = "Cijena";
-            this.CijenaCustom.Name = "CijenaCustom";
-            this.CijenaCustom.ReadOnly = true;
-            // 
-            // VrijemePristupaOdCustom
-            // 
-            this.VrijemePristupaOdCustom.HeaderText = "Vrijeme pristupa od";
-            this.VrijemePristupaOdCustom.Name = "VrijemePristupaOdCustom";
-            this.VrijemePristupaOdCustom.ReadOnly = true;
-            this.VrijemePristupaOdCustom.Width = 80;
-            // 
-            // VrijemePristupaDoCustom
-            // 
-            this.VrijemePristupaDoCustom.HeaderText = "Vrijeme pristupa do";
-            this.VrijemePristupaDoCustom.Name = "VrijemePristupaDoCustom";
-            this.VrijemePristupaDoCustom.ReadOnly = true;
-            this.VrijemePristupaDoCustom.Width = 80;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(32, 195);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(439, 13);
-            this.label10.TabIndex = 31;
-            this.label10.Text = "________________________________________________________________________";
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -195,7 +167,6 @@
             this.nazivDataGridViewTextBoxColumn.HeaderText = "Naziv";
             this.nazivDataGridViewTextBoxColumn.Name = "nazivDataGridViewTextBoxColumn";
             this.nazivDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nazivDataGridViewTextBoxColumn.Width = 70;
             // 
             // cijenaDataGridViewTextBoxColumn
             // 
@@ -204,7 +175,12 @@
             this.cijenaDataGridViewTextBoxColumn.Name = "cijenaDataGridViewTextBoxColumn";
             this.cijenaDataGridViewTextBoxColumn.ReadOnly = true;
             this.cijenaDataGridViewTextBoxColumn.Visible = false;
-            this.cijenaDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // CijenaCustom
+            // 
+            this.CijenaCustom.HeaderText = "Cijena";
+            this.CijenaCustom.Name = "CijenaCustom";
+            this.CijenaCustom.ReadOnly = true;
             // 
             // opisDataGridViewTextBoxColumn
             // 
@@ -220,7 +196,6 @@
             this.pristupGrupnimTreninzimaDataGridViewTextBoxColumn.HeaderText = "Pristup grupnim treninzima";
             this.pristupGrupnimTreninzimaDataGridViewTextBoxColumn.Name = "pristupGrupnimTreninzimaDataGridViewTextBoxColumn";
             this.pristupGrupnimTreninzimaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.pristupGrupnimTreninzimaDataGridViewTextBoxColumn.Width = 110;
             // 
             // neogranicenPristupDataGridViewTextBoxColumn
             // 
@@ -228,7 +203,6 @@
             this.neogranicenPristupDataGridViewTextBoxColumn.HeaderText = "Neogranicen pristup";
             this.neogranicenPristupDataGridViewTextBoxColumn.Name = "neogranicenPristupDataGridViewTextBoxColumn";
             this.neogranicenPristupDataGridViewTextBoxColumn.ReadOnly = true;
-            this.neogranicenPristupDataGridViewTextBoxColumn.Width = 130;
             // 
             // vrijemePristupaOdDataGridViewTextBoxColumn
             // 
@@ -237,7 +211,12 @@
             this.vrijemePristupaOdDataGridViewTextBoxColumn.Name = "vrijemePristupaOdDataGridViewTextBoxColumn";
             this.vrijemePristupaOdDataGridViewTextBoxColumn.ReadOnly = true;
             this.vrijemePristupaOdDataGridViewTextBoxColumn.Visible = false;
-            this.vrijemePristupaOdDataGridViewTextBoxColumn.Width = 130;
+            // 
+            // VrijemePristupaOdCustom
+            // 
+            this.VrijemePristupaOdCustom.HeaderText = "Vrijeme pristupa od";
+            this.VrijemePristupaOdCustom.Name = "VrijemePristupaOdCustom";
+            this.VrijemePristupaOdCustom.ReadOnly = true;
             // 
             // vrijemePristupaDoDataGridViewTextBoxColumn
             // 
@@ -246,7 +225,12 @@
             this.vrijemePristupaDoDataGridViewTextBoxColumn.Name = "vrijemePristupaDoDataGridViewTextBoxColumn";
             this.vrijemePristupaDoDataGridViewTextBoxColumn.ReadOnly = true;
             this.vrijemePristupaDoDataGridViewTextBoxColumn.Visible = false;
-            this.vrijemePristupaDoDataGridViewTextBoxColumn.Width = 130;
+            // 
+            // VrijemePristupaDoCustom
+            // 
+            this.VrijemePristupaDoCustom.HeaderText = "Vrijeme pristupa do";
+            this.VrijemePristupaDoCustom.Name = "VrijemePristupaDoCustom";
+            this.VrijemePristupaDoCustom.ReadOnly = true;
             // 
             // slikaDataGridViewImageColumn
             // 
@@ -267,6 +251,15 @@
             // paketBindingSource
             // 
             this.paketBindingSource.DataSource = typeof(Wellness.Model.Paket);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(32, 195);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(439, 13);
+            this.label10.TabIndex = 31;
+            this.label10.Text = "________________________________________________________________________";
             // 
             // frmPaketi
             // 

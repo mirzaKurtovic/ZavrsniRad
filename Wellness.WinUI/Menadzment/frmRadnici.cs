@@ -15,8 +15,9 @@ namespace Wellness.WinUI.Menadzment
     {
         private readonly Radnik _radnik;
         private readonly APIService _apiService_radnik = new APIService("Radnik");
+        private readonly APIService _apiService_clan = new APIService("Clan");
         private readonly APIService _apiService_uloga = new APIService("Uloga");
-
+        bool _calledByRecepcionar = true;
         public frmRadnici(Radnik radnik = null, bool calledByRecepcionar = false)
         {
             InitializeComponent();
@@ -25,7 +26,7 @@ namespace Wellness.WinUI.Menadzment
 
         private async void FrmRadnici_Load(object sender, EventArgs e)
         {
-           
+
             var uloge = await _apiService_uloga.Get<List<Model.Uloga>>(null);
             var svi = new Wellness.Model.Uloga()
             {
@@ -37,6 +38,10 @@ namespace Wellness.WinUI.Menadzment
             cbUloga.ValueMember = "Id";
             cbUloga.DisplayMember = "Naziv";
             cbUloga.DropDownStyle = ComboBoxStyle.DropDownList;
+
+
+
+
             var search = new RadnikSearchRequest()
             {
                 Ime = txtIme.Text,
@@ -52,11 +57,14 @@ namespace Wellness.WinUI.Menadzment
                 row.Cells[1].Value = obj.Osoba.Ime;
                 row.Cells[2].Value = obj.Osoba.Prezime;
                 row.Cells[3].Value = obj.Osoba.Uloga.Naziv;
-                row.Cells[8].Value = Math.Round((decimal)obj.Satnica,2);
+                row.Cells[8].Value = Math.Round((decimal)obj.Satnica, 2);
+                row.Cells[9].Value = obj.Osoba.KorisnickoIme;
             }
-
-
         }
+
+
+
+
 
         private async void BtnTrazi_Click(object sender, EventArgs e)
         {
@@ -81,7 +89,7 @@ namespace Wellness.WinUI.Menadzment
 
         private void DgvRadnici_DoubleClick(object sender, EventArgs e)
         {
-            Model.Osoba osoba =(Model.Osoba)dgvRadnici.SelectedRows[0].Cells[6].Value;
+            Model.Osoba osoba = (Model.Osoba)dgvRadnici.SelectedRows[0].Cells[6].Value;
             frmRadniciDetalji frm = new frmRadniciDetalji(osoba.Id);
             frm.Show();
         }

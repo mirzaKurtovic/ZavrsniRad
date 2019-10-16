@@ -84,7 +84,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(277, 183);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(180, 33);
+            this.richTextBox1.Size = new System.Drawing.Size(180, 237);
             this.richTextBox1.TabIndex = 5;
             this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
@@ -92,7 +92,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(749, 291);
+            this.ClientSize = new System.Drawing.Size(749, 459);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.btnPrijava);
             this.Controls.Add(this.txtSifra);

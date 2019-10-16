@@ -91,7 +91,7 @@ namespace Wellness.WinUI.Menadzment
 
         }
 
-        private async void DgvPaketi_DoubleClick(object sender, EventArgs e)
+        private void DgvPaketi_DoubleClick(object sender, EventArgs e)
         {
             var paketId = (int)dgvPaketi.SelectedRows[0].Cells[0].Value;
 

@@ -38,7 +38,7 @@ namespace Wellness.WebAPI.Controllers
             return _mapper.Map<List<Model.TipTreninga>>(list);
         }
         [HttpPost]
-        public ActionResult<Model.TipTreninga> Insert([FromQuery]TipTreningaInsertRequest request)
+        public ActionResult<Model.TipTreninga> Insert(TipTreningaInsertRequest request)
         {
             var tipTreninga = _mapper.Map<Database.TipTreninga>(request);
 
@@ -50,6 +50,17 @@ namespace Wellness.WebAPI.Controllers
 
         }
 
+        [HttpPut("{id}")]
+        public ActionResult<Model.TipTreninga> Update(int id, Model.Requests.TipTreningaInsertRequest request)
+        {
+            var tipTreninga = _context.TipTreninga.Find(id);
+            _mapper.Map(request, tipTreninga);
 
+            tipTreninga.Id = id;
+
+            _context.SaveChanges();
+
+            return _mapper.Map<Model.TipTreninga>(tipTreninga);
+        }
     }
 }
