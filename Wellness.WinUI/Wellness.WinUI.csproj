@@ -333,6 +333,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Trening\frmTrening.resx">
       <DependentUpon>frmTrening.cs</DependentUpon>
@@ -388,6 +389,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MetroFramework.txt" />
+    <None Include="Resources\bac88503-eee6-4e9c-9af3-b77895cf3606_200x200.png" />
+    <None Include="Resources\5fb3bec5-746d-485a-9914-c88e760ba364_200x200.png" />
+    <None Include="Resources\fees.png" />
+    <None Include="Resources\icons8-exit-64 %281%29.png" />
+    <None Include="Resources\icons8-exit-64.png" />
+    <None Include="Resources\icons8-qr-code-50.png" />
+    <None Include="Resources\icons8-dumbbell-50.png" />
+    <None Include="Resources\icons8-squats-16.png" />
+    <None Include="Resources\icons8-membership-card-64.png" />
+    <None Include="Resources\icons8-badge-64 %281%29.png" />
+    <None Include="Resources\icons8-worker-64.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

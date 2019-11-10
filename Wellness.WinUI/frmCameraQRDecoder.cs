@@ -26,7 +26,15 @@ namespace Wellness.WinUI
 {
     public partial class frmCameraQRDecoder : Form
     {
+        frmIndex _frmIndex;
 
+        public frmCameraQRDecoder(frmIndex _frmIndex)
+        {
+            InitializeComponent();
+
+            this._frmIndex = _frmIndex;
+        }
+        
         private delegate void SafeCallDelegate(string text);
 
         private FilterInfoCollection CaptureDevice;
@@ -67,10 +75,7 @@ namespace Wellness.WinUI
         private readonly APIService _apiService_Clanarina = new APIService("Clanarina");
         private readonly APIService _apiService_Paket = new APIService("Paket");
         private readonly APIService _apiService_PaketPristupniDani = new APIService("PaketPristupniDani");
-        public frmCameraQRDecoder()
-        {
-            InitializeComponent();
-        }
+
 
         private void FrmCameraQRDecoder_Load(object sender, EventArgs e)
         {
@@ -98,7 +103,10 @@ namespace Wellness.WinUI
             {
                 comboBox1.Items.Add(Device.Name);
             }
-            comboBox1.SelectedIndex = 0;
+            
+            
+            //comboBox1.SelectedIndex = 0;
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             FinalFrame = new VideoCaptureDevice();
 
 
@@ -126,6 +134,7 @@ namespace Wellness.WinUI
             //lblTrenutnaRadnja.Text = "eso";
         }
         //zaustavljanje dekodiranja nakon odredjenog intervala...
+
         private void timerDecodingTotal_Elapsed(object sender, ElapsedEventArgs e)
         {
             SkeniranjeUToku = false;
@@ -133,22 +142,21 @@ namespace Wellness.WinUI
             timerDecodingTotal.Enabled = false;
         }
 
+        /*
+Imaju cetri moguca rezultata
 
-
+1.QR Kod nije prepoznatljiv
+2.QR Kod se ne moze ocitat
+3.QR Kod je prepoznat i sve je u redu u vezi clanarina
+4.QR Kod je prepoznat ali clan ima ne podmirenih obaveza
+*/
+//...
 
         private async Task tick()
         {
-                    /*
-               Imaju cetri moguca rezultata
-
-               1.QR Kod nije prepoznatljiv
-               2.QR Kod se ne moze ocitat
-               3.QR Kod je prepoznat i sve je u redu u vezi clanarina
-               4.QR Kod je prepoznat ali clan ima ne podmirenih obaveza
-               */
-
 
             _ticks++;
+            txtTotal.Text = _ticks.ToString();
             var text = QRCodeHelper.DecodeQRCode(pictureBox1.Image);
             if (String.IsNullOrEmpty(text))
             {
@@ -292,7 +300,7 @@ namespace Wellness.WinUI
                         else
                         {
                             textMain = "Pristup ogranicen";
-                            textSide = "Nemate pristup Fitness centru u terminu od " + clanarina.Paket.VrijemePristupaOd.Value.ToShortTimeString() + " do " + clanarina.Paket.VrijemePristupaDo.Value.ToShortTimeString();
+                            textSide = "Pristup Fitness centru imate samo u terminu od " + clanarina.Paket.VrijemePristupaOd.Value.ToShortTimeString() + " do " + clanarina.Paket.VrijemePristupaDo.Value.ToShortTimeString();
                             CameraStopSetup(textMain, textSide);
                             PanelRed();
                             playBeep(BeepNotOK);
@@ -301,14 +309,29 @@ namespace Wellness.WinUI
                     }
                 }
             }
-            txtTotal.Text = _ticks.ToString();
+            
         }
 
         private void BtnPokreni_Click(object sender, EventArgs e)
         {
-            FinalFrame = new VideoCaptureDevice(CaptureDevice[comboBox1.SelectedIndex].MonikerString);
-            FinalFrame.NewFrame += new NewFrameEventHandler(FinalFrame_NewFrame);
-            FinalFrame.Start();
+            if (comboBox1.Items.Count > 0)
+            {
+                if (comboBox1.SelectedIndex >= 0)
+                {
+                    FinalFrame = new VideoCaptureDevice(CaptureDevice[comboBox1.SelectedIndex].MonikerString);
+                    FinalFrame.NewFrame += new NewFrameEventHandler(FinalFrame_NewFrame);
+                    FinalFrame.Start();
+                }
+                else
+                {
+
+                    MessageBox.Show("Za skeniranje QR koda potrebna je kamera", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //beep if possible.
+
+                }
+            }
+
+
         }
 
         private void FinalFrame_NewFrame(object sender, NewFrameEventArgs eventArgs)
@@ -317,8 +340,6 @@ namespace Wellness.WinUI
 
             pictureBox1.Image = (Bitmap)eventArgs.Frame.Clone();
 
-
-            //process new video frame and check motion level
             if (SkeniranjeUToku == false)
             {
                 if (detector.ProcessFrame(videoFrame) > 0.25)
@@ -335,13 +356,6 @@ namespace Wellness.WinUI
                 }
             
             }
-            //if (lblTrenutnaRadnja.Text != "Detekcija pokreta")
-            //    lblTrenutnaRadnja.Text = "Detekcija pokreta";
-            //else
-            //{
-            //    if (lblTrenutnaRadnja.Text != "Detekcija QR koda")
-            //        lblTrenutnaRadnja.Text = "Detekcija QR koda";
-            //}
         }
 
         private void FrmCameraQRDecoder_FormClosing(object sender, FormClosingEventArgs e)
@@ -350,6 +364,10 @@ namespace Wellness.WinUI
             {
                 FinalFrame.Stop();
             }
+            if (gbPostavkeSkenera.Visible == false)
+                _frmIndex.Close();
+            else
+            _frmIndex.Visible = true;
         }
 
         private void BtnZaustavi_Click(object sender, EventArgs e)
@@ -362,10 +380,6 @@ namespace Wellness.WinUI
         {
             CameraStartSetup();
         }
-
-
-
-
 
         void CameraStopSetup(string textMain, string textSide)
         {
@@ -380,6 +394,7 @@ namespace Wellness.WinUI
             timer.Enabled = false;
 
         }
+
         void CameraStartSetup()
         {
             timer2.Stop();
@@ -392,8 +407,6 @@ namespace Wellness.WinUI
 
             SkeniranjeUToku = false;
         }
-
-
 
         void PanelGreen()
         {
@@ -412,11 +425,17 @@ namespace Wellness.WinUI
         private void BtnSakriPostavke_Click(object sender, EventArgs e)
         {
             gbPostavkeSkenera.Visible = false;
+            _frmIndex.Visible = false;
             sizeChanged();
+
         }
         private void FrmCameraQRDecoder_SizeChanged(object sender, EventArgs e)
         {
-            sizeChanged();
+            if (gbPostavkeSkenera.Visible == false)
+            {
+                sizeChanged();
+
+            }
         }
         void sizeChanged()
         {
@@ -426,6 +445,11 @@ namespace Wellness.WinUI
 
             pictureBox1.Height = pictureBox1.Parent.Height;
             pictureBox1.Width = pictureBox1.Parent.Width;
+        }
+
+        void keepAspectRation()
+        { 
+        //...
         }
 
 

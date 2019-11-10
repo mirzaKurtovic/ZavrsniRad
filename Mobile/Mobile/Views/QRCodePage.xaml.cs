@@ -24,5 +24,9 @@ namespace Mobile.Views
             BindingContext = new QRCodeViewModel(clan);
 
         }
+        public QRCodePage()
+        {
+
+        }
     }
 }

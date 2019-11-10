@@ -60,17 +60,19 @@ namespace Wellness.WinUI
                     frmIndex frm = new frmIndex(radnik,this);
                     frm.Show();
                     MessageBox.Show("Uspjesna prijava", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    txtUserName.Text = "";
+                    txtSifra.Text = "";
 
                 }
                 else
                 {
-                    MessageBox.Show("Niste autorizovani", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1);
+                    MessageBox.Show("Niste autorizovani", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                 }
 
             }
             else
             {
-                MessageBox.Show("Pogresan Username ili Password", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1);
+                MessageBox.Show("Pogresno korisnicko ime ili sifra", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
 
 

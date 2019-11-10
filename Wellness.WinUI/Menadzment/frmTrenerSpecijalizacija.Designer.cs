@@ -162,7 +162,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbTipTreninga);
             this.Name = "frmTrenerSpecijalizacija";
-            this.Text = "frmTrenerSpecijalizacija";
+            this.Text = "Trener specijalizacija";
             this.Load += new System.EventHandler(this.FrmTrenerSpecijalizacija_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrenerSpecijalizacija)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectExtensionBindingSource)).EndInit();

@@ -169,7 +169,7 @@
             this.Controls.Add(this.txtIme);
             this.Controls.Add(this.label1);
             this.Name = "frmClan";
-            this.Text = "frmClan";
+            this.Text = "Pregled clanova";
             this.Load += new System.EventHandler(this.frmClan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClanovi)).EndInit();
             this.ResumeLayout(false);

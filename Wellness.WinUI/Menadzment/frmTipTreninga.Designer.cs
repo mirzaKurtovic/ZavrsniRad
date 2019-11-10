@@ -144,7 +144,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvTipTreninga);
             this.Name = "frmTipTreningaDetalji";
-            this.Text = "frmTipTreningaDetalji";
+            this.Text = "Pregled tipova treninga";
             this.Load += new System.EventHandler(this.FrmTipTreningaDetalji_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTipTreninga)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipTreningaBindingSource)).EndInit();

@@ -47,6 +47,7 @@
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             this.gbPostavkeSkenera = new System.Windows.Forms.GroupBox();
             this.btnSakriPostavke = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelPictureBox.SuspendLayout();
             this.gbPostavkeSkenera.SuspendLayout();
@@ -162,7 +163,6 @@
             // 
             // lblMain
             // 
-            this.lblMain.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblMain.AutoSize = true;
             this.lblMain.Font = new System.Drawing.Font("Bahnschrift Condensed", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblMain.Location = new System.Drawing.Point(41, 52);
@@ -221,6 +221,7 @@
             this.Controls.Add(this.lblMain);
             this.Controls.Add(this.panelPictureBox);
             this.Name = "frmCameraQRDecoder";
+            this.Text = "QRKS";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCameraQRDecoder_FormClosing);
             this.Load += new System.EventHandler(this.FrmCameraQRDecoder_Load);
             this.SizeChanged += new System.EventHandler(this.FrmCameraQRDecoder_SizeChanged);
@@ -253,5 +254,6 @@
         private System.Windows.Forms.PageSetupDialog pageSetupDialog1;
         private System.Windows.Forms.GroupBox gbPostavkeSkenera;
         private System.Windows.Forms.Button btnSakriPostavke;
+        private System.Windows.Forms.Timer timer1;
     }
 }

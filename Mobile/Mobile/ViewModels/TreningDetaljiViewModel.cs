@@ -52,6 +52,7 @@ namespace Mobile.ViewModels
                 treningModel.ClanPrisustvovaoTreningu = prisustvo[0].Prisustvovao;
                 treningModel._Prisustvuje = true;
                 treningModel.PrisustvoId = prisustvo[0].Id;
+                treningModel.Odrzan = _trening.Odrzan;
                 if (prisustvo[0].Ocjena != null)
                 {
                     treningModel._Ocjena = (int)prisustvo[0].Ocjena;

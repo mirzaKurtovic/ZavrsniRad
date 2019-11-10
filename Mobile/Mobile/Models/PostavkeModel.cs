@@ -38,7 +38,7 @@ namespace Mobile.Models
             }
         }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Polje obavezno")]
-        [StringLength(maximumLength:32,MinimumLength =5,ErrorMessage ="Broj karaktera mora biti izmedju 5 i 32")]
+        [StringLength(maximumLength:32,MinimumLength =3,ErrorMessage ="Broj karaktera mora biti izmedju 5 i 32")]
         [RegularExpression(@"[A-Za-z]+", ErrorMessage = "Samo slova dozvoljena")]
         public string Ime
         {
@@ -51,7 +51,7 @@ namespace Mobile.Models
             }
         }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Polje obavezno")]
-        [StringLength(maximumLength: 32, MinimumLength = 5, ErrorMessage = "Broj karaktera mora biti izmedju 5 i 32")]
+        [StringLength(maximumLength: 32, MinimumLength = 3, ErrorMessage = "Broj karaktera mora biti izmedju 5 i 32")]
         [RegularExpression(@"[A-Za-z]+", ErrorMessage = "Samo slova dozvoljena")]
         public string Prezime
         {
@@ -89,7 +89,7 @@ namespace Mobile.Models
             }
         }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Polje obavezno")]
-        [StringLength(maximumLength: 32, MinimumLength = 5, ErrorMessage = "Broj karaktera mora biti 13")]
+        [StringLength(maximumLength: 13, MinimumLength = 13, ErrorMessage = "Broj karaktera mora biti 13")]
         [RegularExpression(@"[0-9]{13}", ErrorMessage = "Samo brojevi dozvoljeni")]
         public string Jmbg
         {

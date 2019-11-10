@@ -61,12 +61,10 @@ namespace Wellness.WinUI
                 string decode = result.ToString();
                 return decode;
             }
-            catch(Exception ex)
+            catch
             {
                 return string.Empty;
             }
-
-
         }
 
 

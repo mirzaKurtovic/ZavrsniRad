@@ -274,7 +274,7 @@ namespace Wellness.WinUI.Menadzment
         {
             if (_validation.Required(sender, e, PaketErrorProvider))
                 if (_validation.IsLetterOnly(sender, e, PaketErrorProvider))
-                    _validation.MinMaxLength(sender, e, PaketErrorProvider, 5, 63);
+                    _validation.MinMaxLength(sender, e, PaketErrorProvider, 5, 64);
         }
 
         private void TxtCijena_Validating(object sender, CancelEventArgs e)
@@ -286,7 +286,7 @@ namespace Wellness.WinUI.Menadzment
         private void TxtOpis_Validating(object sender, CancelEventArgs e)
         {
             if (_validation.Required(sender, e, PaketErrorProvider))
-                    _validation.MinMaxLength(sender, e, PaketErrorProvider, 0, 2047);
+                    _validation.MinMaxLength(sender, e, PaketErrorProvider, 5, 2048);
         }
 
         private void NudCijena_Validating(object sender, CancelEventArgs e)

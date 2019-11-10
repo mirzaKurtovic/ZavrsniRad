@@ -120,8 +120,8 @@ namespace Wellness.WinUI.Menadzment
 
                 #region comboBoxUpdate
 
-                cbTrenerChanged();
-                cbTipTreningaChanged();
+                await cbTrenerChanged();
+                await cbTipTreningaChanged();
                 #endregion comboBoxUpdate
 
             }

@@ -43,7 +43,6 @@
             this.cbPaket = new System.Windows.Forms.ComboBox();
             this.cbClan = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.pbQRKod = new System.Windows.Forms.PictureBox();
             this.btnZatvoriSkener = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -52,11 +51,14 @@
             this.nudIznos = new System.Windows.Forms.NumericUpDown();
             this.gbQRKodSkener = new System.Windows.Forms.GroupBox();
             this.gbClanarina = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbQRKod = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.ClanarineErrorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbQRKod)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudIznos)).BeginInit();
             this.gbQRKodSkener.SuspendLayout();
             this.gbClanarina.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbQRKod)).BeginInit();
             this.SuspendLayout();
             // 
             // label5
@@ -178,15 +180,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
-            // pbQRKod
-            // 
-            this.pbQRKod.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbQRKod.Location = new System.Drawing.Point(168, 406);
-            this.pbQRKod.Name = "pbQRKod";
-            this.pbQRKod.Size = new System.Drawing.Size(238, 152);
-            this.pbQRKod.TabIndex = 36;
-            this.pbQRKod.TabStop = false;
-            // 
             // btnZatvoriSkener
             // 
             this.btnZatvoriSkener.Location = new System.Drawing.Point(6, 110);
@@ -257,6 +250,7 @@
             // 
             // gbClanarina
             // 
+            this.gbClanarina.Controls.Add(this.pictureBox1);
             this.gbClanarina.Controls.Add(this.label1);
             this.gbClanarina.Controls.Add(this.lblUplataZaGodinu);
             this.gbClanarina.Controls.Add(this.nudIznos);
@@ -278,6 +272,25 @@
             this.gbClanarina.TabStop = false;
             this.gbClanarina.Text = "Clanarina ";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Wellness.WinUI.Properties.Resources.fees;
+            this.pictureBox1.Location = new System.Drawing.Point(270, 43);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(200, 200);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 42;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pbQRKod
+            // 
+            this.pbQRKod.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbQRKod.Location = new System.Drawing.Point(168, 406);
+            this.pbQRKod.Name = "pbQRKod";
+            this.pbQRKod.Size = new System.Drawing.Size(238, 152);
+            this.pbQRKod.TabIndex = 36;
+            this.pbQRKod.TabStop = false;
+            // 
             // frmClanarinaDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -291,12 +304,13 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmClanarinaDetalji_FormClosing);
             this.Load += new System.EventHandler(this.FrmClanarinaDetalji_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ClanarineErrorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbQRKod)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudIznos)).EndInit();
             this.gbQRKodSkener.ResumeLayout(false);
             this.gbQRKodSkener.PerformLayout();
             this.gbClanarina.ResumeLayout(false);
             this.gbClanarina.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbQRKod)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -326,5 +340,6 @@
         private System.Windows.Forms.NumericUpDown nudIznos;
         private System.Windows.Forms.GroupBox gbQRKodSkener;
         private System.Windows.Forms.GroupBox gbClanarina;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

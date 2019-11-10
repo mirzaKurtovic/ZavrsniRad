@@ -126,8 +126,8 @@ namespace Wellness.WinUI.Menadzment
         private void txtOpis_Validating(object sender, CancelEventArgs e)
         {
             if (_validation.Required(sender, e, tipTreningaErrorProvider))
-                if (_validation.IsLetterOnly(sender, e, tipTreningaErrorProvider))
-                    _validation.MinMaxLength(sender, e, tipTreningaErrorProvider, 1, 256);
+                //if (_validation.IsLetterOnly(sender, e, tipTreningaErrorProvider))
+                    _validation.MinMaxLength(sender, e, tipTreningaErrorProvider, 5, 2048);
         }
 
         private void txtSlika_Validating(object sender, CancelEventArgs e)

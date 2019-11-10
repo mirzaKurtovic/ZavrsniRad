@@ -277,7 +277,7 @@
             this.Controls.Add(this.txtCijenaVeceOd);
             this.Controls.Add(this.label1);
             this.Name = "frmPaketi";
-            this.Text = "frmPaketi";
+            this.Text = "Pregled paketa";
             this.Load += new System.EventHandler(this.FrmPaketi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPaketi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.paketBindingSource)).EndInit();

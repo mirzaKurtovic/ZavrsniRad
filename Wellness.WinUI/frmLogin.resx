@@ -117,23 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="richTextBox1.Text" xml:space="preserve">
-    <value>---Napomena---
-
-Administrativni dio ima tri korisnika: Menadzer,Recepcionar,Trener
-
-Menadzer
-Username: Menadzer
-Password: Menadzer
-----------------------
-Trener
-Username: Trener
-Password: Trener
-----------------------
-Recepcionar
-Username: Recepcionar
-Password: Recepcionar
-
-</value>
-  </data>
 </root>

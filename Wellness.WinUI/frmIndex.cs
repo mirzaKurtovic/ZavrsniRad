@@ -139,7 +139,7 @@ namespace Wellness.WinUI
                 treningToolStripMenuItem.Visible = true;
                 clanarinaToolStripMenuItem.Visible = false;
                 upravljanjeClanovimaToolStripMenuItem.Visible = false;
-                qRKodSkenerToolStripMenuItem.Visible = true;
+                qRKodSkenerToolStripMenuItem.Visible = false;
 
                 var TrenerSearchRequest = new Model.Requests.TrenerSearchRequest()
                     {
@@ -209,8 +209,7 @@ namespace Wellness.WinUI
 
         private void PokreniSkeniranjeQrKodovaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new frmCameraQRDecoder();
-            frm.MdiParent = this;
+            var frm = new frmCameraQRDecoder(this);
             frm.Show();
         }
 
@@ -287,7 +286,7 @@ namespace Wellness.WinUI
 
         private void frmIndex_FormClosing(object sender, FormClosingEventArgs e)
         {
-            _frmLogin.Close();
+            _frmLogin.Show();
         }
     }
 }

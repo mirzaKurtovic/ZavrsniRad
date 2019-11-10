@@ -50,6 +50,7 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.PaketErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.nudCijena = new System.Windows.Forms.NumericUpDown();
+            this.cbAktivan = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PaketErrorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCijena)).BeginInit();
@@ -168,7 +169,7 @@
             // 
             // btnDodajPaket
             // 
-            this.btnDodajPaket.Location = new System.Drawing.Point(70, 458);
+            this.btnDodajPaket.Location = new System.Drawing.Point(70, 463);
             this.btnDodajPaket.Name = "btnDodajPaket";
             this.btnDodajPaket.Size = new System.Drawing.Size(255, 23);
             this.btnDodajPaket.TabIndex = 14;
@@ -243,11 +244,24 @@
             0});
             this.nudCijena.Validating += new System.ComponentModel.CancelEventHandler(this.NudCijena_Validating);
             // 
+            // cbAktivan
+            // 
+            this.cbAktivan.AutoSize = true;
+            this.cbAktivan.Checked = true;
+            this.cbAktivan.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbAktivan.Location = new System.Drawing.Point(71, 440);
+            this.cbAktivan.Name = "cbAktivan";
+            this.cbAktivan.Size = new System.Drawing.Size(62, 17);
+            this.cbAktivan.TabIndex = 20;
+            this.cbAktivan.Text = "Aktivan";
+            this.cbAktivan.UseVisualStyleBackColor = true;
+            // 
             // frmPaketDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(717, 493);
+            this.ClientSize = new System.Drawing.Size(717, 506);
+            this.Controls.Add(this.cbAktivan);
             this.Controls.Add(this.nudCijena);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnDodajSliku);
@@ -267,7 +281,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNaziv);
             this.Name = "frmPaketDetalji";
-            this.Text = "frmPaketDetalji";
+            this.Text = "Paketi - detaljan prikaz";
             this.Load += new System.EventHandler(this.FrmPaketDetalji_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PaketErrorProvider)).EndInit();
@@ -299,5 +313,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ErrorProvider PaketErrorProvider;
         private System.Windows.Forms.NumericUpDown nudCijena;
+        private System.Windows.Forms.CheckBox cbAktivan;
     }
 }

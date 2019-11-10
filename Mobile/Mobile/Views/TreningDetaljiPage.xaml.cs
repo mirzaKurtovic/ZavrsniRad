@@ -36,13 +36,20 @@ namespace Mobile.Views
 
                 rating.Value = model.TreningMod.Ocjena;
                 rating.ReadOnly = true;
-            
+
+            }
+            else
+            {
+                if (model.TreningMod.Odrzan == true && model.TreningMod.ClanPrisustvovaoTreningu==true)
+                {
+                    rating.ReadOnly = false;
+                }
             }
             if (model.TreningMod.Odrzan == false || model.TreningMod.Odrzan == null)
             {
                 rating.ReadOnly = true;
             }
-
+            
         
         }
 

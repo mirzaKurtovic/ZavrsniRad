@@ -64,6 +64,7 @@
             // 
             // menuStrip
             // 
+            this.menuStrip.AutoSize = false;
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clanarinaToolStripMenuItem,
             this.upravljanjeClanovimaToolStripMenuItem,
@@ -73,7 +74,7 @@
             this.odjaviSeToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(983, 24);
+            this.menuStrip.Size = new System.Drawing.Size(983, 40);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
@@ -82,8 +83,9 @@
             this.clanarinaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pregledToolStripMenuItem,
             this.novaClanarinaToolStripMenuItem});
+            this.clanarinaToolStripMenuItem.Image = global::Wellness.WinUI.Properties.Resources.icons8_membership_card_64;
             this.clanarinaToolStripMenuItem.Name = "clanarinaToolStripMenuItem";
-            this.clanarinaToolStripMenuItem.Size = new System.Drawing.Size(146, 20);
+            this.clanarinaToolStripMenuItem.Size = new System.Drawing.Size(162, 36);
             this.clanarinaToolStripMenuItem.Text = "Upravljanje clanarinama";
             // 
             // pregledToolStripMenuItem
@@ -105,8 +107,9 @@
             this.upravljanjeClanovimaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pregledClanovaToolStripMenuItem,
             this.dodajNovogClanaToolStripMenuItem});
+            this.upravljanjeClanovimaToolStripMenuItem.Image = global::Wellness.WinUI.Properties.Resources.icons8_badge_64__1_;
             this.upravljanjeClanovimaToolStripMenuItem.Name = "upravljanjeClanovimaToolStripMenuItem";
-            this.upravljanjeClanovimaToolStripMenuItem.Size = new System.Drawing.Size(136, 20);
+            this.upravljanjeClanovimaToolStripMenuItem.Size = new System.Drawing.Size(152, 36);
             this.upravljanjeClanovimaToolStripMenuItem.Text = "Upravljanje clanovima";
             // 
             // pregledClanovaToolStripMenuItem
@@ -128,8 +131,9 @@
             this.treningToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pregledToolStripMenuItem1,
             this.noviTreningToolStripMenuItem});
+            this.treningToolStripMenuItem.Image = global::Wellness.WinUI.Properties.Resources.icons8_dumbbell_50;
             this.treningToolStripMenuItem.Name = "treningToolStripMenuItem";
-            this.treningToolStripMenuItem.Size = new System.Drawing.Size(137, 20);
+            this.treningToolStripMenuItem.Size = new System.Drawing.Size(153, 36);
             this.treningToolStripMenuItem.Text = "Upravljanje treninzima";
             // 
             // pregledToolStripMenuItem1
@@ -154,7 +158,7 @@
             this.upravljanjeTipovimaTreningaToolStripMenuItem,
             this.izvjestavanjeToolStripMenuItem});
             this.menadzmentToolStripMenuItem.Name = "menadzmentToolStripMenuItem";
-            this.menadzmentToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
+            this.menadzmentToolStripMenuItem.Size = new System.Drawing.Size(89, 36);
             this.menadzmentToolStripMenuItem.Text = "Menadzment";
             // 
             // upravljanjeZaposlenicimaToolStripMenuItem
@@ -245,22 +249,24 @@
             // 
             this.qRKodSkenerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pokreniSkeniranjeQrKodovaToolStripMenuItem});
+            this.qRKodSkenerToolStripMenuItem.Image = global::Wellness.WinUI.Properties.Resources.icons8_qr_code_50;
             this.qRKodSkenerToolStripMenuItem.Name = "qRKodSkenerToolStripMenuItem";
-            this.qRKodSkenerToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
+            this.qRKodSkenerToolStripMenuItem.Size = new System.Drawing.Size(113, 36);
             this.qRKodSkenerToolStripMenuItem.Text = "QR Kod Skener";
             // 
             // pokreniSkeniranjeQrKodovaToolStripMenuItem
             // 
             this.pokreniSkeniranjeQrKodovaToolStripMenuItem.Name = "pokreniSkeniranjeQrKodovaToolStripMenuItem";
-            this.pokreniSkeniranjeQrKodovaToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.pokreniSkeniranjeQrKodovaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.pokreniSkeniranjeQrKodovaToolStripMenuItem.Text = "Pokreni skeniranje";
             this.pokreniSkeniranjeQrKodovaToolStripMenuItem.Click += new System.EventHandler(this.PokreniSkeniranjeQrKodovaToolStripMenuItem_Click);
             // 
             // odjaviSeToolStripMenuItem
             // 
             this.odjaviSeToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.odjaviSeToolStripMenuItem.Image = global::Wellness.WinUI.Properties.Resources.icons8_exit_64__1_;
             this.odjaviSeToolStripMenuItem.Name = "odjaviSeToolStripMenuItem";
-            this.odjaviSeToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.odjaviSeToolStripMenuItem.Size = new System.Drawing.Size(83, 36);
             this.odjaviSeToolStripMenuItem.Text = "Odjavi se";
             this.odjaviSeToolStripMenuItem.Click += new System.EventHandler(this.odjaviSeToolStripMenuItem_Click);
             // 

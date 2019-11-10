@@ -169,7 +169,9 @@ namespace Wellness.WinUI.Clanarina
                     var clanId = list[0].Id;
                     cbClan.SelectedValue = clanId;
                     timer1.Stop();
+                    FinalFrame.Stop();
                     MessageBox.Show(list[0].Display,"Korisnik pronadje", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    pbQRKod.Image = null;
                     //doradit messagebox
 
                 }
@@ -184,11 +186,16 @@ namespace Wellness.WinUI.Clanarina
 
         private void BtnOdaberiKameru_Click(object sender, EventArgs e)
         {
-            if(comboBox1.Items.Count<=0)
+            if (comboBox1.Items.Count <= 0)
             {
-                MessageBox.Show("Za skeniranje QR koda potrebna je kamera", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //beep if possible.
+                if (comboBox1.SelectedIndex < 0)
+                {
+                    MessageBox.Show("Za skeniranje QR koda potrebna je kamera", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //beep if possible.
+                }
             }
+            else
+            { 
             
             FinalFrame = new VideoCaptureDevice(CaptureDevice[comboBox1.SelectedIndex].MonikerString);
             FinalFrame.NewFrame += new NewFrameEventHandler(FinalFrame_NewFrame);
@@ -196,7 +203,7 @@ namespace Wellness.WinUI.Clanarina
 
             timer1.Enabled = true;
             timer1.Start();
-
+            }
         }
         private void FinalFrame_NewFrame(object sender, NewFrameEventArgs eventArgs)
         {

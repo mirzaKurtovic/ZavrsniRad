@@ -330,18 +330,19 @@ namespace Wellness.WinUI.Menadzment
             if (_validation.Required(sender, e, radniciDetaljiErrorProvider))
                 if (_validation.MinMaxLength(sender, e, radniciDetaljiErrorProvider, 3, 32))
                 {
-                    var clanList =await _apiService.Get<List<Model.Osoba>>(new OsobaSearchReqeust() { Username = txtUserName.Text });
+                        var clanList =await _apiService.Get<List<Model.Osoba>>(new OsobaSearchReqeust() { Username = txtUserName.Text });
 
-                    if(_id==null)
-                    {
                         if (clanList.Count > 0)
                         {
+                            if (_id != null)
+                            {
+                                if(clanList[0].Id == (int)_id)
+                                return;
+                            }
                             ((TextBox)sender).Focus();
                             e.Cancel = true;
                             radniciDetaljiErrorProvider.SetError(((TextBox)sender),"Korisnicko ime je vec iskoristeno");
                         }
-                    }
-
                 }
         }
 
