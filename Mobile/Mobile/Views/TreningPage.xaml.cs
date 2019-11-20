@@ -28,10 +28,17 @@ namespace Mobile.Views
             
         }
 
+
+
+
+
+
         private void dataGrid_ValueChanged(object sender, Syncfusion.SfDataGrid.XForms.ValueChangedEventArgs e)
         {
 
         }
+
+
 
 
         private async void dataGrid_GridDoubleTapped(object sender, Syncfusion.SfDataGrid.XForms.GridDoubleTappedEventArgs e)
@@ -50,7 +57,6 @@ namespace Mobile.Views
         private void dataGrid_GridViewCreated(object sender, Syncfusion.SfDataGrid.XForms.GridViewCreatedEventArgs e)
         {
             dataGrid.Columns[5].IsHidden = historyOnly;
-
         }
 
 

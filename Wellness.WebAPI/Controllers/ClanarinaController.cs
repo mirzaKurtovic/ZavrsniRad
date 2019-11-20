@@ -49,6 +49,7 @@ namespace Wellness.WebAPI.Controllers
         {
             return _service.Update(id, request);
         }
-
     }
 }
+
+//Scaffold-DbContext "Server=.\SQLExpress;Database=SchoolDB;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models

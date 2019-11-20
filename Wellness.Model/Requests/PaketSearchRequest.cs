@@ -10,6 +10,7 @@ namespace Wellness.Model.Requests
         public string NazivPaketa { get; set; }
         public decimal? CijenaVecaOd { get; set; }
         public decimal? CijenaManjaOd { get; set; }
+        public bool? Aktivan { get; set; }
 
     }
 }

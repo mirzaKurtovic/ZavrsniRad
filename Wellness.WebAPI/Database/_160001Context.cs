@@ -42,7 +42,7 @@ namespace Wellness.WebAPI.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
+            modelBuilder.HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
 
             modelBuilder.Entity<Clan>(entity =>
             {
@@ -144,6 +144,8 @@ namespace Wellness.WebAPI.Database
 
             modelBuilder.Entity<Paket>(entity =>
             {
+                entity.Property(e => e.Aktivan).HasDefaultValueSql("((1))");
+
                 entity.Property(e => e.Cijena).HasColumnType("money");
 
                 entity.Property(e => e.Naziv).HasMaxLength(64);

@@ -278,7 +278,7 @@ namespace Wellness.WinUI
 
         private void odjaviSeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            APIService._password = "";
+            APIService._username = "";
             APIService._password = "";
             this.Close();
             _frmLogin.Show();

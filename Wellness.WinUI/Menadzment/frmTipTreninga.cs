@@ -27,25 +27,27 @@ namespace Wellness.WinUI.Menadzment
             foreach (DataGridViewRow row in dgvTipTreninga.Rows)
             {
                 Model.TipTreninga obj = (Model.TipTreninga)row.DataBoundItem;
-                //var button = (DataGridViewButtonColumn)row.Cells[4];
-                //button.Text = "Dodjeli treneru";
-
                 var BtnCell = (DataGridViewButtonCell)row.Cells[4];
                 BtnCell.Value = "Dodjeli treneru";
             }
         }
 
-        private void BtnTrazi_Click(object sender, EventArgs e)
+        private async void BtnTrazi_Click(object sender, EventArgs e)
         {
+            btnTrazi.Enabled = false;
             var naziv = txtNaziv.Text;
-
             var tipTreningaSearchRequest = new Model.Requests.TipTreningaSearchRequest() {
-
                 TipTreninga1 = naziv
             };
-
-            //dodati....
-
+            var tipoviTreninga = await _apiService_TipTreninga.Get<List<Model.TipTreninga>>(tipTreningaSearchRequest);
+            dgvTipTreninga.DataSource = tipoviTreninga;
+            foreach (DataGridViewRow row in dgvTipTreninga.Rows)
+            {
+                Model.TipTreninga obj = (Model.TipTreninga)row.DataBoundItem;
+                var BtnCell = (DataGridViewButtonCell)row.Cells[4];
+                BtnCell.Value = "Dodjeli treneru";
+            }
+            btnTrazi.Enabled = true;
         }
 
         //https://stackoverflow.com/questions/3577297/how-to-handle-click-event-in-button-column-in-datagridview

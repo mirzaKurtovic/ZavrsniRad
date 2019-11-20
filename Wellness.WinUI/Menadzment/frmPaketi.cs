@@ -47,6 +47,8 @@ namespace Wellness.WinUI.Menadzment
 
         private async void BtnTrazi_Click(object sender, EventArgs e)
         {
+            btnTrazi.Enabled = false;
+
             var naziv = "";
             decimal? cijenaVeceOd=null;
             decimal? cijenaManjeOd=null;
@@ -86,9 +88,13 @@ namespace Wellness.WinUI.Menadzment
                 Model.Paket obj = (Model.Paket)row.DataBoundItem;
 
                 row.Cells[3].Value = Math.Round((decimal)obj.Cijena, 2);
+                if (obj.VrijemePristupaOd.HasValue)
+                    row.Cells[8].Value = obj.VrijemePristupaOd.Value.ToShortTimeString();
+                if (obj.VrijemePristupaDo.HasValue)
+                    row.Cells[10].Value = obj.VrijemePristupaDo.Value.ToShortTimeString();
             }
 
-
+            btnTrazi.Enabled = true;
         }
 
         private void DgvPaketi_DoubleClick(object sender, EventArgs e)

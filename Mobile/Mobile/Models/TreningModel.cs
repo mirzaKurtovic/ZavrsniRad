@@ -70,6 +70,8 @@ namespace Mobile.Models
                             TreningId = Id
                         };
                         var treninzi = AsyncHelpers.RunSync<List<Wellness.Model.ClanPrisustvo>>(() => _apiService_ClanPrisustvo.Get<List<Wellness.Model.ClanPrisustvo>>(searchRequest));
+
+
                         if (treninzi.Count == MaxPrisutnih)
                         {
                             _Prisustvuje = false;

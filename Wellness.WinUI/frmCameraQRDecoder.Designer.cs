@@ -92,6 +92,7 @@
             // 
             this.txtTotal.Location = new System.Drawing.Point(124, 59);
             this.txtTotal.Name = "txtTotal";
+            this.txtTotal.ReadOnly = true;
             this.txtTotal.Size = new System.Drawing.Size(196, 20);
             this.txtTotal.TabIndex = 4;
             // 
@@ -99,6 +100,7 @@
             // 
             this.txtPositive.Location = new System.Drawing.Point(124, 98);
             this.txtPositive.Name = "txtPositive";
+            this.txtPositive.ReadOnly = true;
             this.txtPositive.Size = new System.Drawing.Size(196, 20);
             this.txtPositive.TabIndex = 6;
             // 
@@ -115,6 +117,7 @@
             // 
             this.txtNegative.Location = new System.Drawing.Point(124, 134);
             this.txtNegative.Name = "txtNegative";
+            this.txtNegative.ReadOnly = true;
             this.txtNegative.Size = new System.Drawing.Size(196, 20);
             this.txtNegative.TabIndex = 8;
             // 

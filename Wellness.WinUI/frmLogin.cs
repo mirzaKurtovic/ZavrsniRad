@@ -27,6 +27,8 @@ namespace Wellness.WinUI
 
         private async void BtnPrijava_Click(object sender, EventArgs e)
         {
+            btnPrijava.Enabled = false;
+
             var password = txtSifra.Text;
             var userName = txtUserName.Text;
             APIService._username = userName;
@@ -75,7 +77,7 @@ namespace Wellness.WinUI
                 MessageBox.Show("Pogresno korisnicko ime ili sifra", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
 
-
+            btnPrijava.Enabled = true;
         }
 
         private void FrmLogin_Load(object sender, EventArgs e)

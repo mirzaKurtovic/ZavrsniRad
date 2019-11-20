@@ -14,7 +14,7 @@ namespace Wellness.Model
         public DateTime? VrijemePristupaOd { get; set; }
         public DateTime? VrijemePristupaDo { get; set; }
         public byte[] Slika { get; set; }
-
+        public bool? Aktivan { get; set; }
         public string Display
         {
             get

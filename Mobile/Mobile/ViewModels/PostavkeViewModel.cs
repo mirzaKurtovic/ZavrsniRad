@@ -55,6 +55,7 @@ namespace Mobile.ViewModels
                 _postavkeModel.BrojTelefona = clanOsoba.BrojTelefona;
                 _postavkeModel.KorisnickoIme = clanOsoba.KorisnickoIme;
                 _postavkeModel.Spol = clanOsoba.Spol;
+                _postavkeModel.Email = clanOsoba.Email;
 
             }
             #endregion Init

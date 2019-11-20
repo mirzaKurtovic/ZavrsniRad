@@ -68,6 +68,8 @@ namespace Wellness.WinUI.Menadzment
 
         private async void BtnTrazi_Click(object sender, EventArgs e)
         {
+            btnTrazi.Enabled = false;
+
             var search = new RadnikSearchRequest()
             {
                 Ime = txtIme.Text,
@@ -84,7 +86,10 @@ namespace Wellness.WinUI.Menadzment
                 row.Cells[2].Value = obj.Osoba.Prezime;
                 row.Cells[3].Value = obj.Osoba.Uloga.Naziv;
                 row.Cells[8].Value = Math.Round((decimal)obj.Satnica, 2);
+                row.Cells[9].Value = obj.Osoba.KorisnickoIme;
             }
+
+            btnTrazi.Enabled = true;
         }
 
         private void DgvRadnici_DoubleClick(object sender, EventArgs e)

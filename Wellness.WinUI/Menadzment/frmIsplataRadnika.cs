@@ -33,7 +33,7 @@ namespace Wellness.WinUI.Menadzment
 
             txtTotal.ReadOnly = true;
 
-            txtRadnihSati.Text = "0";
+            TxtRadnihSati.Text = "0";
 
             var radnici = await _apiService_Radnik.Get<List<Model.Radnik>>(null);
             cbRadnik.DataSource = radnici;
@@ -45,7 +45,7 @@ namespace Wellness.WinUI.Menadzment
             radniciSearch.Insert(0, new Model.Radnik()
             {
 
-                Id=0,
+                Id = 0,
             });
 
             cbRadnikSearch.DataSource = radniciSearch;
@@ -73,6 +73,8 @@ namespace Wellness.WinUI.Menadzment
 
         private async void BtnEvidentirajUplatu_Click(object sender, EventArgs e)
         {
+            btnEvidentirajUplatu.Enabled = false;
+
             if (this.ValidateChildren())
             {
                 var radnik = (Model.Radnik)cbRadnik.SelectedItem;
@@ -80,7 +82,7 @@ namespace Wellness.WinUI.Menadzment
                 var radnikIsplataInsertRequest = new RadnikIsplataInsertRequest()
                 {
                     DatumUplate = DateTime.Now,
-                    RadnihSati = Convert.ToInt32(txtRadnihSati.Text),
+                    RadnihSati = Convert.ToInt32(TxtRadnihSati.Text),
                     UplataZaGodinu = Convert.ToInt32(txtUplataZaGodinu.Text),
                     UplataZaMjesec = Convert.ToInt32(txtUplataZaMjesec.Text),
                     Satnica = radnik.Satnica,
@@ -91,6 +93,8 @@ namespace Wellness.WinUI.Menadzment
                 MessageBox.Show("Uspjesno ste evidentirali uplatu", "success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
+
+            btnEvidentirajUplatu.Enabled = true;
         }
 
         private void BtnIzlaz_Click(object sender, EventArgs e)
@@ -100,31 +104,14 @@ namespace Wellness.WinUI.Menadzment
 
         private void CbRadnik_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtSatnica.Text) && !string.IsNullOrEmpty(txtRadnihSati.Text))
+            if (!string.IsNullOrEmpty(txtSatnica.Text) && !string.IsNullOrEmpty(TxtRadnihSati.Text))
             {
                 var radnik = (Model.Radnik)cbRadnik.SelectedItem;
                 txtSatnica.Text = Math.Round(radnik.Satnica, 2).ToString();
-                txtTotal.Text = Math.Round((Convert.ToInt32(txtRadnihSati.Text) * radnik.Satnica), 2).ToString();
+                txtTotal.Text = Math.Round((Convert.ToInt32(TxtRadnihSati.Text) * radnik.Satnica), 2).ToString();
             }
         }
-        private void TxtRadnihSati_TextChanged(object sender, EventArgs e)
-        {
-            string str = txtRadnihSati.Text;
-            foreach (char c in str)
-            {
-                if (c < '0' || c > '9')
-                    return;
-            }
 
-
-            if (!string.IsNullOrEmpty(txtSatnica.Text) && !string.IsNullOrEmpty(txtRadnihSati.Text))
-                {
-                    var radnik = (Model.Radnik)cbRadnik.SelectedItem;
-                    txtSatnica.Text = Math.Round(radnik.Satnica, 2).ToString();
-                    txtTotal.Text = Math.Round((Convert.ToInt32(txtRadnihSati.Text) * radnik.Satnica), 2).ToString();
-                }
-            
-        }
 
 
         private async void BtnTrazi_Click(object sender, EventArgs e)
@@ -161,16 +148,38 @@ namespace Wellness.WinUI.Menadzment
                 _validation.MinMaxValue(sender, e, RadnikIsplataErrorProvider, 1, 12);
         }
 
-        private void TxtRadnihSati_Validating(object sender, CancelEventArgs e)
-        {
-            if (_validation.Required(sender, e, RadnikIsplataErrorProvider))
-                if(_validation.IsNumberOnly(sender,e, RadnikIsplataErrorProvider))
-                     _validation.MinMaxValue(sender, e, RadnikIsplataErrorProvider, 0, 1000);
-        }
+
+
 
         private void FrmIsplataRadnika_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = false;
+        }
+
+        private void TxtRadnihSati_Validating_1(object sender, CancelEventArgs e)
+        {
+            if (_validation.Required(sender, e, RadnikIsplataErrorProvider))
+                if (_validation.IsNumberOnly(sender, e, RadnikIsplataErrorProvider))
+                    if (_validation.MinMaxValue(sender, e, RadnikIsplataErrorProvider, 0, 1000))
+                    {
+                        string str = TxtRadnihSati.Text;
+                        foreach (char c in str)
+                        {
+                            if (c < '0' || c > '9')
+                                return;
+                        }
+
+
+                        if (!string.IsNullOrEmpty(txtSatnica.Text) && !string.IsNullOrEmpty(TxtRadnihSati.Text))
+                        {
+                            var radnik = (Model.Radnik)cbRadnik.SelectedItem;
+                            txtSatnica.Text = Math.Round(radnik.Satnica, 2).ToString();
+                            txtTotal.Text = Math.Round((Convert.ToInt32(TxtRadnihSati.Text) * radnik.Satnica), 2).ToString();
+                        }
+
+                    }
+        
+        
         }
     }
 }

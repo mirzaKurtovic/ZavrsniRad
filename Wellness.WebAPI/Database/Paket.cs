@@ -20,6 +20,7 @@ namespace Wellness.WebAPI.Database
         public DateTime? VrijemePristupaOd { get; set; }
         public DateTime? VrijemePristupaDo { get; set; }
         public byte[] Slika { get; set; }
+        public bool? Aktivan { get; set; }
 
         public virtual ICollection<Clanarina> Clanarina { get; set; }
         public virtual ICollection<PaketPristupniDani> PaketPristupniDani { get; set; }

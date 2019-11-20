@@ -36,6 +36,8 @@ namespace Wellness.WinUI.Menadzment
         }
         private async void BtnRegister_Click(object sender, EventArgs e)
         {
+            btnRegister.Enabled = false;
+
             if (this.ValidateChildren())
             {
 
@@ -173,10 +175,24 @@ namespace Wellness.WinUI.Menadzment
 
 
             }
+
+            btnRegister.Enabled = true;
         }
         //treba implementirat trenera u apiu
         private async void FrmRadniciDetalji_Load(object sender, EventArgs e)
         {
+            if (_id.HasValue)
+            {
+                lblPotvrdaSifre.Visible = false;
+                txtPasswordPotvrda.Visible = false;
+                btnPromjeniSifru.Location = new Point(178, 441);
+            }
+            else
+            {
+                btnPromjeniSifru.Visible = false;
+            }
+
+
             var spol = new List<Spol>();
 
             spol.Add(new Spol()
@@ -251,7 +267,7 @@ namespace Wellness.WinUI.Menadzment
 
                     txtSatnica.Visible = true;
                     lblSatnica.Visible = true;
-                    txtSatnica.Text = Math.Round(Radnik.Satnica,2).ToString();
+                    txtSatnica.Value = Math.Round(Radnik.Satnica,2);
                 }
 
                 if ((int)cbUloga.SelectedValue == 3)
@@ -260,6 +276,11 @@ namespace Wellness.WinUI.Menadzment
                     txtSpecijalizacija.Enabled = true;
                     lblSpecijalizacija.Visible = true;
                     isTrener = true;
+
+                    var trenerList = await _apiService_Trener.Get<List<Wellness.Model.Trener>>(new TrenerSearchRequest() { OsobaId = Osoba.Id});
+                    var Trener = trenerList[0];
+                    txtSpecijalizacija.Text = Trener.Specializacija;
+
                 }
                 else
                 {
@@ -353,12 +374,12 @@ namespace Wellness.WinUI.Menadzment
                     _validation.MinMaxLength(sender, e, radniciDetaljiErrorProvider, 5, 32);
         }
 
-        private void TxtSatnica_Validating(object sender, CancelEventArgs e)
-        {
-            if (isRadnik)
-                if (_validation.Required(sender, e, radniciDetaljiErrorProvider))
-                    _validation.IsDecimalNumber(sender, e, radniciDetaljiErrorProvider);
-        }
+        //private void TxtSatnica_Validating(object sender, CancelEventArgs e)
+        //{
+        //    if (isRadnik)
+        //        if (_validation.Required(sender, e, radniciDetaljiErrorProvider))
+        //            _validation.IsDecimalNumber(sender, e, radniciDetaljiErrorProvider);
+        //}
 
         private void TxtSpecijalizacija_Validating(object sender, CancelEventArgs e)
         {
@@ -433,12 +454,14 @@ namespace Wellness.WinUI.Menadzment
             e.Cancel = false;
         }
 
-
-
-
-
-
-
+        private void btnPromjeniSifru_Click(object sender, EventArgs e)
+        {
+            if (_id.HasValue)
+            {
+                var frm = new frmPromjeniSifru((int)_id);
+                frm.Show();
+            }
+        }
     }
     public class Spol {
 

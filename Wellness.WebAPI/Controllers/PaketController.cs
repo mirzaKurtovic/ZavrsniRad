@@ -47,6 +47,15 @@ namespace Wellness.WebAPI.Controllers
                 {
                     list = list.Where(p => p.Id == search.Id);
                 }
+                if (search.Aktivan != null)
+                {
+                    list = list.Where(p => p.Aktivan == search.Aktivan);
+                }
+                //if (search.Aktivan != null)
+                //{ 
+                //list = list.Where(p=>p.Aktivan == search.Aktivan)
+                //}
+                // fali podatak u bp...
             }
             var list1 = list.ToList();
 

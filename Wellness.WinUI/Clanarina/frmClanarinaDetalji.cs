@@ -59,11 +59,13 @@ namespace Wellness.WinUI.Clanarina
                 Id = 0,
                 Naziv = "svi"
             };
-            var paketi = await _apiService_Paket.Get<List<Model.Paket>>(null);
+
+            var paketi = await _apiService_Paket.Get<List<Model.Paket>>(new PaketSearchRequest{ Aktivan = true });
             cbPaket.DataSource = paketi;
             cbPaket.DisplayMember = "Display";
             cbPaket.ValueMember = "Id";
             cbPaket.DropDownStyle = ComboBoxStyle.DropDownList;
+
 
 
             if (_id.HasValue)
@@ -84,6 +86,8 @@ namespace Wellness.WinUI.Clanarina
 
         private async void BtnSacuvaj_Click(object sender, EventArgs e)
         {
+            btnSacuvaj.Enabled = false;
+
             if (ValidateChildren())
             {
                 var request = new ClanarinaInsertRequest()
@@ -111,7 +115,7 @@ namespace Wellness.WinUI.Clanarina
                     this.Close();
                 }
             }
-
+            btnSacuvaj.Enabled = true;
         }
 
         private void TxtUplataZaMjesec_Validating(object sender, System.ComponentModel.CancelEventArgs e)
@@ -134,10 +138,10 @@ namespace Wellness.WinUI.Clanarina
         {
             e.Cancel = false;
 
-            if (FinalFrame.IsRunning == true)
-            {
-                FinalFrame.Stop();
-            }
+            if(FinalFrame!=null)
+                if (FinalFrame.IsRunning == true)
+                    FinalFrame.Stop();
+            
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -148,7 +152,16 @@ namespace Wellness.WinUI.Clanarina
         private void BtnZatvoriSkener_Click(object sender, EventArgs e)
         {
             setScannerVisible(false);
-            timer1.Stop();
+
+            if (FinalFrame != null)
+            {
+                if (FinalFrame.IsRunning == true)
+                    FinalFrame.Stop();
+                FinalFrame = null;
+            }
+            if (timer1.Enabled == true)
+                timer1.Enabled = false;
+
         }
 
         private async void Timer1_Tick(object sender, EventArgs e)
@@ -180,6 +193,15 @@ namespace Wellness.WinUI.Clanarina
                      MessageBox.Show("QR Kod nije validan", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 setScannerVisible(false);
+
+                if (FinalFrame != null)
+                {
+                    if (FinalFrame.IsRunning == true)
+                        FinalFrame.Stop();
+                    FinalFrame = null;
+                }
+                if (timer1.Enabled == true)
+                    timer1.Enabled = false;
             }
 
         }
@@ -193,10 +215,23 @@ namespace Wellness.WinUI.Clanarina
                     MessageBox.Show("Za skeniranje QR koda potrebna je kamera", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     //beep if possible.
                 }
+                else
+                {
+                    MessageBox.Show("Za skeniranje QR koda potrebna je kamera", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             { 
-            
+            if(FinalFrame!=null)
+            {
+                    if (FinalFrame.IsRunning == true)
+                        FinalFrame.Stop();
+                    FinalFrame = null;
+            }
+            if(timer1.Enabled==true)
+                timer1.Enabled = false;
+
+            pictureBox1.Image = null;
             FinalFrame = new VideoCaptureDevice(CaptureDevice[comboBox1.SelectedIndex].MonikerString);
             FinalFrame.NewFrame += new NewFrameEventHandler(FinalFrame_NewFrame);
             FinalFrame.Start();
@@ -235,6 +270,12 @@ namespace Wellness.WinUI.Clanarina
             }
             else
             {
+                if (FinalFrame != null)
+                {
+                    FinalFrame.Stop();
+                    FinalFrame = null;
+                }
+                timer1.Enabled = false;
                 gbQRKodSkener.Visible = false;
                 pbQRKod.Visible = false;
                 gbClanarina.Visible = true;

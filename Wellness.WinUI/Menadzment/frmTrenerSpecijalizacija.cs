@@ -181,7 +181,6 @@ namespace Wellness.WinUI.Menadzment
                 var trenerList = await _apiService_Trener.Get<List<Model.Trener>>(null);
                 var trenerSpecijalizacijaList = await _apiService_TrenerSpecijalizacija.Get<List<Model.TrenerSpecijalizacija>>(new Model.Requests.TrenerSpecijalizacijaSearchRequest()
                 {
-
                     TipTreningaId = (int)cbTipTreninga.SelectedValue
                 });
 
@@ -192,7 +191,7 @@ namespace Wellness.WinUI.Menadzment
                     taken = false;
                     foreach (Model.TrenerSpecijalizacija y in trenerSpecijalizacijaList)
                     {
-                        if (trenerList[i].Id == y.TipTreningaId)
+                        if (trenerList[i].Id == y.TrenerId)
                         {
                             taken = true;
                             break;

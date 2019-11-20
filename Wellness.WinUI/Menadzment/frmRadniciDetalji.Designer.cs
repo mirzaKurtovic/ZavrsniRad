@@ -49,18 +49,20 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtPasswordPotvrda = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lblPotvrdaSifre = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.cbUloga = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.cbMjestoBoravka = new System.Windows.Forms.ComboBox();
             this.btnRegister = new System.Windows.Forms.Button();
-            this.txtSatnica = new System.Windows.Forms.TextBox();
             this.lblSatnica = new System.Windows.Forms.Label();
             this.txtSpecijalizacija = new System.Windows.Forms.TextBox();
             this.lblSpecijalizacija = new System.Windows.Forms.Label();
             this.radniciDetaljiErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnPromjeniSifru = new System.Windows.Forms.Button();
+            this.txtSatnica = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.radniciDetaljiErrorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSatnica)).BeginInit();
             this.SuspendLayout();
             // 
             // imageList1
@@ -230,14 +232,14 @@
             this.txtPasswordPotvrda.TabIndex = 19;
             this.txtPasswordPotvrda.Validating += new System.ComponentModel.CancelEventHandler(this.TxtPasswordPotvrda_Validating);
             // 
-            // label10
+            // lblPotvrdaSifre
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(175, 424);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(66, 13);
-            this.label10.TabIndex = 18;
-            this.label10.Text = "Potvrda sifre";
+            this.lblPotvrdaSifre.AutoSize = true;
+            this.lblPotvrdaSifre.Location = new System.Drawing.Point(175, 424);
+            this.lblPotvrdaSifre.Name = "lblPotvrdaSifre";
+            this.lblPotvrdaSifre.Size = new System.Drawing.Size(66, 13);
+            this.lblPotvrdaSifre.TabIndex = 18;
+            this.lblPotvrdaSifre.Text = "Potvrda sifre";
             // 
             // label11
             // 
@@ -284,14 +286,6 @@
             this.btnRegister.UseVisualStyleBackColor = true;
             this.btnRegister.Click += new System.EventHandler(this.BtnRegister_Click);
             // 
-            // txtSatnica
-            // 
-            this.txtSatnica.Location = new System.Drawing.Point(178, 492);
-            this.txtSatnica.Name = "txtSatnica";
-            this.txtSatnica.Size = new System.Drawing.Size(100, 20);
-            this.txtSatnica.TabIndex = 26;
-            this.txtSatnica.Validating += new System.ComponentModel.CancelEventHandler(this.TxtSatnica_Validating);
-            // 
             // lblSatnica
             // 
             this.lblSatnica.AutoSize = true;
@@ -322,14 +316,43 @@
             // 
             this.radniciDetaljiErrorProvider.ContainerControl = this;
             // 
+            // btnPromjeniSifru
+            // 
+            this.btnPromjeniSifru.Location = new System.Drawing.Point(315, 441);
+            this.btnPromjeniSifru.Name = "btnPromjeniSifru";
+            this.btnPromjeniSifru.Size = new System.Drawing.Size(100, 23);
+            this.btnPromjeniSifru.TabIndex = 29;
+            this.btnPromjeniSifru.Text = "Promjeni sifru";
+            this.btnPromjeniSifru.UseVisualStyleBackColor = true;
+            this.btnPromjeniSifru.Click += new System.EventHandler(this.btnPromjeniSifru_Click);
+            // 
+            // txtSatnica
+            // 
+            this.txtSatnica.DecimalPlaces = 2;
+            this.txtSatnica.Location = new System.Drawing.Point(178, 491);
+            this.txtSatnica.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            0});
+            this.txtSatnica.Name = "txtSatnica";
+            this.txtSatnica.Size = new System.Drawing.Size(100, 20);
+            this.txtSatnica.TabIndex = 30;
+            this.txtSatnica.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
             // frmRadniciDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(449, 618);
+            this.Controls.Add(this.txtSatnica);
+            this.Controls.Add(this.btnPromjeniSifru);
             this.Controls.Add(this.txtSpecijalizacija);
             this.Controls.Add(this.lblSpecijalizacija);
-            this.Controls.Add(this.txtSatnica);
             this.Controls.Add(this.lblSatnica);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.label12);
@@ -337,7 +360,7 @@
             this.Controls.Add(this.cbUloga);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.txtPasswordPotvrda);
-            this.Controls.Add(this.label10);
+            this.Controls.Add(this.lblPotvrdaSifre);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtUserName);
@@ -361,6 +384,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmRadniciDetalji_FormClosing);
             this.Load += new System.EventHandler(this.FrmRadniciDetalji_Load);
             ((System.ComponentModel.ISupportInitialize)(this.radniciDetaljiErrorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSatnica)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -388,16 +412,17 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtPasswordPotvrda;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblPotvrdaSifre;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox cbUloga;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox cbMjestoBoravka;
         private System.Windows.Forms.Button btnRegister;
-        private System.Windows.Forms.TextBox txtSatnica;
         private System.Windows.Forms.Label lblSatnica;
         private System.Windows.Forms.TextBox txtSpecijalizacija;
         private System.Windows.Forms.Label lblSpecijalizacija;
         private System.Windows.Forms.ErrorProvider radniciDetaljiErrorProvider;
+        private System.Windows.Forms.Button btnPromjeniSifru;
+        private System.Windows.Forms.NumericUpDown txtSatnica;
     }
 }

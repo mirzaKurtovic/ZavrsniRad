@@ -55,9 +55,6 @@ namespace Wellness.WinUI.Menadzment
             #region alter
             if (paketId != null)
             {
-
-
-
                 var paketList = await _apiService_Paket.Get<List<Model.Paket>>(new PaketSearchRequest()
                 {
 
@@ -94,6 +91,11 @@ namespace Wellness.WinUI.Menadzment
                     {
                         pbSlika.Image = ByteToImage(paket.Slika); // byteArr holds byte array value;
                     }
+                    if (paket.Aktivan != null)
+                        cbAktivan.Checked = (bool)paket.Aktivan;
+                    else
+                        cbAktivan.Checked = false;
+                    
                     var paketPristupniDani = await _apiService_PaketPristupniDani.Get<List<Model.PaketPristupniDani>>(new PaketPristupniDaniSearchRequest()
                     {
 
@@ -150,6 +152,8 @@ namespace Wellness.WinUI.Menadzment
 
         private async void BtnDodajPaket_Click(object sender, EventArgs e)
         {
+            btnDodajPaket.Enabled = false;
+
             if (this.ValidateChildren())
             {
                 var PaketInsertRequest = new Wellness.Model.Requests.PaketInsertRequest
@@ -159,6 +163,7 @@ namespace Wellness.WinUI.Menadzment
                     Opis = txtOpis.Text,
                     PristupGrupnimTreninzima = cbPristupGrupnimTreninzima.Checked,
                     NeogranicenPristup = cbNeogranicenPristup.Checked,
+                    Aktivan=cbAktivan.Checked
                 };
                 if (Img != null)
                 {
@@ -228,6 +233,8 @@ namespace Wellness.WinUI.Menadzment
 
                 Close();
             }
+
+            btnDodajPaket.Enabled = true;
         }
 
         private void BtnDodajSliku_Click(object sender, EventArgs e)

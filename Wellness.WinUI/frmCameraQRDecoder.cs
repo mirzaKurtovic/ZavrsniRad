@@ -64,10 +64,9 @@ namespace Wellness.WinUI
         private string BeepNotOK = @"C:\Users\Mirza\source\repos\ZavrsniRad\Sounds\NotOK.wav";
         private string BeepOK = @"C:\Users\Mirza\source\repos\ZavrsniRad\Sounds\OK.wav";
 
-        
 
-        //private string BeepOK = @"..\Sounds\NotOK.wav";
-        //private string BeepNotOK = @"..\Sounds\NotOK.wav";
+
+
         //src="~/images/image.jpg"
         //"C:\Users\Mirza\source\repos\ZavrsniRad\Sounds\NotOK.wav"
 
@@ -274,7 +273,7 @@ Imaju cetri moguca rezultata
                         if (paket.NeogranicenPristup == true)
                         {
                             textMain = "Pristup odobren";
-                            textSide = "Dobro došli";
+                            textSide = "Dobrodošli!";
                             CameraStopSetup(textMain, textSide);
                             PanelGreen();
                             playBeep(BeepOK);
@@ -291,7 +290,7 @@ Imaju cetri moguca rezultata
                         if (DateTimeUsporedni > clanarina.Paket.VrijemePristupaOd && clanarina.Paket.VrijemePristupaDo > DateTimeUsporedni)
                         {
                             textMain = "Pristup odobren";
-                            textSide = "Dobro došli";
+                            textSide = "Dobrodošli!";
                             CameraStopSetup(textMain, textSide);
                             PanelGreen();
                             playBeep(BeepOK);
@@ -330,6 +329,11 @@ Imaju cetri moguca rezultata
 
                 }
             }
+            else
+            {
+                MessageBox.Show("Za skeniranje QR koda potrebna je kamera", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //beep if possible.
+            }
 
 
         }
@@ -360,20 +364,24 @@ Imaju cetri moguca rezultata
 
         private void FrmCameraQRDecoder_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (FinalFrame.IsRunning == true)
-            {
+            if(FinalFrame!=null)
+             if(FinalFrame.IsRunning == true)
                 FinalFrame.Stop();
-            }
+            
             if (gbPostavkeSkenera.Visible == false)
                 _frmIndex.Close();
-            else
-            _frmIndex.Visible = true;
+                    else
+                     _frmIndex.Visible = true;
         }
 
         private void BtnZaustavi_Click(object sender, EventArgs e)
         {
             SkeniranjeUToku = false;
             timerDecodingTotal.Enabled = false;
+            timer.Enabled = false;
+            if(FinalFrame!=null)
+            FinalFrame.Stop();
+            FinalFrame = null;
         }
 
         private void Timer2_Tick(object sender, EventArgs e)
@@ -418,7 +426,9 @@ Imaju cetri moguca rezultata
         }
         void playBeep(string soundLocation)
         {
-            //"C:\Users\Mirza\source\repos\ZavrsniRad\Sounds\NotOK.wav"
+
+
+            ////"C:\Users\Mirza\source\repos\ZavrsniRad\Sounds\NotOK.wav"
             System.Media.SoundPlayer player = new System.Media.SoundPlayer(soundLocation);
             player.Play();
         }

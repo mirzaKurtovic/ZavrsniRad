@@ -87,7 +87,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "<   cijena   >";
+            this.label2.Text = "<   cijena   <";
             // 
             // txtNazivPaketa
             // 

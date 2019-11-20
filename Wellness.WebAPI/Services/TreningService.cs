@@ -37,9 +37,16 @@ namespace Wellness.WebAPI.Services
                     query = query.Where(q => q.TrenerId == request.TrenerID);
 
                     query = query.Where(q => q.DatumTreninga.ToShortDateString() == request.DatumTreninga.ToShortDateString());
-                    query = query.Where(q => (q.VrijemePocetak <= request.VrijemePocetak && q.VrijemeKraj >= request.VrijemePocetak)
-                        || (request.VrijemeKraj >= q.VrijemePocetak && request.VrijemeKraj <= q.VrijemeKraj)
-                        || (q.VrijemePocetak <= request.VrijemePocetak && q.VrijemeKraj >= request.VrijemeKraj));
+                    query = query.Where(q => 
+                           (request.VrijemeKraj >= q.VrijemeKraj && request.VrijemeKraj >= q.VrijemeKraj)//POCETAK UNUTAR
+                        || (request.VrijemePocetak >= q.VrijemePocetak && request.VrijemePocetak >= q.VrijemePocetak)//POCETAK UNUTAR
+                        || (request.VrijemePocetak <= q.VrijemePocetak && request.VrijemeKraj >= q.VrijemeKraj)//pocetak prije treninga kraj je poslije   OKOLO
+                        || (request.VrijemePocetak >= q.VrijemePocetak && request.VrijemeKraj <= q.VrijemeKraj)); //pocetak unutar i kraj unutar treninnn UNUTAR
+
+
+
+                    //(q.VrijemePocetak <= request.VrijemePocetak && q.VrijemeKraj >= request.VrijemePocetak)// pocetak prije treningaj, kraj je unutar treninga
+                    //    || (request.VrijemeKraj >= q.VrijemePocetak && request.VrijemeKraj <= q.VrijemeKraj)//kraj je unutar treninga
 
                 }
                 else

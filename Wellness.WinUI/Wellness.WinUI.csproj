@@ -228,6 +228,12 @@
     <Compile Include="Menadzment\frmPaketi.Designer.cs">
       <DependentUpon>frmPaketi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Menadzment\frmPromjeniSifru.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menadzment\frmPromjeniSifru.Designer.cs">
+      <DependentUpon>frmPromjeniSifru.cs</DependentUpon>
+    </Compile>
     <Compile Include="Menadzment\frmRadnici.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -309,6 +315,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Menadzment\frmPaketi.resx">
       <DependentUpon>frmPaketi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menadzment\frmPromjeniSifru.resx">
+      <DependentUpon>frmPromjeniSifru.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menadzment\frmRadnici.resx">
       <DependentUpon>frmRadnici.cs</DependentUpon>

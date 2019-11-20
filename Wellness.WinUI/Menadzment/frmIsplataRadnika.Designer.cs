@@ -34,7 +34,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtIzvor = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtRadnihSati = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtUplataZaGodinu = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -66,6 +65,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.RadnikIsplataErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.clanPrisustvoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.TxtRadnihSati = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIsplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radnikPlataHistorijaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RadnikIsplataErrorProvider)).BeginInit();
@@ -115,15 +115,6 @@
             this.label4.Size = new System.Drawing.Size(60, 13);
             this.label4.TabIndex = 7;
             this.label4.Text = "Radnih sati";
-            // 
-            // txtRadnihSati
-            // 
-            this.txtRadnihSati.Location = new System.Drawing.Point(29, 146);
-            this.txtRadnihSati.Name = "txtRadnihSati";
-            this.txtRadnihSati.Size = new System.Drawing.Size(85, 20);
-            this.txtRadnihSati.TabIndex = 6;
-            this.txtRadnihSati.TextChanged += new System.EventHandler(this.TxtRadnihSati_TextChanged);
-            this.txtRadnihSati.Validating += new System.ComponentModel.CancelEventHandler(this.TxtRadnihSati_Validating);
             // 
             // label5
             // 
@@ -380,11 +371,21 @@
             // 
             this.clanPrisustvoBindingSource.DataSource = typeof(Wellness.Model.ClanPrisustvo);
             // 
+            // TxtRadnihSati
+            // 
+            this.TxtRadnihSati.Location = new System.Drawing.Point(29, 146);
+            this.TxtRadnihSati.MaxLength = 4;
+            this.TxtRadnihSati.Name = "TxtRadnihSati";
+            this.TxtRadnihSati.Size = new System.Drawing.Size(65, 20);
+            this.TxtRadnihSati.TabIndex = 31;
+            this.TxtRadnihSati.Validating += new System.ComponentModel.CancelEventHandler(this.TxtRadnihSati_Validating_1);
+            // 
             // frmIsplataRadnika
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(750, 578);
+            this.Controls.Add(this.TxtRadnihSati);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.btnTrazi);
             this.Controls.Add(this.label9);
@@ -407,7 +408,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtUplataZaGodinu);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtRadnihSati);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtIzvor);
             this.Controls.Add(this.label1);
@@ -432,7 +432,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtIzvor;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtRadnihSati;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtUplataZaGodinu;
         private System.Windows.Forms.Label label6;
@@ -464,5 +463,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SatnicaCustom;
         private System.Windows.Forms.DataGridViewTextBoxColumn radnikIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn radnikDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TextBox TxtRadnihSati;
     }
 }
