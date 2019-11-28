@@ -35,8 +35,8 @@ namespace Wellness.WebAPI.Database
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=.;Database=160001;Trusted_Connection=True;");
+                //optionsBuilder.UseSqlServer("Server=.;Database=160001;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=den1.mssql8.gear.host;Database=mirzak160001;Trusted_Connection=False;MultipleActiveResultSets=true;User ID=mirzak160001;Password=Zj34p6W3_t!g");
             }
         }
 

@@ -364,10 +364,12 @@ Imaju cetri moguca rezultata
 
         private void FrmCameraQRDecoder_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(FinalFrame!=null)
-             if(FinalFrame.IsRunning == true)
-                FinalFrame.Stop();
-            
+            if (FinalFrame != null)
+            {
+                if (FinalFrame.IsRunning == true)
+                    FinalFrame.Stop();
+                FinalFrame = null;
+            }
             if (gbPostavkeSkenera.Visible == false)
                 _frmIndex.Close();
                     else
@@ -429,8 +431,8 @@ Imaju cetri moguca rezultata
 
 
             ////"C:\Users\Mirza\source\repos\ZavrsniRad\Sounds\NotOK.wav"
-            System.Media.SoundPlayer player = new System.Media.SoundPlayer(soundLocation);
-            player.Play();
+            //System.Media.SoundPlayer player = new System.Media.SoundPlayer(soundLocation);
+            //player.Play();
         }
         private void BtnSakriPostavke_Click(object sender, EventArgs e)
         {
