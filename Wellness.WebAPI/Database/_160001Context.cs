@@ -35,8 +35,8 @@ namespace Wellness.WebAPI.Database
         {
             if (!optionsBuilder.IsConfigured)
             {
-                //optionsBuilder.UseSqlServer("Server=.;Database=160001;Trusted_Connection=True;");
-                optionsBuilder.UseSqlServer("Server=den1.mssql8.gear.host;Database=mirzak160001;Trusted_Connection=False;MultipleActiveResultSets=true;User ID=mirzak160001;Password=Zj34p6W3_t!g");
+                  optionsBuilder.UseSqlServer("Server=.;Database=160001;Trusted_Connection=True;");
+                //optionsBuilder.UseSqlServer("Server=den1.mssql8.gear.host;Database=mirzak160001;Trusted_Connection=False;MultipleActiveResultSets=true;User ID=mirzak160001;Password=Zj34p6W3_t!g");
             }
         }
 

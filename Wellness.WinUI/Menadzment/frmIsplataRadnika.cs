@@ -121,12 +121,22 @@ namespace Wellness.WinUI.Menadzment
             rphSearch.radnikId = (int?)cbRadnikSearch.SelectedValue;
             if (!string.IsNullOrWhiteSpace(txtUplataZaGodinuSearch.Text))
                 rphSearch.UplataZaGodinu = Convert.ToInt32(txtUplataZaGodinuSearch.Text);
-            if (!string.IsNullOrWhiteSpace(txtUplataZaMjesec.Text))
-                rphSearch.UplataZaMjesec = Convert.ToInt32(txtUplataZaMjesec.Text);
+            if (!string.IsNullOrWhiteSpace(txtUplataZaMjesecSearch.Text))
+                rphSearch.UplataZaMjesec = Convert.ToInt32(txtUplataZaMjesecSearch.Text);
 
 
             var RadniciPlateHistorija = await _apiService_RadnikPlataHistorija.Get<List<Model.RadnikPlataHistorija>>(rphSearch);
             dgvIsplate.DataSource = RadniciPlateHistorija;
+
+            foreach (DataGridViewRow row in dgvIsplate.Rows)
+            {
+                Model.RadnikPlataHistorija obj = (Model.RadnikPlataHistorija)row.DataBoundItem;
+
+                row.Cells[4].Value = Math.Round((decimal)obj.Satnica, 2);
+            }
+
+
+
         }
 
         private void TxtIzvor_Validating(object sender, CancelEventArgs e)

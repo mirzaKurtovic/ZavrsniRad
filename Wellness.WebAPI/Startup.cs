@@ -67,6 +67,7 @@ namespace Wellness.WebAPI
             services.AddScoped<ITreningService, TreningService>();
 
             var connection = @"Server=.;Database=160001;Trusted_Connection=True;ConnectRetryCount=0";
+            //var connection = @"Server=den1.mssql8.gear.host;Database=mirzak160001;Trusted_Connection=False;MultipleActiveResultSets=true;User ID=mirzak160001;Password=Zj34p6W3_t!g";
             services.AddDbContext<_160001Context>(options => options.UseSqlServer(connection));
 
 

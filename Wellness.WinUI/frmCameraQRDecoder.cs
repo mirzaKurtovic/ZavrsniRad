@@ -61,11 +61,11 @@ namespace Wellness.WinUI
         private string textMain = "";
         private string textSide = "";
 
-        private string BeepNotOK = @"C:\Users\Mirza\source\repos\ZavrsniRad\Sounds\NotOK.wav";
-        private string BeepOK = @"C:\Users\Mirza\source\repos\ZavrsniRad\Sounds\OK.wav";
+        private string BeepNotOK = @"C:\Users\Kurtovic\Source\Repos\Zavrsni_Rad\Sounds\NotOK.wav";
+        private string BeepOK = @"C:\Users\Kurtovic\Source\Repos\Zavrsni_Rad\Sounds\OK.wav";
 
 
-
+        
 
         //src="~/images/image.jpg"
         //"C:\Users\Mirza\source\repos\ZavrsniRad\Sounds\NotOK.wav"
@@ -167,6 +167,7 @@ Imaju cetri moguca rezultata
                 _trueResult++;
                 txtPositive.Text = _trueResult.ToString();
 
+                timer.Stop();
                 
 
                 var ClanSearchRequest = new Model.Requests.ClanSearchRequest()
@@ -299,7 +300,7 @@ Imaju cetri moguca rezultata
                         else
                         {
                             textMain = "Pristup ogranicen";
-                            textSide = "Pristup Fitness centru imate samo u terminu od " + clanarina.Paket.VrijemePristupaOd.Value.ToShortTimeString() + " do " + clanarina.Paket.VrijemePristupaDo.Value.ToShortTimeString();
+                            textSide = "Pristup imate samo u terminu od " + clanarina.Paket.VrijemePristupaOd.Value.ToShortTimeString() + " do " + clanarina.Paket.VrijemePristupaDo.Value.ToShortTimeString();
                             CameraStopSetup(textMain, textSide);
                             PanelRed();
                             playBeep(BeepNotOK);
@@ -431,8 +432,8 @@ Imaju cetri moguca rezultata
 
 
             ////"C:\Users\Mirza\source\repos\ZavrsniRad\Sounds\NotOK.wav"
-            //System.Media.SoundPlayer player = new System.Media.SoundPlayer(soundLocation);
-            //player.Play();
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer(soundLocation);
+            player.Play();
         }
         private void BtnSakriPostavke_Click(object sender, EventArgs e)
         {
